@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  height: 100%;
 }
 
 .main {
@@ -11,7 +12,7 @@
   padding: 5%;
 }
 
-.title_container>div {
+.title_container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
