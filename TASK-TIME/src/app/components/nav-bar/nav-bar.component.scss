@@ -20,7 +20,7 @@
   flex-direction: row;
 
   p {
-    margin: 0px 30px;
+    margin: 5px 30px 0px 30px;
   }
 }
 
@@ -45,8 +45,8 @@
 //Search
 #search {
   position: relative;
-  width: 15px;
-  height: 15px;
+  width: 3vh;
+  height: 3vh;
   border-radius: 50px;
   padding: 10px;
   transition-duration: 500ms;
@@ -67,10 +67,11 @@
 }
 
 #search:focus {
-  width: 500px;
-  padding-left: 40px;
+  width: 70vh;
+  padding-left: 50px;
   color: black;
   outline: none;
+  cursor: text;
   background-color: transparent;
   border: 2px solid black;
   background: url(https://cdn-icons-png.flaticon.com/128/54/54481.png) no-repeat;

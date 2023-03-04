@@ -1,27 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=PT+Sans:wght@400;700&family=Roboto+Mono:wght@100;500&display=swap');
 
-html,body{
+html,
+body {
   padding: 0;
   margin: 0;
 
 }
 
-#todo{
+#todo {
   font-size: 5vh;
   font-weight: 700;
 }
 
-*{
+* {
   font-family: 'PT Sans', sans-serif;
   color: white;
 }
 
-
-.page-container{
-  height: 100vh;
-}
-
-.header-container{
+.header-container {
   height: fit-content;
   background-image: url('../../../assets/bg-img.jpg');
   display: flex;
@@ -30,34 +26,34 @@ html,body{
 
 }
 
-
-.header{
+.header {
   margin: 1vh 0 20vh 10vh;
   margin-bottom: 10vh;
   font-size: 4vh;
 }
 
-.footer-container{
+.footer-container {
   background-color: white;
   width: 100vw;
   height: 30vh;
-  padding:0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
 
 }
-#img{
+
+#img {
   height: 67vh;
-  width :30%;
+  width: 30%;
   margin-right: 10vw;
 }
 
 
-#slogan{
+#slogan {
   margin: 30px 0 0 0;
 }
 
-.btn{
+.btn {
   margin-top: 30px;
   color: black !important;
   padding: 3vh 5vh 2vh 5vh;
@@ -71,22 +67,24 @@ html,body{
   align-items: center;
   margin-bottom: 2vh;
 }
-.btn:hover{
+
+.btn:hover {
   background-color: #26BDFF;
   color: white !important;
-  transition:linear 0.1s;
+  transition: linear 0.1s;
 }
 
-.btn:active{
+.btn:active {
   background-color: #2897c7;
   color: white !important;
-  transition:linear 0.1s;
+  transition: linear 0.1s;
 }
-.btn-container{
+
+.btn-container {
   margin-top: 5vh;
 }
 
-.content{
+.content {
   width: 50vw;
   margin-top: 10vh;
   text-align: left;
@@ -96,43 +94,44 @@ html,body{
 
 }
 
-.ins{
+.ins {
   color: black !important;
   font-size: 3vh;
   font-weight: 700;
   margin: 0 0 3vh 0;
 }
-.color-word{
+
+.color-word {
   color: #26BDFF !important;
   font-size: 2vh;
 }
 
-#slogan{
+#slogan {
   margin-top: 10px;
   margin-bottom: 30px;
   color: white !important;
 }
 
-#gg-img{
+#gg-img {
   width: 2vh;
   height: 2vh;
-  margin-right: 1vh ;
+  margin-right: 1vh;
   margin-bottom: 4px;
 }
 
-.login{
+.login {
   margin-top: 8px;
   font-size: 2vh;
   color: black;
   font-weight: 600;
 }
 
-#heading{
+#heading {
   height: 30vh;
   width: 15vw;
 }
 
-.line2{
+.line2 {
   margin-right: 13%;
   margin-top: 6vh;
   color: #26BDFF !important;
@@ -145,11 +144,12 @@ html,body{
   flex-direction: row;
 }
 
-.task{
+.task {
   width: 41px;
   height: 41px;
 }
-.line3{
+
+.line3 {
   color: #26BDFF !important;
   font-size: 2vh;
   height: fit-content;
