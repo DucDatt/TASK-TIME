@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.title_container {
+  padding: 5%;
+}
+
+.title_container>div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 5vh;
+  margin: 2vh 0;
+}
+
+.sort {
+  font-size: 2.8vh;
+  margin-right: 8vw;
+  margin-top: 2vh;
+  color: #555555;
+}
+
+.description {
+  font-size: 2.5vh;
+  margin: 2vh 0;
+}
+
+//Selector
+.selector {
+  height: 3.3vh;
+  width: 8vw;
+  margin-right: 5vw;
+}

@@ -1,0 +1,96 @@
+//Navbar
+.navbar {
+  background-color: #FFB93F;
+  height: 12vh;
+  width: 88vw;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 3vw;
+}
+
+.profile {
+  display: flex;
+  justify-content: row;
+}
+
+.project_name {
+  font-size: 4vh;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+
+  p {
+    margin: 0px 30px;
+  }
+}
+
+.input {
+  width: 35vw;
+  height: 6vh;
+  border-radius: 2vh;
+  padding-left: 2%;
+  font-size: 3vh;
+  border-style: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.username {
+  margin: 0 1vw;
+  font-size: 3vh;
+}
+
+//Search
+#search {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  padding: 10px;
+  transition-duration: 500ms;
+  cursor: pointer;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  border: 2px solid black;
+  overflow: hidden;
+  background-image: url(https://cdn-icons-png.flaticon.com/128/54/54481.png);
+  background-repeat: no-repeat;
+  background-size: 22px;
+  background-position: 45% 50%;
+  background-color: #FFB93F;
+}
+
+#search:hover {
+  animation: dancing 0.5s infinite;
+}
+
+#search:focus {
+  width: 500px;
+  padding-left: 40px;
+  color: black;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid black;
+  background: url(https://cdn-icons-png.flaticon.com/128/54/54481.png) no-repeat;
+  background-size: 22px;
+  background-position: 10px 50%;
+}
+
+@keyframes dancing {
+  0% {
+    // scale: 1;
+    filter: brightness(1)
+  }
+
+  50% {
+    // scale: 1.2;
+    filter: brightness(2) hue-rotate(180deg)
+  }
+
+  100% {
+    // scale: 1;
+    filter: brightness(1)
+  }
+}
