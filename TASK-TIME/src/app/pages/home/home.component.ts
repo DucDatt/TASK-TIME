@@ -1,4 +1,6 @@
+import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  constructor(private dialog: MatDialog) { }
+
+  openDialog(): void {
+    this.dialog.open(ProjectPopupComponent)
+  }
+
   projects: Array<any> = [
     {
       id: 1,
