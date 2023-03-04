@@ -45,10 +45,12 @@ import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { SideBarComponent } from 'src/app/components/side-bar/side-bar.component';
 import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
+import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 @NgModule({
   declarations: [
     SideBarComponent,
     NavBarComponent,
+    ProjectPopupComponent,
   ],
   imports: [
     A11yModule,
