@@ -14,11 +14,13 @@ html,body{
 *{
   font-family: 'PT Sans', sans-serif;
   color: white;
+  line-height: normal;
 }
 
 
 .page-container{
   height: 100vh;
+  width: 100vw;
 }
 
 .header-container{
@@ -27,13 +29,13 @@ html,body{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 5px 0px rgb(119, 119, 119) ;
 }
 
 
 .header{
-  margin: 1vh 0 20vh 10vh;
-  margin-bottom: 10vh;
+  margin: 1vh 0 0 10vh;
   font-size: 4vh;
 }
 
@@ -44,6 +46,7 @@ html,body{
   padding:0;
   display: flex;
   justify-content: space-between;
+  // box-shadow: 0 0 32px  #534B4B inset;
 
 }
 #img{
@@ -74,7 +77,11 @@ html,body{
 .btn:hover{
   background-color: #26BDFF;
   color: white !important;
+  border: #26BDFF 5px solid;
   transition:linear 0.1s;
+  p.login{
+    color: white !important;
+  }
 }
 
 .btn:active{
@@ -88,7 +95,7 @@ html,body{
 
 .content{
   width: 50vw;
-  margin-top: 10vh;
+  margin-top: 6vh;
   text-align: left;
   color: #26BDFF !important;
   margin-left: 10vh;
@@ -101,9 +108,22 @@ html,body{
   font-size: 3vh;
   font-weight: 700;
   margin: 0 0 3vh 0;
+  width: 56%;
+  p{
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 3vh;
+    width: 56%;
+  }
 }
 .color-word{
-  color: #26BDFF !important;
+  color: #a79a29 !important;
+  font-weight: 500;
+  font-size: 2vh;
+}
+.color-word1{
+  color: #a79a29 !important;
+  font-weight: 500;
   font-size: 2vh;
 }
 
@@ -111,6 +131,7 @@ html,body{
   margin-top: 10px;
   margin-bottom: 30px;
   color: white !important;
+
 }
 
 #gg-img{
@@ -140,14 +161,17 @@ html,body{
   border: 1px solid #09f289;
   border-radius: 3vh;
   height: fit-content;
-  padding: 4vh;
+  padding: 0;
   display: flex;
   flex-direction: row;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  justify-content: center;
 }
 
 .task{
-  width: 41px;
-  height: 41px;
+  width: 60px;
+  height: 60px;
 }
 .line3{
   color: #26BDFF !important;
@@ -156,4 +180,20 @@ html,body{
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
+  width: 45%;
 }
+
+// .wrapper{
+//   position: fixed;
+//   inset: 0;
+//   z-index: 9999;
+//   background-color: #fff;
+//   display: grid;
+//   place-items: center;
+//   transition: opacity 0.25s, visibility 1s;
+
+// }
+// .fade{
+//   opacity: 0;
+//   visibility: hidden;
+// }
