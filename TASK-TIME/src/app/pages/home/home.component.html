@@ -1,10 +1,9 @@
-
 <div class="container">
   <app-side-bar></app-side-bar>
   <div class="main">
     <app-nav-bar></app-nav-bar>
     <div class="title_container">
-      <div>
+      <div class="title_sort">
         <div class="title">PROJECTS</div>
         <mat-form-field class="selector" appearance="fill">
           <mat-label>SORT BY</mat-label>
@@ -17,6 +16,7 @@
       </div>
       <div class="description">All available projects here</div>
     </div>
+
     <div class="body">
       <div class="project">
         <div class="project_box" *ngFor="let project of projects">
@@ -45,3 +45,4 @@
       </div>
     </div>
   </div>
+</div>
