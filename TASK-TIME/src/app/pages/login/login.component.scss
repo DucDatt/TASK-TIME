@@ -18,6 +18,7 @@ html,body{
 
 
 .page-container{
+  width: 100vw;
   height: 100vh;
 }
 
@@ -39,8 +40,8 @@ html,body{
 
 .footer-container{
   background-color: white;
-  width: 100vw;
-  height: 30vh;
+  width: 100%;
+  height: 30%;
   padding:0;
   display: flex;
   justify-content: space-between;
@@ -87,7 +88,7 @@ html,body{
 }
 
 .content{
-  width: 50vw;
+  width: 50%;
   margin-top: 10vh;
   text-align: left;
   color: #26BDFF !important;
@@ -128,8 +129,9 @@ html,body{
 }
 
 #heading{
-  height: 30vh;
-  width: 15vw;
+  height: 30;
+  width: 150px;
+  height: 150px;
 }
 
 .line2{

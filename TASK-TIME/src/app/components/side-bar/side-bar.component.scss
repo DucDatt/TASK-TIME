@@ -1,14 +1,11 @@
+Huy Minh
 //Sidebar
-.sidebar_container {
-  height: 100%;
-}
 .sidebar {
   display: flex;
   flex-direction: column;
   width: 12vw;
-  height: 100%;
-  background-color: #ECECEC;
-  // justify-content: space-between;
+  height: 100vh;
+  background-color: #ffb93f;
 }
 
 .logo_container {
@@ -23,7 +20,7 @@ img {
 .menu {
   display: flex;
   justify-content: flex-start;
-  margin: 3vh auto;
+  margin: 10px 0px 20px 30px;
   font-size: 3.5vh;
 }
 
@@ -32,7 +29,7 @@ img {
   flex-direction: column;
 }
 
-.button{
+.button {
   margin: 1vh 1vw;
   height: 6vh;
   border-style: none;
@@ -40,8 +37,8 @@ img {
   display: flex;
   flex-direction: row;
   background-color: #ECECEC;
-  
 }
+
 .logout_button {
   margin: 1vh 1vw;
   height: 6vh;
@@ -50,7 +47,7 @@ img {
   display: flex;
   flex-direction: row;
   background-color: #ECECEC;
-  
+
 }
 
 p {
@@ -64,20 +61,34 @@ p {
 }
 
 //Button effects
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  cursor: pointer;
+}
+
+.button {
+  color: rgba($color: black, $alpha: 0.5)
+}
+
 .button:hover {
   background-color: #ffcf7b;
   transition: linear 0.1s;
   color: white;
+  font-weight: 600;
 }
 
 .button:focus {
   background-color: #ffb93f;
   color: white;
+  font-weight: 600;
 }
 
 .logout_button {
   margin-top: 10vh;
-  color: black;
+  color: rgba($color: black, $alpha: 0.5);
 }
 
 .logout_button:hover {
