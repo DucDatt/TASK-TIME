@@ -1,3 +1,4 @@
+import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -10,7 +11,7 @@ export class HomeComponent {
   constructor(private dialog: MatDialog) { }
 
   openDialog(): void {
-    // this.dialog.open(ProjectPopupComponent)
+    this.dialog.open(ProjectPopupComponent)
   }
 
   projects: Array<any> = [
