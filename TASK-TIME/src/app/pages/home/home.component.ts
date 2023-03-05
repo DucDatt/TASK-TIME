@@ -10,7 +10,7 @@ export class HomeComponent {
   constructor(private dialog: MatDialog) { }
 
   openDialog(): void {
-    this.dialog.open(ProjectPopupComponent)
+    // this.dialog.open(ProjectPopupComponent)
   }
 
   projects: Array<any> = [

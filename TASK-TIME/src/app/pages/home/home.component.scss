@@ -62,6 +62,8 @@ app-side-bar {
   width: 12%;
   height: 100%;
   background-color: aliceblue;
+  position: fixed;
+  z-index: 1000;
 }
 app-nav-bar {
   width: 100%;
@@ -70,9 +72,11 @@ app-nav-bar {
 .main {
   width: 88%;
   height: 100%;
+  margin-left: 12%;
 }
 
 .title-container {
+  height: 20%;
   display: flex;
   justify-content: space-between;
 }
@@ -97,10 +101,124 @@ app-nav-bar {
 #sort {
   font-size: 12px;
   font-weight: 400;
+
   text-align: center;
 }
 
 .selector {
   width: fit-content;
   text-align: center;
+}
+
+//body
+//Body
+.project {
+  display: grid;
+  padding: 10px 10px 10px 15px;
+  margin-left: 10px;
+  margin-top: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px 15px;
+}
+
+.project_title {
+  height: 30%;
+}
+
+.date {
+  padding-top: 120px;
+}
+
+.project_box {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 80%;
+  padding: 10px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: thin;
+  border-color: rgba($color: #ffb93f, $alpha: 1);
+  background-color: #f8f8f8;
+}
+
+.project_name {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  color: #ffb93f;
+  width: 100%;
+}
+
+.project_description,
+.create_date,
+.deadline {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.deadline {
+  color: #ff544f;
+  width: 100%;
+}
+
+.add_box {
+  display: grid;
+  place-items: center;
+  height: 90%;
+  width: 80%;
+  padding: 10px;
+  border-radius: 20px;
+  border-style: dashed;
+  border-width: thin;
+  border-color: rgba($color: #ffb93f, $alpha: 1);
+  background-color: #f8f8f8;
+}
+
+.add_box>div {
+  display: flex;
+  justify-content: center;
+}
+
+.add_btn {
+  border-radius: 50%;
+  padding: 0 15px;
+  font-size: 50px;
+  color: #ffb93f;
+  border-style: solid;
+  border-width: thin;
+  border-color: rgba($color: #ffb93f, $alpha: 1);
+  background-color: #f8f8f8;
+}
+
+.add_btn:hover {
+  background-color: #ffb93f;
+  color: white;
+  transition: linear 0.1s;
+  cursor: pointer;
+}
+
+.add_btn:active {
+  background-color: orange;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  border: #ff544f solid;
+}
+
+//Footer box
+.footer_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.setting {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  margin-top: 7px;
+  margin-left: 55px;
+  display: flex;
+  flex-direction: row;
 }

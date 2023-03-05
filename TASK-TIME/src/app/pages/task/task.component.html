@@ -194,10 +194,162 @@
   </div>
 </div> -->
 
-<div class="container">
+<div class="main-container">
   <app-side-bar></app-side-bar>
   <div class="main">
     <app-nav-bar></app-nav-bar>
-    <div></div>
+    <div class="container">
+      <div class="title">
+        <div class="title-left">
+          <div class="project-name">Create App</div>
+          <div class="project-description">App Todolist</div>
+        </div>
+        <div class="title-right">
+          <div class="date">
+            <div>CREATE DATE</div>
+            <div>30/2/2023</div>
+          </div>
+          <div class="date">
+            <div>DUE DATE</div>
+            <div>3/3/2023</div>
+          </div>
+          <div class="date">
+            <div>TRACKED TIME</div>
+            <div id="date">
+              <div>2 days</div>
+              <div>icon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="body">
+        <div class="col" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[progressList, doneList]" (cdkDropListDropped)="drop($event)">
+          <div class="col-header">
+            <div>icon</div>
+            <div>To do</div>
+          </div>
+          <div class="task-col" *ngFor="let task of todo; let i = index" cdkDrag>
+            <div class="task-col-content">
+              <div class="task-name">
+                <div class="task-title">{{task.name}}</div>
+              </div>
+              <div class="allMember">member</div>
+              <div class="adjust">
+                <div class="task-date">
+                  <div>date</div>
+                  <div class="deadline">deadline</div>
+                </div>
+               <div class="icon">
+                <div class="star-icon">
+                  <span [ngClass]="task.styles" (click)="changeColor('yellow',i,todo)">
+                    star
+                  </span>
+                </div>
+                <div class="3dot-icon">
+                  <span class="material-symbols-rounded">
+                    pending
+                  </span>
+                </div>
+               </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="task-col-create">
+            <div class="create-new">+</div>
+          </div>
+        </div>
+    
+        <div class="col" cdkDropList #progressList="cdkDropList" [cdkDropListData]="progress"
+          [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)">
+          <div class="col-header">
+            <div>icon</div>
+            <div>In Progress</div>
+          </div>
+          <div class="task-col" *ngFor="let task of progress; let i = index" cdkDrag>
+            <div class="task-col-content">
+              <div class="task-name">
+                <div class="task-title">{{task.name}}</div>
+              </div>
+              <div class="allMember">member</div>
+              <div class="adjust">
+                <div class="task-date">
+                  <div>date</div>
+                  <div class="deadline">deadline</div>
+                </div>
+                <div class="icon">
+                  <div class="star-icon">
+                    <span [ngClass]="task.styles" (click)="changeColor('yellow',i,progress)">
+                      star
+                    </span>
+                  </div>
+                  <div class="3dot-icon">
+                    <span class="material-symbols-rounded">
+                      pending
+                    </span>
+                  </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="task-col-create">
+            <div class="create-new">+</div>
+          </div>
+        </div>
+    
+        <div class="col" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList, progressList]" (cdkDropListDropped)="drop($event)">
+          <div class="col-header">
+            <div>icon</div>
+            <div>Done</div>
+          </div>
+          <div class="task-col" *ngFor="let task of done ; let i = index" cdkDrag>
+            <div class="task-col-content">
+              <div class="task-name">
+                <div class="task-title">{{task.name}}</div>
+              </div>
+              <div class="allMember">member</div>
+              <div class="adjust">
+                <div class="task-date">
+                  <div>date</div>
+                  <div class="deadline">deadline</div>
+                </div>
+                <div class="icon">
+                  <div class="star-icon">
+                    <span [ngClass]="task.styles" (click)="changeColor('yellow',i,done)">
+                       star
+                    </span>
+                  </div>
+                  <div class="3dot-icon">
+                    <span ngClass="iconStyles" >
+                      pending
+                    </span>
+                  </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="task-col-create">
+            <div class="create-new">+</div>
+          </div>
+    
+        </div>
+        <div class="col">
+          <div class="col-header">
+            <div>icon</div>
+            <div>Task Customize</div>
+          </div>
+    
+          <div class="task-col-create">
+            <div class="create-new">+</div>
+          </div>
+    
+        </div>
+      </div>
+    </div>
   </div>
 </div>

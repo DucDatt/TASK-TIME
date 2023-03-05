@@ -2,9 +2,9 @@ Huy Minh
 //Sidebar
 .sidebar {
   display: flex;
-  flex-direction: column;
-  width: 12vw;
-  height: 100vh;
+  // flex-direction: column;
+  width: 100%;
+  height: 100%;
   background-color: #ffb93f;
 }
 
@@ -14,7 +14,8 @@ Huy Minh
 }
 
 img {
-  width: 8vw;
+  width: 50%;
+  height: 50%;
 }
 
 .menu {
