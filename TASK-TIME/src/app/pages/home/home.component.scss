@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .container {
   width: 100%;
   height: 100%;
@@ -5,9 +6,32 @@
 }
 
 .main {
+=======
+
+.main-container {
   width: 100%;
   height: 100%;
+  display: flex;
+  
 }
+.sidebar {
+width: 12%;
+height: 100%;
+
+
+}
+
+.main {
+  width: 88%;
+  height: 100%;
+}
+.navbar {
+>>>>>>> a8c069f81f850737b1d7947df774fa9924533714
+  width: 100%;
+  height: 10%;
+  background-color: #FFB93F;
+}
+<<<<<<< HEAD
 
 //Title
 .title-container {
@@ -73,78 +97,11 @@
   font-weight: 500;
   line-height: 1;
   color: #ffb93f;
+=======
+.body {
+>>>>>>> a8c069f81f850737b1d7947df774fa9924533714
   width: 100%;
-}
-
-.project_description,
-.create_date,
-.deadline {
-  margin-top: 10px;
-  width: 100%;
-}
-
-.deadline {
-  color: #ff544f;
-  width: 100%;
-}
-
-.add_box {
-  display: grid;
-  place-items: center;
-  height: 90%;
-  width: 80%;
-  padding: 10px;
-  border-radius: 20px;
-  border-style: dashed;
-  border-width: thin;
-  border-color: rgba($color: #ffb93f, $alpha: 1);
-  background-color: #f8f8f8;
-}
-
-.add_box>div {
-  display: flex;
-  justify-content: center;
-}
-
-.add_btn {
-  border-radius: 50%;
-  padding: 0 15px;
-  font-size: 50px;
-  color: #ffb93f;
-  border-style: solid;
-  border-width: thin;
-  border-color: rgba($color: #ffb93f, $alpha: 1);
-  background-color: #f8f8f8;
-}
-
-.add_btn:hover {
-  background-color: #ffb93f;
-  color: white;
-  transition: linear 0.1s;
-  cursor: pointer;
-}
-
-.add_btn:active {
-  background-color: orange;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  border: #ff544f solid;
-}
-
-//Footer box
-.footer_box {
-  display: flex;
-  justify-content: space-between;
-}
-
-.setting {
-  display: flex;
-  flex-direction: row;
-}
-
-.icon {
-  margin-top: 7px;
-  margin-left: 55px;
-  display: flex;
-  flex-direction: row;
+height: 90%;
+// border-left: 1px solid #c4c4c4;
+// position: fixed;
 }

@@ -8,6 +8,7 @@ import { MaterialModule } from 'src/shared/material.module';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { HomeBodyComponent } from './components/home-body/home-body.component';
 
 @NgModule({
   declarations: [
