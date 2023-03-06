@@ -1,10 +1,8 @@
-//Sidebar
+Huy Minh //Sidebar
+
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 12vw;
-  height: 100vh;
-  background-color: #ECECEC;
+  height: 100%;
+  background-color: #ffb93f;
 }
 
 .logo_container {
@@ -13,14 +11,15 @@
 }
 
 img {
-  width: 8vw;
+  width: 60%;
+  height: 60%;
 }
 
 .menu {
   display: flex;
   justify-content: flex-start;
-  margin: 10px 0px 20px 30px;
-  font-size: 3.5vh;
+  margin: 20px 0px 20px 30px;
+  font-size: 28px;
 }
 
 .btn_container {
@@ -29,25 +28,13 @@ img {
 }
 
 .button {
-  margin: 1vh 1vw;
-  height: 6vh;
+  margin: 10px 10px;
+  height: 50px;
   border-style: none;
   border-radius: 2vh;
   display: flex;
   flex-direction: row;
-  background-color: #ECECEC;
-
-}
-
-.logout_button {
-  margin: 1vh 1vw;
-  height: 6vh;
-  border-style: none;
-  border-radius: 2vh;
-  display: flex;
-  flex-direction: row;
-  background-color: #ECECEC;
-
+  background-color: white;
 }
 
 p {
