@@ -1,50 +1,14 @@
-
-<div class="container">
-  <app-side-bar></app-side-bar>
+<div class="main-container">
+  <div class="sidebar">
+    <app-side-bar></app-side-bar>
+  </div>
   <div class="main">
-    <app-nav-bar></app-nav-bar>
-    <div class="title-container">
-      <div class="form">
-        <div id="title">PROJECTS</div>
-        <div style="height: 10px"></div>
-        <div id="description">All available projects here</div>
-      </div>
-      <div class="form">
-        <mat-form-field class="selector" appearance="fill">
-          <mat-label>SORT BY</mat-label>
-          <mat-select>
-            <mat-option value="option1">Alphabet</mat-option>
-            <mat-option value="option2">Date</mat-option>
-            <mat-option value="option3">Starred</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <div class="navbar">
+      <app-nav-bar></app-nav-bar>
     </div>
-    <div class="project">
-      <div class="project_box" *ngFor="let project of projects">
-        <div class="project_title">
-          <div class="project_name">{{project.name}}</div>
-          <div class="project_description">{{project.description}}</div>
-        </div>
-        <div class="footer_box">
-          <div class="date">
-            <div class="create_date">Create Date: {{project.createDate}}</div>
-            <div class="setting">
-              <div class="deadline">Deadline: {{project.deadline}}</div>
-              <div class="icon">
-                <mat-icon class="star_icon">star</mat-icon>
-                <mat-icon>expand_more</mat-icon>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="add_box">
-        <div>
-          <button (click)="openDialog()" class="add_btn">+</button>
-        </div>
-      </div>
+    <div class="body">
+      <app-home-body></app-home-body>
+      <!-- abc -->
     </div>
-    
   </div>
 </div>
