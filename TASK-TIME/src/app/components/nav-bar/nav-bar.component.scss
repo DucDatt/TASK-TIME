@@ -1,17 +1,16 @@
 //Navbar
 .navbar {
-  height: 12%;
-  // width: 100%;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #FFB93F;
-
   // padding-right: 3vw;
 }
 
 .profile {
   display: flex;
-  justify-content: row;
+  // justify-content: row;
 }
 
 .project_name {
