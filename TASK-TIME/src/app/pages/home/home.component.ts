@@ -1,25 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '@angular/fire/auth';
-import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/Services/auth.service';
+import { Router, UrlTree } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  constructor(private auth: AuthService){}
+export class HomeComponent {
+  index: number = 0;
 
-user!: User | null;
-user$ = new Observable<User|null>();
+  urlIndicesMap = [
+    '/home/projects',
+    '/home/starred',
+  ]
 
+  constructor(private router: Router) { }
 
- ngOnInit(): void {
-     this.user$ = this.auth.user$;
-     this.user$.subscribe((user) => {
-       this.user = user;
-       console.log(user);
-     });
- }
+  ngOnInit() {
+    this.router.events.subscribe((val: any) => {
+      let tempIndex = 0;
+      try {
+        tempIndex = this.urlIndicesMap.indexOf(val.routerEvent.url);
+      } catch (error) { }
+      if (tempIndex >= 0) {
+        this.index = tempIndex;
+      }
+    })
+  }
 }
