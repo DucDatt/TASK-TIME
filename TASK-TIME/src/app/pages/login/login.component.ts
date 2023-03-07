@@ -11,32 +11,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit{
-  constructor(private authService: AuthService){
+export class LoginComponent implements OnInit {
+  constructor(private authService: AuthService) {
 
   }
 
-  ngOnInit(): void {
-    this.user$ = this.authService.user$;
-    this.user$.subscribe(user => {
-      this.user = user;
-      console.log(user);
-      // window.addEventListener('load', this.fade);
-    })
+  ngOnInit(): void {}
 
 
-
+  login() {
+    this.authService.LoginWithGoogle();
   }
-  user!: User |null
-  user$ = new Observable< User| null>
-
-  login(){
-    this.authService.LoginWithGoogle().catch((error)=>{
-      console.log(error)
-    })
-  }
-  logout()
-  {
+  logout() {
     this.authService.logOut()
   }
 
