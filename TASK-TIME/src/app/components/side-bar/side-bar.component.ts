@@ -6,5 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
+  // constructor(public authService: AuthService, private router: Router){}
+
+  // navTask() {
+  //   this.router.navigate(['/task']);
+  // }
   @Input('index') index: number = 0;
 }
