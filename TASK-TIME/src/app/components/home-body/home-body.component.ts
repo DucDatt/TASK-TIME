@@ -2,9 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { MatDialog } from '@angular/material/dialog';
 
-
-
-
 @Component({
   selector: 'app-home-body',
   templateUrl: './home-body.component.html',
