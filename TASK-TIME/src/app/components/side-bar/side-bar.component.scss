@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 Huy Minh //Sidebar
 
-.sidebar {
-  height: 100%;
-  background-color: #ffb93f;
-=======
-Huy Minh
-//Sidebar
 .sidebar {
   // display: flex;
   // flex-direction: column;
@@ -15,7 +8,6 @@ Huy Minh
   border-right: 1px solid #c4c4c4;
 
   // background-color: #ffb93f;
->>>>>>> a8c069f81f850737b1d7947df774fa9924533714
 }
 
 .logo_container {
@@ -40,20 +32,6 @@ img {
   flex-direction: column;
 }
 
-.button {
-  margin: 10px 10px;
-  height: 50px;
-  border-style: none;
-  border-radius: 2vh;
-  display: flex;
-  flex-direction: row;
-<<<<<<< HEAD
-  background-color: white;
-}
-=======
-  background-color: #ECECEC;
-}
-
 // .logout_button {
 //   margin: 1vh 1vw;
 //   height: 6vh;
@@ -62,9 +40,7 @@ img {
 //   display: flex;
 //   flex-direction: row;
 //   background-color: #ECECEC;
-
 // }
->>>>>>> a8c069f81f850737b1d7947df774fa9924533714
 
 p {
   margin: auto 0;
@@ -74,7 +50,6 @@ p {
 
 .icon {
   margin: auto 0;
-  font-size: 25px;
   padding-left: 10px;
 }
 
@@ -88,8 +63,14 @@ button:active {
 }
 
 .button {
-  color: rgba($color: black, $alpha: 0.5);
-  justify-content: flex-start;
+  margin: 10px 10px;
+  height: 50px;
+  border-style: none;
+  border-radius: 2vh;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  color: rgba($color: black, $alpha: 0.4);
 }
 
 .button:hover {
@@ -105,8 +86,7 @@ button:active {
   font-weight: 600;
 }
 
-// c
-
+//Logout button
 .logout_button:hover {
   background-color: #dfdfdf;
   transition: linear 0.1s;
@@ -116,4 +96,51 @@ button:active {
 .logout_button:active {
   background-color: #d2d2d2;
   color: #ff544f;
+}
+
+
+//Responsive
+@media screen and (max-width: 1300px) {
+  p {
+    font-size: 12px;
+  }
+
+  .menu {
+    font-size: 15px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  p {
+    display: none;
+  }
+
+  .menu {
+    font-size: 15px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  p {
+    display: none;
+  }
+
+  .icon {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menu {
+    font-size: 15px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
 }
