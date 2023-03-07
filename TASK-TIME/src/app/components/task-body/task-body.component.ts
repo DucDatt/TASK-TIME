@@ -110,7 +110,5 @@ export class TaskBodyComponent {
   newCol(){
 
   }
-  selected = 'option2';
-
 
 }
