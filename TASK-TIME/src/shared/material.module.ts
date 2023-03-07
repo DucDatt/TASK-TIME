@@ -51,6 +51,7 @@ import { CommonModule } from '@angular/common';
 import { HomeBodyComponent } from 'src/app/components/home-body/home-body.component';
 import { TaskPopupComponent } from 'src/app/components/task-popup/task-popup.component';
 import { TaskBodyComponent } from 'src/app/components/task-body/task-body.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { TaskBodyComponent } from 'src/app/components/task-body/task-body.compon
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     A11yModule,
     CdkAccordionModule,

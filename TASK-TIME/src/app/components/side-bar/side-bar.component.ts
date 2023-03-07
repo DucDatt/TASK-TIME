@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/Services/auth.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,12 +6,10 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  constructor(public authService: AuthService,private router:Router){}
-  navTask(){
-    this.router.navigate(['/task'])
-  }
+  // constructor(public authService: AuthService, private router: Router){}
 
-  navHome(){
-    this.router.navigate(['/home'])
-  }
+  // navTask() {
+  //   this.router.navigate(['/task']);
+  // }
+  @Input('index') index: number = 0;
 }

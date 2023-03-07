@@ -27,6 +27,7 @@ body {
 .header-container {
   height: fit-content;
   background-image: url('../../../assets/bg-img.jpg');
+  // background-image: linear-gradient(to bottom right, red, yellow);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -51,8 +52,10 @@ body {
 
 }
 
+
+
 #img {
-  height: 67vh;
+  height: auto;
   width: 30%;
   margin-right: 10vw;
 }
@@ -156,8 +159,9 @@ body {
 }
 
 #heading {
-  height: 30vh;
-  width: 15vw;
+  width: 300px;
+  height: auto;
+
 }
 
 .line2 {
@@ -205,3 +209,42 @@ body {
 //   opacity: 0;
 //   visibility: hidden;
 // }
+
+
+//MEDIA
+@media screen and (max-width: 650px) {
+  #img{
+    display: none;
+  }
+  #gg-img{
+    width: 20%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .btn{
+    width: 25vh;
+  }
+  p{
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .login{
+    display: none;
+  }
+  .header{
+    width: fit-content;
+  }
+  #slogan{
+    font-size: 20px;
+    }
+  .btn{
+    width: 15vh;
+  }
+  #gg-img{
+    width: 5vh;
+  }
+}

@@ -1,14 +1,13 @@
 <div class="main-container">
   <div class="sidebar">
-    <app-side-bar></app-side-bar>
+    <app-side-bar [index]="index"></app-side-bar>
   </div>
   <div class="main">
     <div class="navbar">
       <app-nav-bar></app-nav-bar>
     </div>
     <div class="body">
-      <app-home-body></app-home-body>
-      <!-- abc -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
