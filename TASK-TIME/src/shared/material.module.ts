@@ -46,19 +46,20 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { SideBarComponent } from 'src/app/components/side-bar/side-bar.component';
 import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
 import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
-import { TaskBodyComponent } from 'src/app/components/task-body/task-body.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HomeBodyComponent } from 'src/app/components/home-body/home-body.component';
+import { TaskPopupComponent } from 'src/app/components/task-popup/task-popup.component';
+import { TaskBodyComponent } from 'src/app/components/task-body/task-body.component';
 
 @NgModule({
   declarations: [
     SideBarComponent,
     NavBarComponent,
     ProjectPopupComponent,
-    TaskBodyComponent,
     HomeBodyComponent,
-
+    TaskPopupComponent,
+    TaskBodyComponent,
   ],
   imports: [
     CommonModule,
@@ -110,10 +111,11 @@ import { HomeBodyComponent } from 'src/app/components/home-body/home-body.compon
     ScrollingModule,
   ],
   exports: [
+    TaskBodyComponent,
     HomeBodyComponent,
     CommonModule,
     FormsModule,
-    TaskBodyComponent,
+    TaskPopupComponent,
     SideBarComponent,
     NavBarComponent,
     A11yModule,
@@ -161,7 +163,7 @@ import { HomeBodyComponent } from 'src/app/components/home-body/home-body.compon
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    
+
   ]
 })
 export class MaterialModule { }

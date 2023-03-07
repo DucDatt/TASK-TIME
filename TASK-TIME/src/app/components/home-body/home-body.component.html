@@ -15,8 +15,8 @@
       </mat-form-field>
     </div>
   </div>
-  <div class="project">
-    <div class="project_box" *ngFor="let project of projects">
+  <div class="project" >
+    <div class="project_box" *ngFor="let project of projects" (click)="navTask()">
       <div class="project_title">
         <div class="project_name">{{project.name}}</div>
         <div class="project_description">{{project.description}}</div>

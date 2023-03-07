@@ -4,7 +4,10 @@
     <input id="search" type="text" />
   </div>
   <div class="profile">
-    <div class="username">User Name</div>
-    <img class="avatar" src="" alt="" />
+    <div class="username" >{{user?.displayName}}</div>
+    <img class="avatar" [matMenuTriggerFor]="menu" [src]="user?.photoURL" alt="Thang khoa ngu" referrerpolicy="no-referrer" />
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logOut()">Log out</button>
+    </mat-menu>
   </div>
 </mat-toolbar>

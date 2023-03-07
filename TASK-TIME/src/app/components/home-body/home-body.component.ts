@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 
 
@@ -12,7 +13,11 @@ import { MatDialog } from '@angular/material/dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeBodyComponent {
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router: Router) { }
+
+  navTask() {
+    this.router.navigate(['/task'])
+  }
 
   openDialog(): void {
     this.dialog.open(ProjectPopupComponent)
