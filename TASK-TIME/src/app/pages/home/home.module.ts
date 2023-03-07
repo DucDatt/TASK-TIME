@@ -8,7 +8,7 @@ import { MaterialModule } from 'src/shared/material.module';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,
@@ -17,6 +17,3 @@ import { MaterialModule } from 'src/shared/material.module';
   ]
 })
 export class HomeModule { }
-
-
-

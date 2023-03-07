@@ -16,7 +16,7 @@
   </div>
 </div>
 <div class="project">
-  <div class="project_box" *ngFor="let project of projects">
+  <div class="project_box" *ngFor="let project of projects; let i = index">
     <div class="project_title">
       <div class="project_name">{{project.name}}</div>
       <div class="project_description">{{project.description}}</div>
@@ -27,7 +27,11 @@
         <div class="setting">
           <div class="deadline">Deadline: {{project.deadline}}</div>
           <div class="icon">
-            <mat-icon class="star_icon">star</mat-icon>
+            <div class="star-icon">
+              <span [ngClass]="project.styles" (click)="changeColor('yellow',i,projects)">
+                star
+              </span>
+            </div>
             <mat-icon>expand_more</mat-icon>
           </div>
         </div>

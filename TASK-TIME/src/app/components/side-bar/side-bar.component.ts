@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { AuthService } from 'src/app/Services/auth.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,5 +6,5 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  // constructor(public authService: AuthService){}
+  @Input('index') index: number = 0;
 }
