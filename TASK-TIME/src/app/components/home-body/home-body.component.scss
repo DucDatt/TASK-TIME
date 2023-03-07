@@ -3,36 +3,36 @@
     display: flex;
     justify-content: space-between;
   }
-  
+
   .form {
     margin: 2rem;
-    
+
   }
-  
+
   #title {
     font-size: 24px;
     font-weight: 600;
     text-align: center;
   }
-  
+
   #description {
     font-size: 16px;
     font-weight: 400;
     text-align: center;
   }
-  
+
   #sort {
     font-size: 12px;
     font-weight: 400;
-  
+
     text-align: center;
   }
-  
+
   .selector {
     width: fit-content;
     text-align: center;
   }
-  
+
   //body
   //Body
   .project {
@@ -43,15 +43,15 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px 15px;
   }
-  
+
   .project_title {
     height: 30%;
   }
-  
+
   .date {
     padding-top: 120px;
   }
-  
+
   .project_box {
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
     border-color: rgba($color: #ffb93f, $alpha: 1);
     background-color: #f8f8f8;
   }
-  
+
   .project_name {
     font-size: 28px;
     font-weight: 500;
@@ -72,19 +72,19 @@
     color: #ffb93f;
     width: 100%;
   }
-  
+
   .project_description,
   .create_date,
   .deadline {
     margin-top: 10px;
     width: 100%;
   }
-  
+
   .deadline {
     color: #ff544f;
     width: 100%;
   }
-  
+
   .add_box {
     display: grid;
     place-items: center;
@@ -97,12 +97,12 @@
     border-color: rgba($color: #ffb93f, $alpha: 1);
     background-color: #f8f8f8;
   }
-  
+
   .add_box>div {
     display: flex;
     justify-content: center;
   }
-  
+
   .add_btn {
     border-radius: 50%;
     padding: 0 15px;
@@ -113,32 +113,32 @@
     border-color: rgba($color: #ffb93f, $alpha: 1);
     background-color: #f8f8f8;
   }
-  
+
   .add_btn:hover {
     background-color: #ffb93f;
     color: white;
     transition: linear 0.1s;
     cursor: pointer;
   }
-  
+
   .add_btn:active {
     background-color: orange;
     color: rgb(255, 255, 255);
     cursor: pointer;
     border: #ff544f solid;
   }
-  
+
   //Footer box
   .footer_box {
     display: flex;
     justify-content: space-between;
   }
-  
+
   .setting {
     display: flex;
     flex-direction: row;
   }
-  
+
   .icon {
     margin-top: 7px;
     margin-left: 55px;
@@ -152,7 +152,7 @@
 .container {
     height: 100%;
     width: 100%;
-    
+
 }
 
 .title-container {
@@ -163,6 +163,14 @@
     background-color: rgba(255,185,63,0.2);
 }
 
+.yellow {
+  color: #FCE80A;
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48,
+}
 
 
 
