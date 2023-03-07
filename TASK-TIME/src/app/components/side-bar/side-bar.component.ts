@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -7,5 +8,9 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  // constructor(public authService: AuthService){}
+  constructor(public authService: AuthService, private router: Router){}
+
+  navTask() {
+    this.router.navigate(['/task']);
+  }
 }
