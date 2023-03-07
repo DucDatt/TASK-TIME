@@ -9,8 +9,6 @@ import { AuthService } from '../Services/auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router, private auth: Auth) { }
-  // this.news.subscribe((value) => {
-  //   this.newList = value;
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
