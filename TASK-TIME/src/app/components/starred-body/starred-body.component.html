@@ -1,0 +1,43 @@
+<div class="title-container">
+  <div class="form">
+    <div id="title">PROJECTS</div>
+    <div style="height: 10px"></div>
+    <div id="description">All available projects here</div>
+  </div>
+  <div class="form">
+    <mat-form-field class="selector" appearance="fill">
+      <mat-label>SORT BY</mat-label>
+      <mat-select>
+        <mat-option value="option1">Alphabet</mat-option>
+        <mat-option value="option2">Date</mat-option>
+        <mat-option value="option3">Starred</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div class="project">
+  <div class="project_box" *ngFor="let project of projects; let i = index">
+    <div *ngIf="project.starred">
+      <div class="project_title">
+        <div class="project_name">{{project.name}}</div>
+        <div class="project_description">{{project.description}}</div>
+      </div>
+      <div class="footer_box">
+        <div class="date">
+          <div class="create_date">Create Date: {{project.createDate}}</div>
+          <div class="setting">
+            <div class="deadline">Deadline: {{project.deadline}}</div>
+            <div class="icon">
+              <div class="star-icon">
+                <span [ngClass]="project.styles" (click)="changeColor('yellow',i,projects)">
+                  star
+                </span>
+              </div>
+              <mat-icon>expand_more</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
