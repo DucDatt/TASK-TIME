@@ -10,12 +10,20 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+
 import { MaterialModule } from 'src/shared/material.module';
+import { MemberPopupComponent } from './components/member-popup/member-popup.component';
+import { ColPopupComponent } from './components/col-popup/col-popup.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    MemberPopupComponent,
+    ColPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +34,7 @@ import { MaterialModule } from 'src/shared/material.module';
     provideAuth(() => getAuth()),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

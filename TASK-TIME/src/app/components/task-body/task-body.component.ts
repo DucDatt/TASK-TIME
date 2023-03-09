@@ -1,3 +1,5 @@
+import { ColPopupComponent } from './../col-popup/col-popup.component';
+import { MemberPopupComponent } from './../member-popup/member-popup.component';
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
@@ -33,9 +35,17 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 export class TaskBodyComponent {
   constructor(private dialog: MatDialog) { }
 
-  
+
   openDialog(): void {
     this.dialog.open(TaskPopupComponent)
+  }
+
+  openDialog2(): void {
+    this.dialog.open(MemberPopupComponent)
+  }
+
+  openDialog3(): void {
+    this.dialog.open(ColPopupComponent)
   }
 
   todo = [{
