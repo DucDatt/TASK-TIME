@@ -4,30 +4,6 @@
     <div style="height: 10px"></div>
     <div id="description">All available projects here</div>
   </div>
-  <div class="project" >
-    <div class="project_box" *ngFor="let project of projects" (click)="navTask()">
-      <div class="project_title">
-        <div class="project_name">{{project.name}}</div>
-        <div class="project_description">{{project.description}}</div>
-      </div>
-      <div class="footer_box">
-        <div class="date">
-          <div class="create_date">Create Date: {{project.createDate}}</div>
-          <div class="setting">
-            <div class="deadline">Deadline: {{project.deadline}}</div>
-            <div class="icon">
-              <mat-icon class="star_icon">star</mat-icon>
-              <mat-icon>expand_more</mat-icon>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="add_box">
-      <div>
-        <button (click)="openDialog()" class="add_btn">+</button>
-      </div>
-    </div>
   <div class="form">
     <mat-form-field class="selector" appearance="fill">
       <mat-label>SORT BY</mat-label>
@@ -37,8 +13,9 @@
         <mat-option value="option3">Starred</mat-option>
       </mat-select>
     </mat-form-field>
-s  </div>
+  </div>
 </div>
+
 <div class="project">
   <div class="project_box" *ngFor="let project of projects; let i = index">
     <div class="project_title">
@@ -56,7 +33,12 @@ s  </div>
                 star
               </span>
             </div>
-            <mat-icon>expand_more</mat-icon>
+            <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+            <mat-menu #menu="matMenu">
+              <button (click)="navTask()" mat-menu-item>Join Project</button>
+              <button mat-menu-item>Add Member</button>
+              <button mat-menu-item>Delete</button>
+            </mat-menu>
           </div>
         </div>
       </div>

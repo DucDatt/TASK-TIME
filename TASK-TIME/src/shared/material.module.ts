@@ -48,7 +48,9 @@ import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
 import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 import { HomeBodyComponent } from 'src/app/components/home-body/home-body.component';
+import { StarredBodyComponent } from 'src/app/components/starred-body/starred-body.component';
 import { TaskPopupComponent } from 'src/app/components/task-popup/task-popup.component';
 import { TaskBodyComponent } from 'src/app/components/task-body/task-body.component';
 import { RouterModule } from '@angular/router';
@@ -59,6 +61,7 @@ import { RouterModule } from '@angular/router';
     NavBarComponent,
     ProjectPopupComponent,
     HomeBodyComponent,
+    StarredBodyComponent,
     TaskPopupComponent,
     TaskBodyComponent,
   ],
@@ -115,6 +118,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     TaskBodyComponent,
     HomeBodyComponent,
+    StarredBodyComponent,
     CommonModule,
     FormsModule,
     TaskPopupComponent,

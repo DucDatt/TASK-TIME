@@ -1,4 +1,4 @@
-import { Router, UrlTree } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
