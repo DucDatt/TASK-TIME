@@ -1,3 +1,4 @@
+import { GatewayService } from './Services/gateway.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TASK-TIME';
+  constructor(private gateway: GatewayService){}
 }

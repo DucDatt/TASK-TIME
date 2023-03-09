@@ -7,5 +7,5 @@ export const environment = {
     authDomain: 'fir-firebase-56e85.firebaseapp.com',
     messagingSenderId: '690690745854',
   },
-
+  api_url : 'https://localhost:3000/'
 }

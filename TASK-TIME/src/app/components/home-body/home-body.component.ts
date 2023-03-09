@@ -30,11 +30,11 @@ export class HomeBodyComponent {
     if (!array[index].styles.includes(color)) {
       array[index].styles.push(color);
       array[index].isStarred = true;
-      this.projectsService.update(array);
+      this.projectsService.updateStarred(array);
     } else {
       array[index].styles = array[index].styles.filter((item: any) => item !== color) //remove color from list
       array[index].isStarred = false;
-      this.projectsService.update(array);
+      this.projectsService.updateStarred(array);
     }
   }
 }
