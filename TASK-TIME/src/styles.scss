@@ -64,7 +64,8 @@ $TASK-TIME-theme: mat.define-light-theme((color: (primary: $TASK-TIME-primary,
 
 html,
 body {
-  height: 100vh
+  height: 100%;
+  // background-color: pink;
 }
 
 body {
