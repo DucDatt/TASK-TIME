@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Query } from '@nestjs/common/decorators';
+import { Put, Query } from '@nestjs/common/decorators';
 import { Project } from 'src/schema/project.schema';
 import { ProjectService } from './project.service';
 
@@ -17,8 +17,14 @@ export class ProjectController {
       return this.projectService.create(project);
   }
 
-  // @Get()
-  // getById(@Query('id')id: Project){
-  //   return this.projectService.getById(id);
-  // }
+  @Get()
+  getById(@Query('id')id: string){
+    return this.projectService.getById(id);
+  }
+  
+  @Put('update')
+    updateProject(@Body('projectId') id: string, @Body() project: Project){
+      return this.projectService.updateProject(id, project);
+    }
+  
 }
