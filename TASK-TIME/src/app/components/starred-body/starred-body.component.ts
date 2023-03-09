@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { ProjectsService } from 'src/app/Services/projects.service';
 
@@ -7,24 +8,26 @@ import { ProjectsService } from 'src/app/Services/projects.service';
   styleUrls: ['./starred-body.component.scss']
 })
 export class StarredBodyComponent {
-  constructor(private projectsService: ProjectsService) { }
+  constructor(private projectsService: ProjectsService, private router: Router) { }
   projects: Array<any> = []
 
   ngOnInit() {
     this.projects = this.projectsService.projects;
   }
 
+  navTask() {
+    this.router.navigate(['/task'])
+  }
+
   changeColor(color: string, index: number, array: any) {
     if (!array[index].styles.includes(color)) {
       array[index].styles.push(color);
-      // let temp = array[index];
-      // array.splice(index, 1);
-      // array.unshift(temp);
+      array[index].isStarred = true;
+      this.projectsService.update(array);
     } else {
       array[index].styles = array[index].styles.filter((item: any) => item !== color) //remove color from list
-      // let temp = array[index];
-      // array.splice(index, 1);
-      // array.push(temp);
+      array[index].isStarred = false;
+      this.projectsService.update(array);
     }
   }
 }

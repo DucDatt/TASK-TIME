@@ -15,6 +15,7 @@
     </mat-form-field>
   </div>
 </div>
+
 <div class="project">
   <div class="project_box" *ngFor="let project of projects; let i = index">
     <div class="project_title">
@@ -32,7 +33,12 @@
                 star
               </span>
             </div>
-            <mat-icon>expand_more</mat-icon>
+            <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+            <mat-menu #menu="matMenu">
+              <button (click)="navTask()" mat-menu-item>Join Project</button>
+              <button mat-menu-item>Add Member</button>
+              <button mat-menu-item>Delete</button>
+            </mat-menu>
           </div>
         </div>
       </div>

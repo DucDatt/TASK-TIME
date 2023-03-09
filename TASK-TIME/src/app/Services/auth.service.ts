@@ -9,7 +9,7 @@ import { Subject, Observable } from 'rxjs';
 export class AuthService {
   user!: User | null;
   user$ = new Subject<User|null>();
-
+  public _token = localStorage.getItem('_token')
   constructor(public auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
       this.user = user;

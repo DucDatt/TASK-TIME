@@ -1,6 +1,4 @@
-import { AuthService } from './Services/auth.service';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +7,4 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'TASK-TIME';
-  constructor(private route: Router) { }
 }

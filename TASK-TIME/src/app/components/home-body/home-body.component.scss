@@ -171,7 +171,8 @@
 }
 
 //Star
-.star-icon {
+.star-icon,
+.expand-icon {
   cursor: pointer;
 }
 
@@ -182,4 +183,12 @@
     'wght' 400,
     'GRAD' 0,
     'opsz' 48,
+}
+
+.expand-icon {
+  border-radius: 50%;
+}
+
+.expand-icon:hover {
+  background-color: #D7D7D7;
 }

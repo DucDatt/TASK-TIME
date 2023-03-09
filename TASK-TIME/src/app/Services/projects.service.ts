@@ -13,6 +13,7 @@ export class ProjectsService {
       createDate: "28/02/2023",
       deadline: "10/03/2023",
       styles: ['material-symbols-rounded'],
+      isStarred: false
     },
     {
       id: 2,
@@ -21,6 +22,7 @@ export class ProjectsService {
       createDate: "20/02/2023",
       deadline: "02/03/2023",
       styles: ['material-symbols-rounded'],
+      isStarred: false
     },
     {
       id: 3,
@@ -29,7 +31,7 @@ export class ProjectsService {
       createDate: "20/02/2023",
       deadline: "02/03/2023",
       styles: ['material-symbols-rounded'],
-      starred: true,
+      isStarred: false
     },
     {
       id: 4,
@@ -38,6 +40,7 @@ export class ProjectsService {
       createDate: "14/02/2023",
       deadline: "28/02/2023",
       styles: ['material-symbols-rounded'],
+      isStarred: false
     },
     {
       id: 5,
@@ -46,6 +49,7 @@ export class ProjectsService {
       createDate: "15/02/2023",
       deadline: "02/03/2023",
       styles: ['material-symbols-rounded'],
+      isStarred: false
     },
     {
       id: 6,
@@ -54,6 +58,7 @@ export class ProjectsService {
       createDate: "10/02/2023",
       deadline: "25/02/2023",
       styles: ['material-symbols-rounded'],
+      isStarred: false
     },
     {
       id: 7,
@@ -62,6 +67,11 @@ export class ProjectsService {
       createDate: "10/02/2023",
       deadline: "25/02/2023",
       styles: ['material-symbols-rounded'],
+      isStarred: false
     }
   ];
+
+  update(projects: any) {
+    this.projects = projects;
+  }
 }

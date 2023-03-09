@@ -2,7 +2,9 @@ Huy Minh //Sidebar
 
 .sidebar {
   height: 100%;
-  border-right: 1px solid #c4c4c4;
+  background-color: #FFB93F;
+
+  // background-color: #ffb93f;
 }
 
 .logo_container {
@@ -43,7 +45,7 @@ button:hover {
   cursor: pointer;
 }
 
-button:active {
+.button:active {
   cursor: pointer;
 }
 
@@ -77,12 +79,19 @@ button:active {
   font-weight: 600;
 }
 
+// .button:first-child {
+//   background-color: #ffb93f;
+//   color: white;
+//   font-weight: 600;
+// }
+
+
 //Logout button
-.logout_button:hover {
-  background-color: #dfdfdf;
-  transition: linear 0.1s;
-  color: #ff544f;
-}
+// .logout_button:hover {
+//   background-color: #dfdfdf;
+//   transition: linear 0.1s;
+//   color: #ff544f;
+// }
 
 .logout_button:active {
   background-color: #d2d2d2;
