@@ -71,7 +71,10 @@ export class ProjectsService {
     }
   ];
 
-  update(projects: any) {
+  updateStarred(projects: any) {
     this.projects = projects;
   }
+
+
+
 }
