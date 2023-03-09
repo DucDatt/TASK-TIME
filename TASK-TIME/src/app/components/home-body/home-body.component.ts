@@ -1,8 +1,9 @@
 import { ProjectsService } from './../../Services/projects.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
+import { UpdateProjectPopupComponent } from '../update-project-popup/update-project-popup.component';
 
 @Component({
   selector: 'app-home-body',
@@ -24,6 +25,10 @@ export class HomeBodyComponent {
 
   openDialog(): void {
     this.dialog.open(ProjectPopupComponent)
+  }
+
+  openUpdateDialog(): void {
+    this.dialog.open(UpdateProjectPopupComponent)
   }
 
   changeColor(color: string, index: number, array: any) {
