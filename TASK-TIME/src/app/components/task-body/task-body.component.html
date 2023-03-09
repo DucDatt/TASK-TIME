@@ -36,9 +36,9 @@
           </div>
           <div class="adjust">
             <div class="task-date">
-              <div style="display: flex;">
-                <div class="allMember">N</div>
+              <div class="allMember" style="display: flex;">
                 <div class="allMember1">N</div>
+                <div class="allMember2">N</div>
               </div>
               <div class="create-date">Create date: {{task.date}}</div>
               <div class="deadline">Deadline: {{task.deadline}}</div>
@@ -52,7 +52,8 @@
               <div class="icon-box">
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item>Add member</button>
+                  <button mat-menu-item (click)="openDialog2()">Add member</button>
+                  <button mat-menu-item (click)="openDialog()">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -79,9 +80,9 @@
           </div>
           <div class="adjust">
             <div class="task-date">
-              <div style="display: flex;">
-                <div class="allMember">N</div>
+              <div class="allMember" style="display: flex;">
                 <div class="allMember1">N</div>
+                <div class="allMember2">N</div>
               </div>
               <div class="create-date">Create date: {{task.date}}</div>
               <div class="deadline">Deadline: {{task.deadline}}</div>
@@ -95,7 +96,8 @@
               <div class="icon-box">
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item>Add member</button>
+                  <button mat-menu-item (click)="openDialog2()">Add member</button>
+                  <button mat-menu-item (click)="openDialog()">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -122,9 +124,9 @@
           </div>
           <div class="adjust">
             <div class="task-date">
-              <div style="display: flex;">
-                <div class="allMember">N</div>
+              <div class="allMember" style="display: flex;">
                 <div class="allMember1">N</div>
+                <div class="allMember2">N</div>
               </div>
               <div class="create-date">Create date: {{task.date}}</div>
               <div class="deadline">Deadline: {{task.deadline}}</div>
@@ -138,7 +140,8 @@
               <div class="icon-box">
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item>Add member</button>
+                  <button mat-menu-item (click)="openDialog2()">Add member</button>
+                  <button mat-menu-item (click)="openDialog()">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -150,7 +153,8 @@
 
     <div class="col">
       <div class="new-col-header">
-        <div (click)="newCol()" class="create-new-col-header">Create new column +</div>
+        <div class="create-new-col-header">Create new column</div>
+        <button  (click)="openDialog3()" class="create-new-col-header2">+</button>
       </div>
     </div>
   </div>
