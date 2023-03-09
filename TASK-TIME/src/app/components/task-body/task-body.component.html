@@ -138,7 +138,7 @@
               <div class="icon-box">
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item>Add member</button>
+                  <button mat-menu-item >Add member</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -150,7 +150,8 @@
 
     <div class="col">
       <div class="new-col-header">
-        <div (click)="newCol()" class="create-new-col-header">Create new column +</div>
+        <div (click)="newCol()" class="create-new-col-header">Create new column</div>
+        <button class="add">+</button>
       </div>
     </div>
   </div>

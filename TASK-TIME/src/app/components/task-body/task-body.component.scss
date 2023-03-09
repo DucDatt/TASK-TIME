@@ -394,3 +394,7 @@
   0% { box-shadow: 0 0 0 0 rgba(255, 185, 63, 0.7); }
   100% { box-shadow: 0 0 0 10px rgba(255, 185, 63, 0); }
 }
+
+.create-new-col-header:focus {
+  animation: identifier 1s infinite;
+}
