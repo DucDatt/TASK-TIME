@@ -1,0 +1,57 @@
+
+
+.header {
+  background-color: #ffb93f;
+  padding: 30px;
+  font-size: 25px;
+  font-weight: 500;
+  border-bottom: 1px solid black;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 470px;
+  display: flex;
+  justify-content: center;
+}
+
+.project_name,
+.add_member
+{
+  width: 80%;
+  margin-top: 20px;
+}
+
+.btn_container>div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  margin-top: 5%;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  padding: 15px;
+  font-weight: 600;
+  color: white;
+  background-color: #09f289;
+  border-style: none;
+  font-size: 15px;
+}
+
+.button:hover {
+  background-color: chartreuse;
+  transition: linear 0.1s;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: mediumseagreen;
+  cursor: pointer;
+}
+
