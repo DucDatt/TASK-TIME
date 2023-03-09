@@ -1,80 +1,79 @@
 .header {
-    background-color: #ffb93f;
-    padding: 30px;
-    font-size: 25px;
-    font-weight: 500;
-    border-bottom: 1px solid black;
-  }
+  background-color: #ffb93f;
+  padding: 30px;
+  font-size: 25px;
+  font-weight: 500;
+  border-bottom: 1px solid black;
+}
 
-  .footer {
-    display: flex;
-    flex-direction: column;
-  }
+.footer {
+  display: flex;
+  flex-direction: column;
+}
 
-  .date {
-    display: flex;
-    flex-direction: row;
-  }
+.date {
+  display: flex;
+  flex-direction: row;
+}
 
-  .input {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+.input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-  // .description
-  .project_name,
-  .add_member
-  {
-    width: 80%;
-    margin-top: 20px;
-  }
+// .description
+.project_name,
+.add_member {
+  width: 80%;
+  margin-top: 20px;
+}
 
-  .start_at {
-    width: 50%;
-    margin: 10px 0px;
-    margin-left: 45px;
-  }
+.start_at {
+  width: 50%;
+  margin: 10px 0px;
+  margin-left: 45px;
+}
 
-  .deadline {
-    margin: 10px 0px;
-    width: 60%;
-  }
+.deadline {
+  margin: 10px 0px;
+  width: 60%;
+}
 
-  .btn_container>div {
-    display: flex;
-    justify-content: flex-end;
-  }
+.btn_container>div {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .button {
-    margin-right: 50px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-    padding: 15px;
-    font-weight: 600;
-    color: white;
-    background-color: #09f289;
-    border-style: none;
-    font-size: 15px;
-  }
+.button {
+  margin-right: 50px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  padding: 15px;
+  font-weight: 600;
+  color: white;
+  background-color: #09f289;
+  border-style: none;
+  font-size: 15px;
+}
 
-  .button:hover {
-    background-color: chartreuse;
-    transition: linear 0.1s;
-    cursor: pointer;
-  }
+.button:hover {
+  background-color: chartreuse;
+  transition: linear 0.1s;
+  cursor: pointer;
+}
 
-  .button:active {
-    background-color: mediumseagreen;
-    cursor: pointer;
-  }
+.button:active {
+  background-color: mediumseagreen;
+  cursor: pointer;
+}
 
 
-.member-exist{
+.member-exist {
   width: 500px;
 }
 
-.delete{
+.delete {
   margin-left: 50%;
 }
 
@@ -84,15 +83,15 @@
   justify-content: space-between
 }
 
-#member{
+#member {
   margin-left: 10%;
 }
 
-#host{
+#host {
   margin-left: 10%;
 }
 
-.example-card-header{
+.example-card-header {
   width: fit-content;
 }
 

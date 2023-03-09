@@ -36,7 +36,7 @@
             <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
             <mat-menu #menu="matMenu">
               <button (click)="navTask()" mat-menu-item>Join Project</button>
-              <button mat-menu-item>Add Member</button>
+              <button (click)="openUpdateDialog()" mat-menu-item>Update</button>
               <button mat-menu-item>Delete</button>
             </mat-menu>
           </div>

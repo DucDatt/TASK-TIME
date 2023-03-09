@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&family=PT+Sans:wght@400;700&family=Roboto+Mono:wght@100;500&display=swap');
-
 html,
 body {
   padding: 0;
@@ -216,38 +214,44 @@ body {
 
 //MEDIA
 @media screen and (max-width: 650px) {
-  #img{
+  #img {
     display: none;
   }
-  #gg-img{
+
+  #gg-img {
     width: 20%;
     height: auto;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .btn{
+  .btn {
     width: 25vh;
   }
-  p{
+
+  p {
     font-size: 30px;
   }
 }
 
 @media screen and (max-width: 300px) {
-  .login{
+  .login {
     display: none;
   }
-  .header{
+
+  .header {
     width: fit-content;
   }
-  #slogan{
+
+  #slogan {
     font-size: 20px;
-    }
-  .btn{
+  }
+
+  .btn {
     width: 15vh;
   }
-  #gg-img{
+
+  #gg-img {
     width: 5vh;
   }
 }

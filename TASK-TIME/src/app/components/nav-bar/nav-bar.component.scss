@@ -78,11 +78,12 @@
   background-repeat: no-repeat;
   background-size: 22px;
   background-position: 45% 50%;
-  background-color: #FFB93F;
+  background-color: rgba($color: white, $alpha: 0.9);
 }
 
 #search:hover {
-  animation: dancing 0.5s infinite;
+  // animation: dancing 0.5s infinite;
+  background-color: rgba($color: white, $alpha: 0.9);
 }
 
 #search:focus {
@@ -91,26 +92,26 @@
   color: black;
   outline: none;
   cursor: text;
-  background-color: transparent;
+  background-color: rgba($color: white, $alpha: 0.9) !important;
   border: 2px solid black;
   background: url(https://cdn-icons-png.flaticon.com/128/54/54481.png) no-repeat;
   background-size: 22px;
   background-position: 10px 50%;
 }
 
-@keyframes dancing {
-  0% {
-    // scale: 1;
-    filter: brightness(1)
-  }
+// @keyframes dancing {
+//   0% {
+//     scale: 1;
+//     filter: brightness(1)
+//   }
 
-  50% {
-    // scale: 1.2;
-    filter: brightness(2) hue-rotate(180deg)
-  }
+//   50% {
+//     scale: 1.2;
+//     filter: brightness(2) hue-rotate(180deg)
+//   }
 
-  100% {
-    // scale: 1;
-    filter: brightness(1)
-  }
-}
+//   100% {
+//     scale: 1;
+//     filter: brightness(1)
+//   }
+// }
