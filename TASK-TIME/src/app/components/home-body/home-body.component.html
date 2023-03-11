@@ -20,7 +20,9 @@
   <ng-container *ngFor="let project of (projects | async)">
     <div class="project_box" *ngIf="!project.disable">
       <div class="project_title">
-        <div class="project_name">{{project.projectName}}</div>
+        <div class="project_name">
+          <p>{{project.projectName}}</p>
+        </div>
         <div class="project_description">{{project.projectDescription}}</div>
       </div>
       <div class="footer_box">
@@ -47,9 +49,7 @@
       </div>
     </div>
   </ng-container>
-  <div class="add_box">
-    <div>
-      <button (click)="openDialog()" class="add_btn">+</button>
-    </div>
+  <div (click)="openDialog()" class="add_box">
+    <div>+</div>
   </div>
 </div>

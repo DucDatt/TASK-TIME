@@ -28,23 +28,21 @@
       <div class="date_container">
         <mat-form-field class="start_at" appearance="fill">
           <mat-label>Start at</mat-label>
-          <input [(ngModel)]="startAt" matInput placeholder="" value="">
+          <input [(ngModel)]="startAt" matInput [matDatepicker]="pickerStart">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerStart [calendarHeaderComponent]="startDate"></mat-datepicker>
         </mat-form-field>
       </div>
 
       <div class="date_container">
         <mat-form-field class="deadline" appearance="fill">
           <mat-label>Deadline</mat-label>
-          <input [(ngModel)]="deadline" matInput placeholder="" value="">
-        </mat-form-field>
-
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Deadline</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input [(ngModel)]="deadline" matInput [matDatepicker]="pickerDeadline">
           <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker>
-        </mat-form-field> -->
+          <mat-datepicker-toggle matIconSuffix [for]="pickerDeadline"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDeadline [calendarHeaderComponent]="deadlineDate"></mat-datepicker>
+        </mat-form-field>
       </div>
     </div>
 
