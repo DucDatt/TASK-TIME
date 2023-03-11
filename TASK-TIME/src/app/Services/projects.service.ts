@@ -1,3 +1,4 @@
+import { MatSortModule } from '@angular/material/sort';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom, map } from 'rxjs';
@@ -43,4 +44,14 @@ export class ProjectsService {
     ));
     return response;
   }
+
+
+  // SORT BY
+  // async sortByAlphabet(projectName: string) {
+  //   let sortName = this.http.get(`${this.url}/all=${projectName}`)
+
+
+
+  //   return projects;
+  // }
 }
