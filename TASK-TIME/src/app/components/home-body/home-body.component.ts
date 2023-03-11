@@ -1,3 +1,4 @@
+import { map, Observable, Subject } from 'rxjs';
 import { ProjectsService } from './../../Services/projects.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,10 +14,27 @@ import { UpdateProjectPopupComponent } from '../update-project-popup/update-proj
 })
 export class HomeBodyComponent {
   constructor(private dialog: MatDialog, private projectsService: ProjectsService, private router: Router) { }
-  projects: Array<any> = []
+  projects = new Observable<any[]>;
 
   ngOnInit() {
-    this.projects = this.projectsService.projects;
+    this.initialize();
+  }
+
+  async initialize() {
+    this.projects = await this.projectsService.getAll();
+    this.projects.subscribe((data) => {
+      console.log(data);
+    })
+  }
+
+  async updateStarred(project: any) {
+    project.isStarred = !project.isStarred;
+    this.projectsService.updateProject(project);
+  }
+
+  async deleteProject(project: any) {
+    project.disable = !project.disable;
+    this.projectsService.updateProject(project);
   }
 
   navTask() {
@@ -29,17 +47,5 @@ export class HomeBodyComponent {
 
   openUpdateDialog(): void {
     this.dialog.open(UpdateProjectPopupComponent)
-  }
-
-  changeColor(color: string, index: number, array: any) {
-    if (!array[index].styles.includes(color)) {
-      array[index].styles.push(color);
-      array[index].isStarred = true;
-      this.projectsService.updateStarred(array);
-    } else {
-      array[index].styles = array[index].styles.filter((item: any) => item !== color) //remove color from list
-      array[index].isStarred = false;
-      this.projectsService.updateStarred(array);
-    }
   }
 }

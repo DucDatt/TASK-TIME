@@ -21,11 +21,13 @@ export class Project {
     startAt: string;
 
     @Prop()
-    deadLine: string;
+    deadline: string;
 
     @Prop()
-    disable: false;
+    disable: boolean;
 
+    @Prop()
+    isStarred: boolean;
 
     // @Prop()
     // member: [

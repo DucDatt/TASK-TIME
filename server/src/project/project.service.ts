@@ -38,7 +38,7 @@ export class ProjectService {
             return null;
         }
     }
-    
+
     async updateProject(projectId: string, project: Project) {
         try {
             return this.projectModel.updateOne({ projectId: projectId }, project).exec();
@@ -46,15 +46,4 @@ export class ProjectService {
             return null;
         }
     }
-    
-    // async deleteProject(projectId: string) {
-    //     try {
-    //         let findProject = await this.projectModel.findOne({ projectId: projectId }).exec();
-    //         Project.disable = true;
-    //         return findProject;
-    //     }
-    //     catch (error) {
-    //         return null;
-    //     }
-    // }
 }
