@@ -2,7 +2,7 @@ import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
 import { WebSocketServer } from '@nestjs/websockets';
 import { emit } from 'process';
 
-@WebSocketGateway({cors: true})
+@WebSocketGateway({ cors: true })
 export class ProjectGateway {
   @WebSocketServer() server: any;
 
@@ -13,7 +13,6 @@ export class ProjectGateway {
   handleDisconnect(client: any) {
     console.log(`client disconnected: ${client.id}`);
   }
-
 
   @SubscribeMessage('message')
   handleMessage(client: any, payload: any): string {

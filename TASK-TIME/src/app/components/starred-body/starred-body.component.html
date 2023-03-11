@@ -17,20 +17,21 @@
 </div>
 
 <div class="project">
-  <ng-container *ngFor="let project of projects; let i = index">
-    <div class="project_box" *ngIf="project.isStarred">
+  <ng-container *ngFor="let project of (projects | async); let i = index">
+    <div class="project_box" *ngIf="project.isStarred && !project.disable">
       <div class="project_title">
-        <div class="project_name">{{project.name}}</div>
-        <div class="project_description">{{project.description}}</div>
+        <div class="project_name">{{project.projectName}}</div>
+        <div class="project_description">{{project.projectDescription}}</div>
       </div>
       <div class="footer_box">
         <div class="date">
-          <div class="create_date">Create Date: {{project.createDate}}</div>
+          <div class="create_date">Create Date: {{project.startAt}}</div>
           <div class="setting">
             <div class="deadline">Deadline: {{project.deadline}}</div>
             <div class="icon">
               <div class="star-icon">
-                <span [ngClass]="project.styles" (click)="changeColor('yellow', i, projects)">
+                <span class="material-symbols-rounded" [ngClass]="{'yellow':project.isStarred}"
+                  (click)="updateStarred(project)">
                   star
                 </span>
               </div>
@@ -38,7 +39,7 @@
               <mat-menu #menu="matMenu">
                 <button (click)="navTask()" mat-menu-item>Join Project</button>
                 <button mat-menu-item>Update</button>
-                <button mat-menu-item>Delete</button>
+                <button (click)="deleteProject(project)" mat-menu-item>Delete</button>
               </mat-menu>
             </div>
           </div>

@@ -5,26 +5,26 @@ import { ProjectService } from './project.service';
 
 @Controller('project')
 export class ProjectController {
-  constructor(private readonly projectService: ProjectService) {}
+  constructor(private readonly projectService: ProjectService) { }
 
   @Get('all')
-  getAll(){
-      return this.projectService.getAll();
+  getAll() {
+    return this.projectService.getAll();
   }
 
   @Post('create')
-  createProject(@Body() project: Project){
-      return this.projectService.create(project);
+  createProject(@Body() project: Project) {
+    return this.projectService.create(project);
   }
 
   @Get()
-  getById(@Query('id')id: string){
+  getById(@Query('id') id: string) {
     return this.projectService.getById(id);
   }
-  
+
   @Put('update')
-    updateProject(@Body('projectId') id: string, @Body() project: Project){
-      return this.projectService.updateProject(id, project);
-    }
-  
+  updateProject(@Body('projectId') id: string, @Body() project: Project) {
+    console.log(id, project);
+    return this.projectService.updateProject(id, project);
+  }
 }

@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { ProjectsService } from 'src/app/Services/projects.service';
@@ -9,25 +10,30 @@ import { ProjectsService } from 'src/app/Services/projects.service';
 })
 export class StarredBodyComponent {
   constructor(private projectsService: ProjectsService, private router: Router) { }
-  projects: Array<any> = []
+  projects = new Observable<any[]>;
 
   ngOnInit() {
-    this.projects = this.projectsService.projects;
+    this.initialize();
+  }
+
+  async initialize() {
+    this.projects = await this.projectsService.getAll();
+    this.projects.subscribe((data) => {
+      console.log(data);
+    })
   }
 
   navTask() {
     this.router.navigate(['/task'])
   }
 
-  changeColor(color: string, index: number, array: any) {
-    if (!array[index].styles.includes(color)) {
-      array[index].styles.push(color);
-      array[index].isStarred = true;
-      this.projectsService.updateStarred(array);
-    } else {
-      array[index].styles = array[index].styles.filter((item: any) => item !== color) //remove color from list
-      array[index].isStarred = false;
-      this.projectsService.updateStarred(array);
-    }
+  async updateStarred(project: any) {
+    project.isStarred = !project.isStarred;
+    this.projectsService.updateProject(project);
+  }
+
+  async deleteProject(project: any) {
+    project.disable = !project.disable;
+    this.projectsService.updateProject(project);
   }
 }
