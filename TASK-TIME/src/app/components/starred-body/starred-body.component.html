@@ -18,7 +18,7 @@
 
 <div class="project">
   <ng-container *ngFor="let project of (projects | async); let i = index">
-    <div class="project_box" *ngIf="project.isStarred || !project.disable">
+    <div class="project_box" *ngIf="project.isStarred && !project.disable">
       <div class="project_title">
         <div class="project_name">{{project.projectName}}</div>
         <div class="project_description">{{project.projectDescription}}</div>
