@@ -48,4 +48,8 @@ export class HomeBodyComponent {
   openUpdateDialog(): void {
     this.dialog.open(UpdateProjectPopupComponent)
   }
+
+  // sortByAlphabet(){
+  //   this.projects = this.projects.pipe(map((projects) => projects.sort((a, b) => a.name.localeCompare(b.name))));
+  // }
 }
