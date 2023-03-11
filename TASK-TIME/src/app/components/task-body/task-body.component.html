@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="body">
+  <div class="body" >
     <div class="col" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="[progressList, doneList]" (cdkDropListDropped)="drop($event)" routerLink="/task">
       <div class="col-header">
