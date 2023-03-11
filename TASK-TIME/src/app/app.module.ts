@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from 'src/shared/material.module';
 import { MemberPopupComponent } from './components/member-popup/member-popup.component';
@@ -36,7 +36,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     provideAuth(() => getAuth()),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

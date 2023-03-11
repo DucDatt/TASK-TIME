@@ -1,80 +1,46 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { lastValueFrom, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
-  constructor() { }
-  projects: Array<any> = [
-    {
-      id: 1,
-      name: "Task Management",
-      description: "Create a task management website",
-      createDate: "28/02/2023",
-      deadline: "10/03/2023",
-      styles: ['material-symbols-rounded'],
-      isStarred: false
-    },
-    {
-      id: 2,
-      name: "UI Design",
-      description: "Design an UI for new website",
-      createDate: "20/02/2023",
-      deadline: "02/03/2023",
-      styles: ['material-symbols-rounded'],
-      isStarred: false
-    },
-    {
-      id: 3,
-      name: "Product Marketing",
-      description: "Marketing new products",
-      createDate: "20/02/2023",
-      deadline: "02/03/2023",
-      styles: ['material-symbols-rounded'],
-      isStarred: false
-    },
-    {
-      id: 4,
-      name: "Create Mobile App",
-      description: "Create a camera mobile app",
-      createDate: "14/02/2023",
-      deadline: "28/02/2023",
-      styles: ['material-symbols-rounded'],
-      isStarred: false
-    },
-    {
-      id: 5,
-      name: "Shopping Page",
-      description: "Create a shopping website",
-      createDate: "15/02/2023",
-      deadline: "02/03/2023",
-      styles: ['material-symbols-rounded'],
-      isStarred: false
-    },
-    {
-      id: 6,
-      name: "Update Game",
-      description: "Update FastFingers typing game",
-      createDate: "10/02/2023",
-      deadline: "25/02/2023",
-      styles: ['material-symbols-rounded'],
-      isStarred: false
-    },
-    {
-      id: 7,
-      name: "Create Ads",
-      description: "Create advertisements for company",
-      createDate: "10/02/2023",
-      deadline: "25/02/2023",
-      styles: ['material-symbols-rounded'],
-      isStarred: false
-    }
-  ];
+  constructor(private http: HttpClient) { }
 
-  updateStarred(projects: any) {
-    this.projects = projects;
+  url = 'http://localhost:3000/project'
+
+  async getAll() {
+    let projects = this.http.get(`${this.url}/all`).pipe(map((data: any) => {
+      return <any[]>data;
+    }));
+    return projects;
   }
 
+  async getProjectById(id: string) {
+    let project = lastValueFrom(this.http.get(`${this.url}?id=${id}`));
+    return project;
+  }
 
+  async postProject(project: any) {
+    let response = lastValueFrom(this.http.post(`${this.url}/create`, project,
+      {
+        headers: new HttpHeaders({
+          'authorization': ''
+        })
+      }
+    ));
+    return response;
+  }
 
+  async updateProject(project: any) {
+    let response = lastValueFrom(this.http.put(`${this.url}/update`, project,
+      {
+        headers: new HttpHeaders({
+          'authorization': ''
+        })
+      }
+    ));
+    return response;
+  }
 }
