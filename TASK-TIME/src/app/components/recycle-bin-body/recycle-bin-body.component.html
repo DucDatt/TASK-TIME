@@ -8,7 +8,7 @@
     <mat-form-field class="selector" appearance="fill">
       <mat-label class="sort_by">SORT BY</mat-label>
       <mat-select>
-        <mat-option value="option1">Alphabet</mat-option>
+        <mat-option value="option1" (click)="sortByAlphabet()" >Alphabet</mat-option>
         <mat-option value="option2">Date</mat-option>
       </mat-select>
     </mat-form-field>
@@ -30,7 +30,7 @@
             <div class="icon">
               <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item>Restore</button>
+                <button mat-menu-item (click)="restoreProject(project)" >Restore</button>
                 <button mat-menu-item>Delete</button>
               </mat-menu>
             </div>
