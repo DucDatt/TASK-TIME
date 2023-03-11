@@ -15,7 +15,7 @@ export class Project {
     projectDescription: string;
 
     @Prop()
-    projectOwner: string;
+    projectOwnerId: string;
 
     @Prop()
     startAt: string;

@@ -6,7 +6,7 @@
   </div>
   <div class="form">
     <mat-form-field class="selector" appearance="fill">
-      <mat-label>SORT BY</mat-label>
+      <mat-label class="sort_by">SORT BY</mat-label>
       <mat-select>
         <mat-option value="option1" (click)="sortByAlphabet()">Alphabet</mat-option>
         <mat-option value="option2" (click)="sortByDate()">Date</mat-option>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="project">
-  <ng-container *ngFor="let project of (projects | async);">
+  <ng-container *ngFor="let project of (projects | async)">
     <div class="project_box" *ngIf="!project.disable">
       <div class="project_title">
         <div class="project_name">{{project.projectName}}</div>
@@ -39,7 +39,7 @@
               <mat-menu #menu="matMenu">
                 <button (click)="navTask()" mat-menu-item>Join Project</button>
                 <button (click)="openUpdateDialog()" mat-menu-item>Update</button>
-                <button (click)="deleteProject(project)" mat-menu-item>Delete</button>
+                <button (click)="deleteProject(project)" mat-menu-item>Move To Bin</button>
               </mat-menu>
             </div>
           </div>

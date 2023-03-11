@@ -43,27 +43,32 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { SideBarComponent } from 'src/app/components/side-bar/side-bar.component';
-import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
-import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
+import { SideBarComponent } from 'src/app/components/side-bar/side-bar.component';
 
 import { HomeBodyComponent } from 'src/app/components/home-body/home-body.component';
 import { StarredBodyComponent } from 'src/app/components/starred-body/starred-body.component';
 import { TaskPopupComponent } from 'src/app/components/task-popup/task-popup.component';
 import { TaskBodyComponent } from 'src/app/components/task-body/task-body.component';
+import { RecycleBinBodyComponent } from 'src/app/components/recycle-bin-body/recycle-bin-body.component';
+import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
+import { UpdateProjectPopupComponent } from 'src/app/components/update-project-popup/update-project-popup.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    SideBarComponent,
     NavBarComponent,
-    ProjectPopupComponent,
+    SideBarComponent,
     HomeBodyComponent,
     StarredBodyComponent,
     TaskPopupComponent,
     TaskBodyComponent,
+    RecycleBinBodyComponent,
+    ProjectPopupComponent,
+    UpdateProjectPopupComponent,
   ],
   imports: [
     CommonModule,
@@ -116,14 +121,17 @@ import { RouterModule } from '@angular/router';
     ScrollingModule,
   ],
   exports: [
+    NavBarComponent,
+    SideBarComponent,
     TaskBodyComponent,
     HomeBodyComponent,
     StarredBodyComponent,
+    RecycleBinBodyComponent,
+    TaskPopupComponent,
+    UpdateProjectPopupComponent,
+
     CommonModule,
     FormsModule,
-    TaskPopupComponent,
-    SideBarComponent,
-    NavBarComponent,
     A11yModule,
     CdkAccordionModule,
     ClipboardModule,
@@ -169,7 +177,6 @@ import { RouterModule } from '@angular/router';
     OverlayModule,
     PortalModule,
     ScrollingModule,
-
   ]
 })
 export class MaterialModule { }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { StarredComponent } from './components/starred/starred.component';
+import { RecycleBinComponent } from './components/recycle-bin/recycle-bin.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'projects', pathMatch: 'full' },
       { path: 'projects', component: ProjectsComponent },
       { path: 'starred', component: StarredComponent },
+      { path: 'recyclebin', component: RecycleBinComponent },
     ]
   },
 ];

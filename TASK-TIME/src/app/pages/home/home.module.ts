@@ -7,13 +7,15 @@ import { MaterialModule } from 'src/shared/material.module';
 
 import { ProjectsComponent } from './components/projects/projects.component';
 import { StarredComponent } from './components/starred/starred.component';
+import { RecycleBinComponent } from './components/recycle-bin/recycle-bin.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     ProjectsComponent,
-    StarredComponent
+    StarredComponent,
+    RecycleBinComponent
   ],
   imports: [
     CommonModule,
