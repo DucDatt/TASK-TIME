@@ -1,8 +1,8 @@
 <div class="title-container">
   <div class="form">
-    <div id="title">STARRED PROJECTS</div>
+    <div id="title">RECYCLE BIN</div>
     <div style="height: 10px"></div>
-    <div id="description">All available starred projects here</div>
+    <div id="description">All deleted projects here</div>
   </div>
   <div class="form">
     <mat-form-field class="selector" appearance="fill">
@@ -17,7 +17,7 @@
 
 <div class="project">
   <ng-container *ngFor="let project of (projects | async)">
-    <div class="project_box" *ngIf="project.isStarred && !project.disable">
+    <div class="project_box" *ngIf="project.disable">
       <div class="project_title">
         <div class="project_name">{{project.projectName}}</div>
         <div class="project_description">{{project.projectDescription}}</div>
@@ -28,17 +28,10 @@
           <div class="setting">
             <div class="deadline">Deadline: {{project.deadline}}</div>
             <div class="icon">
-              <div class="star-icon">
-                <span class="material-symbols-rounded" [ngClass]="{'yellow':project.isStarred}"
-                  (click)="updateStarred(project)">
-                  star
-                </span>
-              </div>
               <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
               <mat-menu #menu="matMenu">
-                <button (click)="navTask()" mat-menu-item>Join Project</button>
-                <button mat-menu-item>Update</button>
-                <button (click)="deleteProject(project)" mat-menu-item>Delete</button>
+                <button mat-menu-item>Restore</button>
+                <button mat-menu-item>Delete</button>
               </mat-menu>
             </div>
           </div>

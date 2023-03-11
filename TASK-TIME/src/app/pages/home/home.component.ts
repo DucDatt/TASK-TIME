@@ -12,6 +12,7 @@ export class HomeComponent {
   urlIndicesMap = [
     '/home/projects',
     '/home/starred',
+    '/home/recyclebin'
   ]
 
   constructor(private router: Router) { }

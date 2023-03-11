@@ -6,7 +6,6 @@
 
 .form {
   margin: 2rem;
-
 }
 
 #title {
@@ -29,8 +28,7 @@
 }
 
 .selector {
-  width: fit-content;
-  text-align: center;
+  width: 80%;
 }
 
 //Body
@@ -44,11 +42,7 @@
 }
 
 .project_title {
-  height: 30%;
-}
-
-.date {
-  padding-top: 120px;
+  height: 100%;
 }
 
 .project_box {
@@ -66,12 +60,6 @@
 
 .project_box:hover {
   background-color: #efefef;
-  cursor: pointer;
-}
-
-.project_box:active {
-  background-color: #e9e9e9;
-  cursor: pointer;
 }
 
 .project_name {
@@ -80,6 +68,7 @@
   line-height: 1;
   color: #ffb93f;
   width: 100%;
+  word-break: break-all;
 }
 
 .project_description,
@@ -87,6 +76,7 @@
 .deadline {
   margin-top: 10px;
   width: 100%;
+  word-break: break-all;
 }
 
 .deadline {
@@ -140,17 +130,24 @@
 //Footer box
 .footer_box {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  padding-top: 120px;
 }
 
 .setting {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .icon {
   margin-top: 7px;
-  margin-left: 55px;
   display: flex;
   flex-direction: row;
 }
@@ -159,7 +156,6 @@
 .container {
   height: 100%;
   width: 100%;
-
 }
 
 .title-container {
@@ -191,4 +187,20 @@
 
 .expand-icon:hover {
   background-color: #D7D7D7;
+}
+
+@media screen and (max-width: 500px) {
+  .selector {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .selector {
+    width: 20%;
+  }
+
+  .sort_by {
+    display: none;
+  }
 }
