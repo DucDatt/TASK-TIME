@@ -15,17 +15,15 @@ import { MaterialModule } from 'src/shared/material.module';
 import { MemberPopupComponent } from './components/member-popup/member-popup.component';
 import { ColPopupComponent } from './components/col-popup/col-popup.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
-import { UpdateProjectPopupComponent } from './components/update-project-popup/update-project-popup.component';
+
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
-
 
 @NgModule({
   declarations: [
     AppComponent,
     MemberPopupComponent,
     ColPopupComponent,
-    UpdateProjectPopupComponent,
   ],
   imports: [
     BrowserModule,

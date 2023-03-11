@@ -37,6 +37,14 @@
           <mat-label>Deadline</mat-label>
           <input [(ngModel)]="deadline" matInput placeholder="" value="">
         </mat-form-field>
+
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Deadline</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker>
+        </mat-form-field> -->
       </div>
     </div>
 
