@@ -1,3 +1,4 @@
+import { EditPopupComponent } from './../edit-popup/edit-popup.component';
 import { ColPopupComponent } from './../col-popup/col-popup.component';
 import { MemberPopupComponent } from './../member-popup/member-popup.component';
 import { Component } from '@angular/core';
@@ -46,6 +47,10 @@ export class TaskBodyComponent {
 
   openDialog3(): void {
     this.dialog.open(ColPopupComponent)
+  }
+
+  openDialog4(): void {
+    this.dialog.open(EditPopupComponent)
   }
 
   todo = [{
