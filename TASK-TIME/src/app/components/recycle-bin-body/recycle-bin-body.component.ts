@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ProjectsService } from 'src/app/Services/projects.service';
 
 @Component({
@@ -21,5 +21,18 @@ export class RecycleBinBodyComponent {
     this.projects.subscribe((data) => {
       console.log(data);
     })
+  }
+
+  sortByAlphabet() {
+    this.projects = this.projects.pipe(map((projects) => {
+      return projects.sort((a, b) => {
+        return a.projectName.localeCompare(b.projectName);
+      })
+    }))
+  }
+
+  async restoreProject(project: any) {
+    project.disable = !project.disable;
+    this.projectsService.updateProject(project);
   }
 }
