@@ -54,7 +54,7 @@ import { StarredBodyComponent } from 'src/app/components/starred-body/starred-bo
 import { TaskPopupComponent } from 'src/app/components/task-popup/task-popup.component';
 import { TaskBodyComponent } from 'src/app/components/task-body/task-body.component';
 import { RecycleBinBodyComponent } from 'src/app/components/recycle-bin-body/recycle-bin-body.component';
-import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
+import { ProjectPopupComponent, DeadlineComponent, StartComponent } from 'src/app/components/project-popup/project-popup.component';
 import { UpdateProjectPopupComponent } from 'src/app/components/update-project-popup/update-project-popup.component';
 import { RouterModule } from '@angular/router';
 
@@ -68,6 +68,8 @@ import { RouterModule } from '@angular/router';
     TaskBodyComponent,
     RecycleBinBodyComponent,
     ProjectPopupComponent,
+    StartComponent,
+    DeadlineComponent,
     UpdateProjectPopupComponent,
   ],
   imports: [
