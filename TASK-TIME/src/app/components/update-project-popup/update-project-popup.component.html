@@ -4,7 +4,7 @@
     <div class="input">
       <mat-form-field class="project_name" appearance="fill">
         <mat-label>Project name</mat-label>
-        <input matInput placeholder="" value="">
+        <input [(ngModel)]="tempProject.projectName" matInput placeholder="" value="">
       </mat-form-field>
     </div>
 
@@ -20,7 +20,7 @@
     <div class="input">
       <mat-form-field class="description" appearance="fill">
         <mat-label>Description</mat-label>
-        <input matInput placeholder="" value="">
+        <input [(ngModel)]="tempProject.projectDescription" matInput placeholder="" value="">
       </mat-form-field>
     </div>
 
@@ -28,21 +28,27 @@
       <div class="date_container">
         <mat-form-field class="start_at" appearance="fill">
           <mat-label>Start at</mat-label>
-          <input matInput placeholder="" value="">
+          <input [(ngModel)]="tempProject.startAt" matInput [matDatepicker]="pickerStart">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerStart [calendarHeaderComponent]="startDate"></mat-datepicker>
         </mat-form-field>
       </div>
 
       <div class="date_container">
         <mat-form-field class="deadline" appearance="fill">
           <mat-label>Deadline</mat-label>
-          <input matInput placeholder="" value="">
+          <input [(ngModel)]="tempProject.deadline" matInput [matDatepicker]="pickerDeadline">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerDeadline"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDeadline [calendarHeaderComponent]="deadlineDate"></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
 
     <div class="btn_container">
       <div>
-        <button class="button">UPDATE</button>
+        <button [mat-dialog-close]="tempProject" class="button">UPDATE</button>
       </div>
     </div>
   </div>

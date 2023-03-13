@@ -41,7 +41,16 @@ export class ProjectService {
 
     async updateProject(projectId: string, project: Project) {
         try {
-            return this.projectModel.updateOne({ projectId: projectId }, project).exec();
+            let tempProject = await this.projectModel.findOne({ projectId: projectId }).exec();
+
+            tempProject['projectName'] = project.projectName;
+            tempProject['projectDescription'] = project.projectDescription;
+            tempProject['startAt'] = project.startAt;
+            tempProject['deadline'] = project.deadline;
+            tempProject['isStarred'] = project.isStarred;
+            tempProject['disable'] = project.disable;
+
+            return tempProject.save();
         } catch (error) {
             return null;
         }

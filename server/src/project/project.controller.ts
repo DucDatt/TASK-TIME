@@ -14,6 +14,7 @@ export class ProjectController {
 
   @Post('create')
   createProject(@Body() project: Project) {
+    console.log(project);
     return this.projectService.create(project);
   }
 
@@ -23,8 +24,8 @@ export class ProjectController {
   }
 
   @Put('update')
-  updateProject(@Body('projectId') id: string, @Body() project: Project) {
-    console.log(id, project);
-    return this.projectService.updateProject(id, project);
+  async updateProject(@Body('projectId') id: string, @Body() project: Project) {
+    console.log(project);
+    return await this.projectService.updateProject(id, project);
   }
 }

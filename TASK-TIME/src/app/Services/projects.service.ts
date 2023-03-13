@@ -1,7 +1,7 @@
-import { MatSortModule } from '@angular/material/sort';
+import { ProjectModel } from './../model/project.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom, map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,47 +11,40 @@ export class ProjectsService {
 
   url = 'http://localhost:3000/project'
 
-  async getAll() {
-    let projects = this.http.get(`${this.url}/all`).pipe(map((data: any) => {
-      return <any[]>data;
+  getAll(): Observable<ProjectModel[]> {
+    let projects = this.http.get(`${this.url}/all`).pipe(map((projects) => {
+      return <ProjectModel[]>projects;
     }));
     return projects;
   }
 
-  async getProjectById(id: string) {
-    let project = lastValueFrom(this.http.get(`${this.url}?id=${id}`));
+  getProjectById(id: string) {
+    let project = this.http.get(`${this.url}?id=${id}`).pipe(map((project) => {
+      return <ProjectModel>project;
+    }));
     return project;
   }
 
-  async postProject(project: any) {
-    let response = lastValueFrom(this.http.post(`${this.url}/create`, project,
+  postProject(project: any) {
+    let response = this.http.post(`${this.url}/create`, project,
       {
         headers: new HttpHeaders({
           'authorization': ''
         })
       }
-    ));
+    ).pipe(map((project) => {
+      return <ProjectModel>project;
+    }));
     return response;
   }
 
-  async updateProject(project: any) {
-    let response = lastValueFrom(this.http.put(`${this.url}/update`, project,
+  updateProject(project: any) {
+    return this.http.put(`${this.url}/update`, project,
       {
         headers: new HttpHeaders({
           'authorization': ''
         })
       }
-    ));
-    return response;
+    ) as Observable<ProjectModel>
   }
-
-
-  // SORT BY
-  // async sortByAlphabet(projectName: string) {
-  //   let sortName = this.http.get(`${this.url}/all=${projectName}`)
-
-
-
-  //   return projects;
-  // }
 }
