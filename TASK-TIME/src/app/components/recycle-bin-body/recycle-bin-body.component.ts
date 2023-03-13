@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
+import { ProjectModel } from 'src/app/model/project.model';
 import { ProjectsService } from 'src/app/Services/projects.service';
+import { ProjectActions } from 'src/redux/actions/project.action';
+import { ProjectState } from 'src/redux/states/project.state';
 
 @Component({
   selector: 'app-recycle-bin-body',
@@ -9,18 +13,21 @@ import { ProjectsService } from 'src/app/Services/projects.service';
   styleUrls: ['./recycle-bin-body.component.scss']
 })
 export class RecycleBinBodyComponent {
-  constructor(private projectsService: ProjectsService, private router: Router) { }
+  constructor(private projectsService: ProjectsService, private store: Store<{ project: ProjectState }>) { }
   projects = new Observable<any[]>;
 
   ngOnInit() {
     this.initialize();
   }
 
-  async initialize() {
-    this.projects = await this.projectsService.getAll();
-    this.projects.subscribe((data) => {
-      console.log(data);
-    })
+  initialize() {
+    this.projects = this.store.select('project').pipe(map((projectState) => {
+      return projectState.projects;
+    }));
+    this.store.dispatch(ProjectActions.getAll());
+    // this.projects.subscribe((data) => {
+    //   console.log(data);
+    // })
   }
 
   sortByAlphabet() {
@@ -31,8 +38,12 @@ export class RecycleBinBodyComponent {
     }))
   }
 
-  async restoreProject(project: any) {
-    project.disable = !project.disable;
-    this.projectsService.updateProject(project);
+  restoreProject(project: any) {
+    let tempProject: ProjectModel = {
+      ...project,
+      disable: !project.disable
+    }
+
+    this.store.dispatch(ProjectActions.delete({ project: tempProject }));
   }
 }

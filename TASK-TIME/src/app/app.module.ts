@@ -1,3 +1,5 @@
+import { ProjectEffects } from './../redux/effects/project.effect';
+import { ProjectReducer } from './../redux/reducers/project.reducer';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -34,8 +36,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MaterialModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({ project: ProjectReducer }, {}),
+    EffectsModule.forRoot([ProjectEffects]),
     SocketIoModule.forRoot(config),
     HttpClientModule
   ],
