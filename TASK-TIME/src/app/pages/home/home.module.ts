@@ -8,6 +8,7 @@ import { MaterialModule } from 'src/shared/material.module';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { StarredComponent } from './components/starred/starred.component';
 import { RecycleBinComponent } from './components/recycle-bin/recycle-bin.component';
+import { RequestComponent } from 'src/app/components/request/request.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RecycleBinComponent } from './components/recycle-bin/recycle-bin.compon
     HomeComponent,
     ProjectsComponent,
     StarredComponent,
-    RecycleBinComponent
+    RecycleBinComponent,
+    RequestComponent,
   ],
   imports: [
     CommonModule,

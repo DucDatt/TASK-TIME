@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { StarredComponent } from './components/starred/starred.component';
 import { RecycleBinComponent } from './components/recycle-bin/recycle-bin.component';
+import { RequestComponent } from 'src/app/components/request/request.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: 'projects', component: ProjectsComponent },
       { path: 'starred', component: StarredComponent },
       { path: 'recyclebin', component: RecycleBinComponent },
+      {path: 'request', component: RequestComponent},
     ]
   },
 ];

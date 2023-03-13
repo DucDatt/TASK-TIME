@@ -71,6 +71,7 @@ import { RouterModule } from '@angular/router';
     StartComponent,
     DeadlineComponent,
     UpdateProjectPopupComponent,
+
   ],
   imports: [
     CommonModule,
@@ -131,7 +132,6 @@ import { RouterModule } from '@angular/router';
     RecycleBinBodyComponent,
     TaskPopupComponent,
     UpdateProjectPopupComponent,
-
     CommonModule,
     FormsModule,
     A11yModule,

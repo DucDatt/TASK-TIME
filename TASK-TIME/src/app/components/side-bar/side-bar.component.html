@@ -12,11 +12,11 @@
       <mat-icon class="icon">star</mat-icon>
       <p>Starred</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 5}">
-      <mat-icon class="icon">person</mat-icon>
-      <p>Personal</p>
+    <button class="button" [ngClass]="{'is-chosen': index === 3}" [routerLink]="['/home/request']" matBadge="1" matBadgePosition="after" matBadgeColor="accent">
+      <mat-icon class="icon">mail</mat-icon>
+      <p>Request</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 3}">
+    <button class="button" [ngClass]="{'is-chosen': index === 5}">
       <mat-icon class="icon">groups</mat-icon>
       <p>Groups</p>
     </button>
