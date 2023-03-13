@@ -43,7 +43,7 @@
   width: 60%;
 }
 
-.btn_container>div {
+.btn_container > div {
   display: flex;
   justify-content: flex-end;
 }
@@ -77,7 +77,6 @@
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
 
@@ -86,5 +85,5 @@
   margin-left: 10%;
   width: 375px;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }

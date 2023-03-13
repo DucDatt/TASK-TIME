@@ -1,39 +1,59 @@
-import { Observable } from 'rxjs';
+import { ProjectState } from './../../../redux/states/project.state';
+import { map, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProjectsService } from 'src/app/Services/projects.service';
+import { ProjectActions } from 'src/redux/actions/project.action';
+import { Store } from '@ngrx/store';
+import { ProjectModel } from 'src/app/model/project.model';
+import { User } from 'src/app/model/user.model';
 
 @Component({
   selector: 'app-starred-body',
   templateUrl: './starred-body.component.html',
-  styleUrls: ['./starred-body.component.scss']
+  styleUrls: ['./starred-body.component.scss'],
 })
 export class StarredBodyComponent {
-  constructor(private projectsService: ProjectsService, private router: Router) { }
-  projects = new Observable<any[]>;
+  @Input('user') user$: Observable<User> = new Observable<User>();
+  user: User = <User>{};
+  constructor(
+    private projectsService: ProjectsService,
+    private router: Router,
+    private store: Store<{ project: ProjectState }>
+  ) {}
+  projects = this.store.select('project', 'projects');
 
   ngOnInit() {
-    this.initialize();
+    this.user$.subscribe((user) => {
+      if (user._id != undefined) {
+        this.user = user;
+        this.initialize();
+      }
+    });
   }
 
-  async initialize() {
-    this.projects = await this.projectsService.getAll();
-    this.projects.subscribe((data) => {
-      console.log(data);
-    })
+  initialize() {
+    this.store.dispatch(ProjectActions.getAllForUser({ _id: this.user._id }));
   }
 
   navTask() {
-    this.router.navigate(['/task'])
+    this.router.navigate(['/task']);
   }
 
-  async updateStarred(project: any) {
-    project.isStarred = !project.isStarred;
-    this.projectsService.updateProject(project);
+  updateStarred(project: any) {
+    let tempProject: ProjectModel = {
+      ...project,
+      isStarred: !project.isStarred,
+    };
+    this.store.dispatch(ProjectActions.update({ project: tempProject }));
   }
 
-  async deleteProject(project: any) {
-    project.disable = !project.disable;
-    this.projectsService.updateProject(project);
+  deleteProject(project: any) {
+    let tempProject: ProjectModel = {
+      ...project,
+      disable: !project.disable,
+    };
+
+    this.store.dispatch(ProjectActions.delete({ project: tempProject }));
   }
 }

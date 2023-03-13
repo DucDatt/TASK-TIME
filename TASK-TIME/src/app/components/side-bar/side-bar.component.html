@@ -4,31 +4,50 @@
   </div>
   <div class="menu">MENU</div>
   <div class="btn_container">
-    <button class="button" [ngClass]="{'is-chosen': index === 0}" [routerLink]="['/home/projects']">
+    <button
+      class="button"
+      [ngClass]="{ 'is-chosen': index === 0 }"
+      [routerLink]="['/home/projects']"
+    >
       <mat-icon class="icon">format_list_bulleted</mat-icon>
       <p>Projects</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 1}" [routerLink]="['/home/starred']">
+    <button
+      class="button"
+      [ngClass]="{ 'is-chosen': index === 1 }"
+      [routerLink]="['/home/starred']"
+    >
       <mat-icon class="icon">star</mat-icon>
       <p>Starred</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 3}" [routerLink]="['/home/request']" matBadge="1" matBadgePosition="after" matBadgeColor="accent">
+    <button
+      class="button"
+      [ngClass]="{ 'is-chosen': index === 3 }"
+      [routerLink]="['/home/request']"
+      matBadge="1"
+      matBadgePosition="after"
+      matBadgeColor="accent"
+    >
       <mat-icon class="icon">mail</mat-icon>
       <p>Request</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 5}">
+    <button class="button" [ngClass]="{ 'is-chosen': index === 5 }">
       <mat-icon class="icon">groups</mat-icon>
       <p>Groups</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 4}">
+    <button class="button" [ngClass]="{ 'is-chosen': index === 4 }">
       <mat-icon class="icon">chat</mat-icon>
       <p>Messages</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 2}" [routerLink]="['/home/recyclebin']">
+    <button
+      class="button"
+      [ngClass]="{ 'is-chosen': index === 2 }"
+      [routerLink]="['/home/recyclebin']"
+    >
       <mat-icon class="icon">delete</mat-icon>
       <p>Recycle Bin</p>
     </button>
-    <button class="button" [ngClass]="{'is-chosen': index === 6}">
+    <button class="button" [ngClass]="{ 'is-chosen': index === 6 }">
       <mat-icon class="icon">settings</mat-icon>
       <p>Setting</p>
     </button>

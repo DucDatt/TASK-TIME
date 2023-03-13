@@ -9,7 +9,7 @@
       <mat-label class="sort_by">SORT BY</mat-label>
       <mat-select>
         <mat-option value="option1" (click)="sortByAlphabet()">Alphabet</mat-option>
-        <mat-option value="option2" (click)="sortByDate()">Date</mat-option>
+        <mat-option value="option2">Date</mat-option>
         <!-- <mat-option value="option3" ()>Starred</mat-option> -->
       </mat-select>
     </mat-form-field>
@@ -40,7 +40,7 @@
               <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
               <mat-menu #menu="matMenu">
                 <button (click)="navTask()" mat-menu-item>Join Project</button>
-                <button (click)="openUpdateDialog()" mat-menu-item>Update</button>
+                <button (click)="openUpdateDialog(project)" mat-menu-item>Update</button>
                 <button (click)="deleteProject(project)" mat-menu-item>Move To Bin</button>
               </mat-menu>
             </div>
@@ -49,7 +49,7 @@
       </div>
     </div>
   </ng-container>
-  <div (click)="openDialog()" class="add_box">
+  <div (click)="openCreateDialog()" class="add_box">
     <div>+</div>
   </div>
 </div>

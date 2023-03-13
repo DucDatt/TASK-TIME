@@ -22,8 +22,8 @@
     </div>
   </div>
 
-  <div class="body" >
-    <div class="col" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+  <div class="body">
+    <!-- <div class="col" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="[progressList, doneList]" (cdkDropListDropped)="drop($event)" routerLink="/task">
       <div class="col-header">
         <div class="dot1"></div>
@@ -53,7 +53,7 @@
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">Add member</button>
-                  <button mat-menu-item (click)="openDialog()">Edit</button>
+                  <button mat-menu-item (click)="openDialog4()">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -97,7 +97,7 @@
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">Add member</button>
-                  <button mat-menu-item (click)="openDialog()">Edit</button>
+                  <button mat-menu-item (click)="openDialog4()">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -141,7 +141,7 @@
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">Add member</button>
-                  <button mat-menu-item (click)="openDialog()">Edit</button>
+                  <button mat-menu-item (click)="openDialog4()">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -157,10 +157,10 @@
         <button  (click)="openDialog3()" class="create-new-col-header2">+</button>
       </div>
     </div>
+  </div> -->
   </div>
-</div>
 
-<!-- <div class="title-container">
+  <!-- <div class="title-container">
   <div class="form">
     <div id="title">Create App</div>
     <div style="height: 10px"></div>
@@ -168,3 +168,4 @@
   </div>
   <div> </div
 </div> -->
+</div>

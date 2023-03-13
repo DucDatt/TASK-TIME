@@ -155,7 +155,7 @@
         }
 
         .adjust {
-          align-items: end;
+          align-items: flex-end;
           display: flex;
           justify-content: space-between;
         }
@@ -229,6 +229,7 @@
     }
 
     .task-col-create {
+      padding: 10px 10px;
       border: dashed 2px #D7D7D7;
       background-color: #FAFAFA;
       margin-top: 7%;
@@ -376,7 +377,7 @@
     }
 
     .adjust {
-      align-items: end;
+      align-items: flex-end;
       display: flex;
       justify-content: space-between;
     }

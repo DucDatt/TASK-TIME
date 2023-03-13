@@ -54,8 +54,9 @@ import { StarredBodyComponent } from 'src/app/components/starred-body/starred-bo
 import { TaskPopupComponent } from 'src/app/components/task-popup/task-popup.component';
 import { TaskBodyComponent } from 'src/app/components/task-body/task-body.component';
 import { RecycleBinBodyComponent } from 'src/app/components/recycle-bin-body/recycle-bin-body.component';
-import { ProjectPopupComponent, DeadlineComponent, StartComponent } from 'src/app/components/project-popup/project-popup.component';
+import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { UpdateProjectPopupComponent } from 'src/app/components/update-project-popup/update-project-popup.component';
+import { CalendarComponent, StartComponent, DeadlineComponent } from 'src/app/components/calendar/calendar.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -72,6 +73,7 @@ import { RouterModule } from '@angular/router';
     DeadlineComponent,
     UpdateProjectPopupComponent,
 
+    CalendarComponent
   ],
   imports: [
     CommonModule,
@@ -132,6 +134,7 @@ import { RouterModule } from '@angular/router';
     RecycleBinBodyComponent,
     TaskPopupComponent,
     UpdateProjectPopupComponent,
+    CalendarComponent,
     CommonModule,
     FormsModule,
     A11yModule,

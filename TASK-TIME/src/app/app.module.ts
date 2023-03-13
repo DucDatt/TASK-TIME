@@ -1,3 +1,5 @@
+import { ProjectEffects } from './../redux/effects/project.effect';
+import { ProjectReducer } from './../redux/reducers/project.reducer';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -15,7 +17,9 @@ import { MaterialModule } from 'src/shared/material.module';
 import { MemberPopupComponent } from './components/member-popup/member-popup.component';
 import { ColPopupComponent } from './components/col-popup/col-popup.component';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
-
+import { EditPopupComponent } from './components/edit-popup/edit-popup.component';
+import { UserReducer } from 'src/redux/reducers/user.reducer';
+import { UserEffects } from 'src/redux/effects/user.effect';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -24,6 +28,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     AppComponent,
     MemberPopupComponent,
     ColPopupComponent,
+    EditPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,12 +37,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MaterialModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({ project: ProjectReducer, user: UserReducer }, {}),
+    EffectsModule.forRoot([ProjectEffects,UserEffects]),
     SocketIoModule.forRoot(config),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
