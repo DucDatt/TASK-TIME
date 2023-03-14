@@ -41,6 +41,7 @@ export class ProjectController {
 
   @Get('request/:id')
   async requestJoin(@Param('id') _id: string) {
+    console.log(`requesting to join project for ${_id}`);
     return await this.projectService.requestJoin(_id);
   }
 
