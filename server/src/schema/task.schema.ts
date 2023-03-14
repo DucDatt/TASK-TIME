@@ -8,19 +8,28 @@ export type TaskDocument = HydratedDocument<Task>;
 @Schema({ timestamps: true })
 export class Task {
   @Prop({ required: true })
+  id: string;
+
+  @Prop()
   title: string;
 
-  @Prop({ required: true })
+  @Prop()
   description: string;
 
-  @Prop({ required: true })
+  @Prop()
   status: string;
 
-  @Prop({ required: true })
-  deadline: Date;
+  @Prop()
+  startAt: string;
 
-  @Prop({ required: true })
-  priority: string;
+  @Prop()
+  deadline: string
+
+  @Prop()
+  isDisable: boolean;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'users' })
+  owner: User;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }] })
   assignees: User[];

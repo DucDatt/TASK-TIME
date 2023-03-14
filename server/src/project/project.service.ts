@@ -11,7 +11,7 @@ export class ProjectService {
     @InjectModel(Project.name) private projectModel: Model<ProjectDocument>,
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private userService: UserService,
-  ) {}
+  ) { }
 
   async create(project: Project) {
     console.log(project.owner);

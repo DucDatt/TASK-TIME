@@ -1,3 +1,5 @@
+import { TaskEffects } from './../redux/effects/task.effect';
+import { TaskReducer } from './../redux/reducers/task.reducer';
 import { ProjectEffects } from './../redux/effects/project.effect';
 import { ProjectReducer } from './../redux/reducers/project.reducer';
 import { NgModule } from '@angular/core';
@@ -37,12 +39,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MaterialModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    StoreModule.forRoot({ project: ProjectReducer, user: UserReducer }, {}),
-    EffectsModule.forRoot([ProjectEffects,UserEffects]),
+    StoreModule.forRoot({ project: ProjectReducer, user: UserReducer, task: TaskReducer }, {}),
+    EffectsModule.forRoot([ProjectEffects, UserEffects, TaskEffects]),
     SocketIoModule.forRoot(config),
     HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

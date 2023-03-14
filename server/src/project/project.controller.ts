@@ -5,7 +5,7 @@ import { ProjectService } from './project.service';
 
 @Controller('project')
 export class ProjectController {
-  constructor(private readonly projectService: ProjectService) {}
+  constructor(private readonly projectService: ProjectService) { }
 
   @Get('all')
   getAll() {
@@ -33,6 +33,4 @@ export class ProjectController {
   async getAllByUserId(@Param('id') id: string) {
     return await this.projectService.getAllByUserId(id);
   }
-
-  
 }
