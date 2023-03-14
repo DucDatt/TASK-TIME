@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, of, switchMap, pipe } from 'rxjs';
+import { catchError, map, of, switchMap, pipe, from } from 'rxjs';
 import { ProjectModel } from 'src/app/model/project.model';
 import { ProjectsService } from 'src/app/Services/projects.service';
 import { ProjectActions } from 'src/redux/actions/project.action';
@@ -90,6 +90,68 @@ export class ProjectEffects {
           }),
           catchError((error) => of(ProjectActions.deleteFail({ error: error })))
         )
+      )
+    )
+  );
+  inviteProject$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProjectActions.inviteProject),
+      switchMap((action) =>
+        this.projectsService.invite(action.email, action.project)
+      ),
+      map((project) => {
+        if (project._id) {
+          console.log('sheetFile', project);
+          return ProjectActions.inviteProjectSuccess({ proj: project });
+        } else {
+          return ProjectActions.inviteProjectFail({
+            error: 'Sheet file not found',
+          });
+        }
+      }),
+      catchError((error: string) => {
+        console.log('error', error);
+        return from([ProjectActions.inviteProjectFail({ error })]);
+      })
+    )
+  );
+
+  acceptRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProjectActions.acceptRequest),
+      switchMap((action) =>
+        this.projectsService.acceptRequest(action._id, action.project)
+      ),
+      map((project) => {
+        if (project._id) {
+          console.log('sheetFile', project);
+          return ProjectActions.acceptRequestSuccess({ project: project });
+        } else {
+          return ProjectActions.acceptRequestFail({
+            error: 'Sheet file not found',
+          });
+        }
+      }),
+      catchError((error: string) =>
+        from([ProjectActions.acceptRequestFail({ error })])
+      )
+    )
+  );
+
+  getRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProjectActions.findRequest),
+      switchMap((action) => this.projectsService.findRequestList(action._id)),
+      map((projects) => {
+        if (projects && projects.length > 0) {
+          console.log('requests', projects);
+          return ProjectActions.findRequestSuccess({ projects });
+        } else {
+          return ProjectActions.findRequestSuccess({ projects: [] });
+        }
+      }),
+      catchError((error: string) =>
+        from([ProjectActions.findRequestFail({ error })])
       )
     )
   );

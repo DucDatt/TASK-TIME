@@ -27,6 +27,7 @@ export class ProjectService {
         isStarred: project.isStarred,
         owner: project.owner,
         members: project.members,
+        invitedMembers: project.invitedMembers,
       };
       const createdProject = new this.projectModel(newProject);
       return createdProject.save();
@@ -49,23 +50,54 @@ export class ProjectService {
       let projects = [];
       projects.push(myProjects);
       projects.push(invitedProject);
-      console.log(projects);
+      console.log(`projects length get from user ${id} : ${projects.length}`);
       return myProjects;
     } catch (error) {
       return null;
     }
   }
 
-  async inviteMember(projectId: string, email: string) {
+  async inviteMember(email: string, project: ProjectDocument) {
     try {
-      let user = await this.userService.findByEmail(email);
-      if (user != null) {
-        let tempProject = await this.projectModel
-          .findOne({ projectId: projectId })
+      let user = await this.userModel.find({ email: email }).exec();
+      console.log(user);
+      if (user.length == 0 || user == null) {
+        return null;
+      } else {
+        let updateProject = await this.projectModel
+          .findOneAndUpdate(
+            { projectId: project.projectId },
+            { $push: { invitedMembers: user[0]._id } },
+            { new: true },
+          )
           .exec();
-        tempProject['members'].push(user);
-        return tempProject.save();
+        console.log(updateProject);
+        return updateProject;
       }
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
+
+  async acceptRequest(_id: string, project: ProjectDocument) {
+    try {
+      let user = await this.userModel.findById(_id).exec();
+      project.members.push(user);
+      return project.save();
+    } catch (error) {
+      return null;
+    }
+  }
+  async requestJoin(_id: string) {
+    try {
+      console.log(` requesting liss to join a project for ${_id}`);
+      let requestProject = await this.projectModel
+        .find({ invitedMembers: { $eq: Object(_id) } })
+        .populate('owner', 'displayName email photoURL', this.userModel)
+        .sort({ createdAt: -1 })
+        .exec();
+      return requestProject;
     } catch (error) {
       return null;
     }

@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
-import { User } from './user.schema';
+import { User, UserDocument } from './user.schema';
 
 export type ProjectDocument = HydratedDocument<Project>;
 
@@ -31,10 +31,13 @@ export class Project {
   isStarred: boolean;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'users' })
-  owner: User;
+  owner: UserDocument;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }] })
-  members: User[];
+  members: UserDocument[];
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }] })
+  invitedMembers: UserDocument[];
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
