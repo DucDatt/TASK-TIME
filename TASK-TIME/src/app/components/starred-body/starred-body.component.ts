@@ -41,6 +41,7 @@ export class StarredBodyComponent {
   }
 
   updateStarred(project: any) {
+    // this.initialize();
     let tempProject: ProjectModel = {
       ...project,
       isStarred: !project.isStarred,

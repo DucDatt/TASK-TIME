@@ -61,4 +61,28 @@ export class ProjectsService {
       }),
     }) as Observable<ProjectModel>;
   }
+
+  invite(email: string, project: ProjectModel) {
+    return this.http.put(`${this.url}/invite/${email}`, project, {
+      headers: new HttpHeaders({
+        authorization: '',
+      }),
+    }) as Observable<ProjectModel>;
+  }
+
+  findRequestList(_id: string) {
+    return this.http.get(`${this.url}/request/${_id}`, {
+      headers: new HttpHeaders({
+        authorization: '',
+      }),
+    }) as Observable<ProjectModel[]>;
+  }
+
+  acceptRequest(_id: string, project: ProjectModel) {
+    return this.http.put(`${this.url}/accept/${_id}`, project, {
+      headers: new HttpHeaders({
+        authorization: '',
+      }),
+    }) as Observable<ProjectModel>;
+  }
 }

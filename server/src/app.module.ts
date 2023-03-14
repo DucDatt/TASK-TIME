@@ -10,11 +10,13 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://khoa11530:112345678khoa@cluster1.tw5ofan.mongodb.net/TASK-TIME'),
+    MongooseModule.forRoot(
+      'mongodb+srv://khoa11530:112345678khoa@cluster1.tw5ofan.mongodb.net/TASK-TIME',
+    ),
     ProjectModule,
     GatewaysModule,
     TaskModule,
-    UserModule
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
