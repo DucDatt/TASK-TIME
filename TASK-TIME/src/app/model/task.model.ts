@@ -1,14 +1,18 @@
 import { ProjectModel } from './project.model';
 import { User } from './user.model';
 
-export interface Task {
+export interface TaskModel {
+  id: string;
   title: string;
   description: string;
-  status: string;
-  priority: string;
-  dueDate: string;
+  startAt: string;
+  deadline: string;
+  isDisable: boolean;
+  createdAt: number;
+  updatedAt: number;
   _id: string;
-  owner: User;
-  project: ProjectModel;
   assignees: User[];
+  project: ProjectModel;
+  styles: string[];
+  owner: User;
 }
