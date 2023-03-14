@@ -18,6 +18,7 @@ export class StarredComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.userSubscribtion.unsubscribe();
   }
+
   ngOnInit(): void {
     this.userSubscribtion = this.user$.subscribe((user) => {
       if (user._id != null) {

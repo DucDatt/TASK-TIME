@@ -43,7 +43,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { NavBarComponent } from 'src/app/components/nav-bar/nav-bar.component';
@@ -56,7 +56,11 @@ import { TaskBodyComponent } from 'src/app/components/task-body/task-body.compon
 import { RecycleBinBodyComponent } from 'src/app/components/recycle-bin-body/recycle-bin-body.component';
 import { ProjectPopupComponent } from 'src/app/components/project-popup/project-popup.component';
 import { UpdateProjectPopupComponent } from 'src/app/components/update-project-popup/update-project-popup.component';
-import { CalendarComponent, StartComponent, DeadlineComponent } from 'src/app/components/calendar/calendar.component';
+import {
+  CalendarComponent,
+  StartComponent,
+  DeadlineComponent,
+} from 'src/app/components/calendar/calendar.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -73,7 +77,7 @@ import { RouterModule } from '@angular/router';
     DeadlineComponent,
     UpdateProjectPopupComponent,
 
-    CalendarComponent
+    CalendarComponent,
   ],
   imports: [
     CommonModule,
@@ -124,6 +128,7 @@ import { RouterModule } from '@angular/router';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    ReactiveFormsModule,
   ],
   exports: [
     NavBarComponent,
@@ -182,6 +187,7 @@ import { RouterModule } from '@angular/router';
     OverlayModule,
     PortalModule,
     ScrollingModule,
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

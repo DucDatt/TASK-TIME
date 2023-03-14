@@ -8,12 +8,16 @@
       </mat-form-field>
     </div> -->
 
-    <div id="host">Host's project: </div>
+    <div id="host">Host's project:</div>
     <mat-card class="example-card">
       <mat-card-header class="example-card-header">
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba</mat-card-title>
-        <mat-card-subtitle>shiba@gmail.com</mat-card-subtitle>
+        <img
+          mat-card-avatar
+          class="example-header-image"
+          [src]="this.data.owner.photoURL"
+        />
+        <mat-card-title>{{ this.data.owner.displayName }}</mat-card-title>
+        <mat-card-subtitle>{{ this.data.owner.email }}</mat-card-subtitle>
         <!-- <div class="delete">
           <button mat-button color="accent" >DELETE</button>
         </div> -->
@@ -21,37 +25,36 @@
     </mat-card>
 
     <div class="input">
-      <mat-form-field class="add_member">
-        <mat-label>MEMBER</mat-label>
-        <input matInput placeholder="" value="">
-      </mat-form-field>
+      <form class="example-form">
+        <mat-form-field class="add_member">
+          <mat-label>Member's email</mat-label>
+          <input
+            matInput
+            placeholder=""
+            title="email"
+            [formControl]="emailControl"
+          />
+          <mat-error *ngIf="emailControl.hasError('email')">
+            Must be <strong>email</strong>
+          </mat-error>
+          <mat-error *ngIf="emailControl.hasError('required')">
+            Missing required <strong>field</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
     </div>
 
-    <div id="member">Member's account: </div>
-    <mat-card class="example-card">
-      <mat-card-header class="example-card-header">
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Le Hoang Nam</mat-card-title>
-        <mat-card-subtitle>nam2492002@gmail.com</mat-card-subtitle>
-        <div class="delete">
-          <button mat-button color="accent">DELETE</button>
-        </div>
-      </mat-card-header>
-    </mat-card>
-    <br>
-    <mat-card class="example-card">
-      <mat-card-header class="example-card-header">
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Le Hoang Nam</mat-card-title>
-        <mat-card-subtitle>nam2492002@gmail.com</mat-card-subtitle>
-        <div class="delete">
-          <button mat-button color="accent">DELETE</button>
-        </div>
-      </mat-card-header>
-    </mat-card>
     <div class="btn_container">
       <div>
-        <button class="button">ADD</button>
+        <!-- <button class="button">ADD</button> -->
+        <button
+          class="button"
+          (click)="addInvite()"
+          aria-label="Example icon-button with add icon"
+          [disabled]="!emailControl.valid"
+        >
+          ADD
+        </button>
       </div>
     </div>
   </div>

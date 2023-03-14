@@ -12,7 +12,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-
 import { MaterialModule } from 'src/shared/material.module';
 import { MemberPopupComponent } from './components/member-popup/member-popup.component';
 import { ColPopupComponent } from './components/col-popup/col-popup.component';
@@ -37,8 +36,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MaterialModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    StoreModule.forRoot({ project: ProjectReducer, user: UserReducer }, {}),
-    EffectsModule.forRoot([ProjectEffects,UserEffects]),
+    StoreModule.forRoot(
+      {
+        project: ProjectReducer,
+        user: UserReducer,
+      },
+      {}
+    ),
+    EffectsModule.forRoot([ProjectEffects, UserEffects]),
     SocketIoModule.forRoot(config),
     HttpClientModule,
   ],

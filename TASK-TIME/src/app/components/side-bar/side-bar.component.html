@@ -24,7 +24,7 @@
       class="button"
       [ngClass]="{ 'is-chosen': index === 3 }"
       [routerLink]="['/home/request']"
-      matBadge="1"
+      matBadge="{{ this.requestProject.length }}"
       matBadgePosition="after"
       matBadgeColor="accent"
     >

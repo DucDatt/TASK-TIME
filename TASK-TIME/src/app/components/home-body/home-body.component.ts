@@ -17,6 +17,7 @@ import { Store } from '@ngrx/store';
 import { ProjectActions } from 'src/redux/actions/project.action';
 import { User } from 'src/app/model/user.model';
 import { UserState } from 'src/redux/states/user.state';
+import { MemberPopupComponent } from '../member-popup/member-popup.component';
 
 @Component({
   selector: 'app-home-body',
@@ -123,6 +124,20 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
       };
 
       this.store.dispatch(ProjectActions.update({ project: tempProject }));
+    });
+  }
+  addMemberDialog(project: ProjectModel): void {
+    let dialogRef = this.dialog.open(MemberPopupComponent, {
+      data: project,
+    });
+    dialogRef.afterClosed().subscribe((result: string) => {
+      if (result == '') return;
+      else {
+        console.log(result);
+        this.store.dispatch(
+          ProjectActions.inviteProject({ project: project, email: result })
+        );
+      }
     });
   }
 

@@ -9,6 +9,10 @@ let initialState: ProjectState = {
   inProcess: false,
   isLoading: false,
   error: '',
+  isAccepted: false,
+  isInvited: false,
+  isRequested: false,
+  requestProject: [],
 };
 
 export const ProjectReducer = createReducer(
@@ -50,8 +54,8 @@ export const ProjectReducer = createReducer(
   }),
   on(ProjectActions.createSuccess, (state, { project, type }) => {
     console.log(type);
-    // let projects = [...state.projects!];
-    // projects.push(project);
+    let projects = [...state.projects!];
+    projects.push(project);
     return {
       ...state,
       inProcess: false,
@@ -75,15 +79,15 @@ export const ProjectReducer = createReducer(
   }),
   on(ProjectActions.deleteSuccess, (state, { proj, type }) => {
     console.log(type);
-    // let projects = [...state.projects!];
-    // let temp: any = [];
-    // projects.forEach((project) => {
-    //   if (project.projectId === proj.projectId) {
-    //     temp.push(proj);
-    //     return;
-    //   }
-    //   temp.push(project);
-    // });
+    let projects = [...state.projects!];
+    let temp: any = [];
+    projects.forEach((project) => {
+      if (project.projectId === proj.projectId) {
+        temp.push(proj);
+        return;
+      }
+      temp.push(project);
+    });
     return {
       ...state,
       inProcess: false,
@@ -107,15 +111,15 @@ export const ProjectReducer = createReducer(
   }),
   on(ProjectActions.updateSuccess, (state, { proj, type }) => {
     console.log(type);
-    // let projects = [...state.projects!];
-    // let temp: any = [];
-    // projects.forEach((project) => {
-    //   if (project.projectId === proj.projectId) {
-    //     temp.push(proj);
-    //     return;
-    //   }
-    //   temp.push(project);
-    // });
+    let projects = [...state.projects!];
+    let temp: any = [];
+    projects.forEach((project) => {
+      if (project.projectId === proj.projectId) {
+        temp.push(proj);
+        return;
+      }
+      temp.push(project);
+    });
     return {
       ...state,
       inProcess: false,
@@ -152,6 +156,76 @@ export const ProjectReducer = createReducer(
       ...state,
       project: null,
       isLoading: false,
+      error: error,
+    };
+  }),
+  on(ProjectActions.inviteProject, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isInviting: true,
+      error: '',
+    };
+  }),
+  on(ProjectActions.inviteProjectSuccess, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isInviting: false,
+    };
+  }),
+  on(ProjectActions.inviteProjectFail, (state, { error, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isInviting: false,
+      error: error,
+    };
+  }),
+  on(ProjectActions.acceptRequest, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isAccepting: false,
+      error: '',
+    };
+  }),
+  on(ProjectActions.acceptRequestSuccess, (state, { project, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isAccepting: true,
+    };
+  }),
+  on(ProjectActions.acceptRequestFail, (state, { error, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isAccepting: false,
+      error: error,
+    };
+  }),
+  on(ProjectActions.findRequest, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isRequesting: true,
+      error: '',
+    };
+  }),
+  on(ProjectActions.findRequestSuccess, (state, { projects, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isRequesting: false,
+      requestProject: projects,
+    };
+  }),
+  on(ProjectActions.findRequestFail, (state, { error, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      isRequesting: false,
       error: error,
     };
   })
