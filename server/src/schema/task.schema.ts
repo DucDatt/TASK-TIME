@@ -14,7 +14,7 @@ export class Task {
   description: string;
 
   @Prop({ required: true })
-  status: string;
+  status: string; 
 
   @Prop({ required: true })
   deadline: Date;
