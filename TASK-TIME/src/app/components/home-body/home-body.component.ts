@@ -32,8 +32,9 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   constructor(
     private dialog: MatDialog,
     private router: Router,
-    private store: Store<{ project: ProjectState; user: UserState }>
-  ) { }
+    private store: Store<{ project: ProjectState; user: UserState }>,
+    private projectService: ProjectsService
+  ) {}
   isCreated$ = this.store.select('user', 'isCreated');
   isCreatedSubscription!: Subscription;
   userSubscription!: Subscription;
@@ -148,10 +149,10 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
     });
   }
 
-  sortByAlphabet() {
+  sortByName() {
     this.projects = this.projects.pipe(
       map((projects) => {
-        return projects.sort((a, b) => {
+        return projects.slice().sort((a, b) => {
           return a.projectName.localeCompare(b.projectName);
         });
       })

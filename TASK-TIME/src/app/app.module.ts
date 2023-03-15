@@ -21,6 +21,9 @@ import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { EditPopupComponent } from './components/edit-popup/edit-popup.component';
 import { UserReducer } from 'src/redux/reducers/user.reducer';
 import { UserEffects } from 'src/redux/effects/user.effect';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -48,8 +51,13 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     EffectsModule.forRoot([ProjectEffects, UserEffects]),
     SocketIoModule.forRoot(config),
     HttpClientModule,
+    provideAnalytics(() => getAnalytics()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
   ],
-  providers: [],
+  providers: [
+    ScreenTrackingService,UserTrackingService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

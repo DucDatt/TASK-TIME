@@ -57,4 +57,13 @@ export class StarredBodyComponent {
 
     this.store.dispatch(ProjectActions.delete({ project: tempProject }));
   }
+  sortByName() {
+    this.projects = this.projects.pipe(
+      map((projects) => {
+        return projects.slice().sort((a, b) => {
+          return a.projectName.localeCompare(b.projectName);
+        });
+      })
+    );
+  }
 }
