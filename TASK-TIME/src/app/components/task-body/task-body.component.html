@@ -23,7 +23,7 @@
   </div>
 
   <div class="body">
-    <!-- <div class="col" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+    <div class="col" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="[progressList, doneList]" (cdkDropListDropped)="drop($event)" routerLink="/task">
       <div class="col-header">
         <div class="dot1"></div>
@@ -32,7 +32,7 @@
       <div class="task-col" *ngFor="let task of todo; let i = index" cdkDrag>
         <div class="task-col-content">
           <div class="task-name">
-            <div class="task-title">{{task.name}}</div>
+            <div class="task-title">{{task.title}}</div>
           </div>
           <div class="adjust">
             <div class="task-date">
@@ -40,7 +40,7 @@
                 <div class="allMember1">N</div>
                 <div class="allMember2">N</div>
               </div>
-              <div class="create-date">Create date: {{task.date}}</div>
+              <div class="create-date">Create date: {{task.startAt}}</div>
               <div class="deadline">Deadline: {{task.deadline}}</div>
             </div>
             <div class="icon">
@@ -53,7 +53,7 @@
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">Add member</button>
-                  <button mat-menu-item (click)="openDialog4()">Edit</button>
+                  <button mat-menu-item (click)="openUpdateDialog(task)">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -63,7 +63,7 @@
       </div>
 
       <div class="task-col-create">
-        <div (click)="openDialog()" class="create-new">+</div>
+        <div (click)="openCreateDialog()" class="create-new">+</div>
       </div>
     </div>
 
@@ -89,7 +89,7 @@
             </div>
             <div class="icon">
               <div class="star-icon">
-                <span [ngClass]="task.styles" (click)="changeColor('yellow',i,progress)">
+                <span [ngClass]="task.styles" (click)="changeColor('yellow', i, progress)">
                   star
                 </span>
               </div>
@@ -97,17 +97,13 @@
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">Add member</button>
-                  <button mat-menu-item (click)="openDialog4()">Edit</button>
+                  <button mat-menu-item (click)="openUpdateDialog(task)">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="task-col-create">
-        <div (click)="openDialog()" class="create-new">+</div>
       </div>
     </div>
 
@@ -133,7 +129,7 @@
             </div>
             <div class="icon">
               <div class="star-icon">
-                <span [ngClass]="task.styles" (click)="changeColor('yellow',i,done)">
+                <span [ngClass]="task.styles" (click)="changeColor('yellow', i, done)">
                   star
                 </span>
               </div>
@@ -141,7 +137,7 @@
                 <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">Add member</button>
-                  <button mat-menu-item (click)="openDialog4()">Edit</button>
+                  <button mat-menu-item (click)="openUpdateDialog(task)">Edit</button>
                   <button mat-menu-item>Delete</button>
                 </mat-menu>
               </div>
@@ -154,18 +150,8 @@
     <div class="col">
       <div class="new-col-header">
         <div class="create-new-col-header">Create new column</div>
-        <button  (click)="openDialog3()" class="create-new-col-header2">+</button>
+        <button (click)="openDialog3()" class="create-new-col-header2">+</button>
       </div>
     </div>
-  </div> -->
   </div>
-
-  <!-- <div class="title-container">
-  <div class="form">
-    <div id="title">Create App</div>
-    <div style="height: 10px"></div>
-    <div id="description">App Todolist</div>
-  </div>
-  <div> </div
-</div> -->
 </div>
