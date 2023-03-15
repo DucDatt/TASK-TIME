@@ -16,46 +16,49 @@ export class RequestComponent implements OnInit, OnDestroy {
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
-  projectSubscription!: Subscription;
+  acceptedSubscription !: Subscription;
   projectState = this.store.select('project');
-  requestProject: ProjectModel[] = [];
+  requestProject$ = this.store.select('project', 'requestProject');
+  isAccepted$ = this.store.select('project', 'isAccepted');
   constructor(
     private store: Store<{ project: ProjectState; user: UserState }>
-  ) {}
+  ) { }
   ngOnInit(): void {
-    this.projectSubscription = this.projectState.subscribe((state) => {
-      if (state.isRequested) {
-        console.log('invited');
-        this.requestProject = state.requestProject;
-      }
-      if (state.isAccepted) {
-        console.log('accepted');
-        this.store.dispatch(ProjectActions.findRequest({ _id: this.user._id }));
+
+    this.acceptedSubscription = this.isAccepted$.subscribe((state) => {
+      if (state) {
+        if (this.user._id != '' || this.user._id != undefined) {
+          console.log('accepted');
+          this.store.dispatch(ProjectActions.findRequest({ _id: this.user._id }));
+        }
       }
     });
     this.userSubscription = this.userState$.subscribe((state) => {
       if (state.loading == false) {
         if (state.user._id) {
+          console.log(state.user.displayName);
           this.user = state.user;
-          console.log('findREquest', this.user.displayName);
-          this.store.dispatch(
-            ProjectActions.findRequest({ _id: state.user._id })
-          );
         }
       }
     });
   }
   ngOnDestroy(): void {
-    this.projectSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
+    this.acceptedSubscription.unsubscribe();
   }
 
   acceptInvitation(project: ProjectModel) {
-    this.store.dispatch(
-      ProjectActions.acceptRequest({
-        _id: this.user._id,
-        project: project,
-      })
-    );
+    if (this.user._id != '' || this.user._id != undefined) {
+      this.store.dispatch(
+        ProjectActions.acceptRequest({
+          _id: this.user._id,
+          project: project,
+        })
+      );
+    } else {
+      console.log('errorr')
+      return;
+    }
+
   }
 }

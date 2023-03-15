@@ -1,9 +1,6 @@
 <div class="container">
   <br />
-  <div
-    class="mdc-card mini-card mdc-elevation--z4"
-    *ngFor="let request of requestProject"
-  >
+  <div class="mdc-card mini-card mdc-elevation--z4" *ngFor="let request of requestProject$ | async">
     <div class="mdc-card__primary-action">
       <div class="media-image mdc-card__media mdc-card__media--square">
         <div class="mdc-card__media-content">
@@ -11,11 +8,7 @@
             <h1>Project Name: {{ request.projectName }}</h1>
             <h2>Inivite by: {{ request.owner.displayName }}</h2>
             <div style="display: flex; margin: 0 15px">
-              <button
-                mat-raised-button
-                color="primary"
-                (click)="acceptInvitation(request)"
-              >
+              <button mat-raised-button color="primary" (click)="acceptInvitation(request)">
                 Accept
               </button>
               <hr style="margin: 0 5px; background-color: #dbdbdb" />

@@ -7,6 +7,7 @@ export const initialState: UserState = {
   user: <User>{},
   loading: false,
   error: '',
+  isCreated: false,
 };
 
 export const UserReducer = createReducer(
@@ -17,6 +18,7 @@ export const UserReducer = createReducer(
       ...state,
       loading: true,
       error: '',
+      isCreated: false,
     };
   }),
   on(UserActions.createSuccess, (state, { user, type }) => {
@@ -24,6 +26,8 @@ export const UserReducer = createReducer(
     return {
       ...state,
       loading: false,
+      isCreated: true,
+      user: user,
     };
   }),
   on(UserActions.createFail, (state, { error, type }) => {
@@ -32,6 +36,7 @@ export const UserReducer = createReducer(
       ...state,
       loading: false,
       error: error,
+      isCreated: false,
     };
   }),
   on(UserActions.get, (state, { type }) => {

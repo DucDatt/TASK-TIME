@@ -7,7 +7,7 @@ import { UserActions } from 'src/redux/actions/user.action';
 
 @Injectable()
 export class UserEffects {
-  constructor(private actions$: Actions, private userService: UserService) {}
+  constructor(private actions$: Actions, private userService: UserService) { }
 
   $getById = createEffect(() =>
     this.actions$.pipe(
@@ -35,10 +35,11 @@ export class UserEffects {
         this.userService.createUser(action.user).pipe(
           map((user: User) => {
             if (user._id) {
+              console.log(user._id)
               return UserActions.createSuccess({ user: user });
             } else {
               console.log('User is existed');
-              return UserActions.createFail({ error: 'Create fal' });
+              return UserActions.createFail({ error: 'Create false' });
             }
           }),
           catchError((error) => of(UserActions.createFail({ error: error })))
