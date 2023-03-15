@@ -14,17 +14,17 @@ export class TaskService {
     async create(task: Task) {
         try {
             let newTask: Task = {
-                id: task.id,
+                id: Date.now().toString(),
                 title: task.title,
                 description: task.description,
-                status: task.status,
+                status: 'todo',
                 startAt: task.startAt,
                 deadline: task.deadline,
-                isDisable: task.isDisable,
+                isDisable: false,
                 owner: task.owner,
                 assignees: task.assignees,
-                project: task.project,
-                styles: task.styles
+                projectId: task.projectId,
+                styles: task.styles,
             };
             const createdTask = new this.taskModel(newTask);
             return createdTask.save();
@@ -86,7 +86,7 @@ export class TaskService {
             tempTask['deadline'] = task.deadline;
             tempTask['isDisable'] = task.isDisable;
             tempTask['assignees'] = task.assignees;
-            tempTask['project'] = task.project;
+            tempTask['projectId'] = task.projectId;
 
             return tempTask.save();
         } catch (error) {

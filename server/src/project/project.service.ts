@@ -117,14 +117,15 @@ export class ProjectService {
     }
   }
 
-  async getById(projectId: string) {
+  async getById(id: string) {
     try {
-      let findProject = await this.projectModel
-        .findOne({ projectId: projectId })
+      let project = await this.projectModel
+        .findOne({ projectId: id })
+        .populate('owner', 'displayName email photoURL', this.userModel)
         .exec();
-      return findProject;
+      return project;
     } catch (error) {
-      return null;
+      return error;
     }
   }
 

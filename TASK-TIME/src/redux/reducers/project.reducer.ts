@@ -4,7 +4,7 @@ import { ProjectState } from '../states/project.state';
 import { ProjectActions } from '../actions/project.action';
 
 let initialState: ProjectState = {
-  project: null,
+  project: {} as ProjectModel,
   projects: [],
   inProcess: false,
   isLoading: false,
@@ -47,7 +47,6 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      project: null,
       inProcess: true,
       error: '',
     };
@@ -137,7 +136,6 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      project: null,
       isLoading: true,
       error: '',
     };
@@ -154,7 +152,6 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      project: null,
       isLoading: false,
       error: error,
     };
@@ -226,6 +223,34 @@ export const ProjectReducer = createReducer(
     return {
       ...state,
       isRequested: false,
+      error: error,
+    };
+  }),
+
+  // get project detail
+  on(ProjectActions.getProjectDetails, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+      projectDetail: null,
+      isLoading: true,
+      error: '',
+    };
+  }),
+  on(ProjectActions.getProjectDetailsSuccess, (state, { project, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      projectDetail: project,
+      isLoading: false,
+    };
+  }),
+  on(ProjectActions.getProjectDetailsFail, (state, { error, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      projectDetail: null,
+      isLoading: false,
       error: error,
     };
   })
