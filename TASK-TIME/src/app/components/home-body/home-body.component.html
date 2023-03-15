@@ -46,16 +46,26 @@
                 >expand_more</mat-icon
               >
               <mat-menu #menu="matMenu">
-                <button (click)="navTask(project)" mat-menu-item>
-                  Join Project
-                </button>
-                <button (click)="openUpdateDialog(project)" mat-menu-item>
+                <button (click)="navTask()" mat-menu-item>Join Project</button>
+                <button
+                  (click)="openUpdateDialog(project)"
+                  mat-menu-item
+                  [disabled]="project.owner._id != this.user._id"
+                >
                   Update
                 </button>
-                <button (click)="deleteProject(project)" mat-menu-item>
+                <button
+                  (click)="deleteProject(project)"
+                  mat-menu-item
+                  [disabled]="project.owner._id != this.user._id"
+                >
                   Move To Bin
                 </button>
-                <button (click)="addMemberDialog(project)" mat-menu-item>
+                <button
+                  (click)="addMemberDialog(project)"
+                  mat-menu-item
+                  [disabled]="project.owner._id != this.user._id"
+                >
                   Add Member
                 </button>
               </mat-menu>

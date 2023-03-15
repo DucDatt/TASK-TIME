@@ -15,10 +15,9 @@ import { UserState } from 'src/redux/states/user.state';
 export class ProjectsComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
-    private store: Store<{ user: UserState }>
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void { }
 }

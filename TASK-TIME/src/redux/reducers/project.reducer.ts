@@ -163,7 +163,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isInviting: true,
+      isInvited: false,
       error: '',
     };
   }),
@@ -171,14 +171,14 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isInviting: false,
+      isInvited: true,
     };
   }),
   on(ProjectActions.inviteProjectFail, (state, { error, type }) => {
     console.log(type);
     return {
       ...state,
-      isInviting: false,
+      isInvited: false,
       error: error,
     };
   }),
@@ -186,7 +186,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isAccepting: false,
+      isAccepted: false,
       error: '',
     };
   }),
@@ -194,14 +194,14 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isAccepting: true,
+      isAccepted: true,
     };
   }),
   on(ProjectActions.acceptRequestFail, (state, { error, type }) => {
     console.log(type);
     return {
       ...state,
-      isAccepting: false,
+      isAccepted: false,
       error: error,
     };
   }),
@@ -209,7 +209,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isRequesting: true,
+      isRequested: false,
       error: '',
     };
   }),
@@ -217,7 +217,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isRequesting: false,
+      isRequested: true,
       requestProject: projects,
     };
   }),
@@ -225,7 +225,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isRequesting: false,
+      isRequested: false,
       error: error,
     };
   })

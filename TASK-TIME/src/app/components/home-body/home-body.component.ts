@@ -18,6 +18,8 @@ import { ProjectActions } from 'src/redux/actions/project.action';
 import { User } from 'src/app/model/user.model';
 import { UserState } from 'src/redux/states/user.state';
 import { MemberPopupComponent } from '../member-popup/member-popup.component';
+import { UserActions } from 'src/redux/actions/user.action';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-home-body',
@@ -31,7 +33,9 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private router: Router,
     private store: Store<{ project: ProjectState; user: UserState }>
-  ) {}
+  ) { }
+  isCreated$ = this.store.select('user', 'isCreated');
+  isCreatedSubscription!: Subscription;
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
@@ -64,6 +68,7 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.inProcessSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
+    this.isCreatedSubscription.unsubscribe();
   }
 
   initialize() {
