@@ -10,7 +10,7 @@ export class ProjectEffects {
   constructor(
     private actions$: Actions,
     private projectsService: ProjectsService
-  ) { }
+  ) {}
 
   $getAllForUser = createEffect(() =>
     this.actions$.pipe(
@@ -41,7 +41,6 @@ export class ProjectEffects {
       switchMap((action) =>
         this.projectsService.getProjectById(action.id).pipe(
           map((project: any) => {
-
             return ProjectActions.getSuccess({ project: project });
           }),
           catchError((error) => of(ProjectActions.getFail({ error: error })))
@@ -154,6 +153,31 @@ export class ProjectEffects {
       }),
       catchError((error: string) =>
         from([ProjectActions.findRequestFail({ error })])
+      )
+    )
+  );
+
+  //get detail project
+  getProjectDetails = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProjectActions.getProjectDetails),
+      switchMap((action) =>
+        this.projectsService.getProjectDetails(action.id).pipe(
+          map((project: any) => {
+            if (project == null) {
+              return ProjectActions.getProjectDetailsSuccess({
+                project,
+              });
+            } else {
+              return ProjectActions.getProjectDetailsSuccess({
+                project: project,
+              });
+            }
+          }),
+          catchError((error) =>
+            of(ProjectActions.getProjectDetailsFail({ error: error }))
+          )
+        )
       )
     )
   );
