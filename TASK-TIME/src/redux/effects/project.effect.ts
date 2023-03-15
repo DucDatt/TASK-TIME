@@ -10,7 +10,7 @@ export class ProjectEffects {
   constructor(
     private actions$: Actions,
     private projectsService: ProjectsService
-  ) {}
+  ) { }
 
   $getAllForUser = createEffect(() =>
     this.actions$.pipe(
@@ -18,6 +18,7 @@ export class ProjectEffects {
       switchMap((action) =>
         this.projectsService.getAllByUserId(action._id).pipe(
           map((projects: any) => {
+            console.log('projects', projects);
             if (projects == null) {
               return ProjectActions.getAllForUserSuccess({ projects: [] });
             } else {
@@ -40,6 +41,7 @@ export class ProjectEffects {
       switchMap((action) =>
         this.projectsService.getProjectById(action.id).pipe(
           map((project: any) => {
+
             return ProjectActions.getSuccess({ project: project });
           }),
           catchError((error) => of(ProjectActions.getFail({ error: error })))

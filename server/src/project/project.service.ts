@@ -38,20 +38,19 @@ export class ProjectService {
 
   async getAllByUserId(id: string) {
     try {
-      console.log(id);
+      // console.log(id);
       let myProjects = await this.projectModel
         .find({ owner: { $eq: Object(id) } })
         .populate('owner', 'displayName email photoURL', this.userModel)
         .exec();
       let invitedProject = await this.projectModel
         .find({ members: { $eq: Object(id) } })
-        .populate('owner', 'displayName email photoURL')
+        .populate('owner', 'displayName email photoURL', this.userModel)
         .exec();
-      let projects = [];
-      projects.push(myProjects);
-      projects.push(invitedProject);
+      // console.log(invitedProject);
+      let projects = [...myProjects, ...invitedProject];
       console.log(`projects length get from user ${id} : ${projects.length}`);
-      return myProjects;
+      return projects;
     } catch (error) {
       return null;
     }
@@ -59,19 +58,19 @@ export class ProjectService {
 
   async inviteMember(email: string, project: ProjectDocument) {
     try {
-      let user = await this.userModel.find({ email: email }).exec();
-      console.log(user);
-      if (user.length == 0 || user == null) {
+      let user = await this.userModel.findOne({ email: email }).exec();
+      console.log(`user with email : ${user.email}`);
+      if (user == null) {
         return null;
       } else {
         let updateProject = await this.projectModel
           .findOneAndUpdate(
             { projectId: project.projectId },
-            { $push: { invitedMembers: user[0]._id } },
+            { $push: { invitedMembers: user._id } },
             { new: true },
           )
           .exec();
-        console.log(updateProject);
+        // console.log(updateProject);
         return updateProject;
       }
     } catch (error) {
@@ -83,8 +82,14 @@ export class ProjectService {
   async acceptRequest(_id: string, project: ProjectDocument) {
     try {
       let user = await this.userModel.findById(_id).exec();
-      project.members.push(user);
-      return project.save();
+      let newProject = await {
+        ...project,
+        members: [...project.members, user],
+        invitedMembers: project.invitedMembers.filter(
+          (_id) => _id != Object(_id),
+        ),
+      }
+      return await this.projectModel.findByIdAndUpdate(project._id, newProject, { new: true }).exec();
     } catch (error) {
       return null;
     }

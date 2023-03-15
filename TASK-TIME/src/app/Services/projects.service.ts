@@ -39,7 +39,7 @@ export class ProjectsService {
     return project;
   }
 
-  postProject(project: any) {
+  postProject(project: ProjectModel) {
     let response = this.http
       .post(`${this.url}/create`, project, {
         headers: new HttpHeaders({

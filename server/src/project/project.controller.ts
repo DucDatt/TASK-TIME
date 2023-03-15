@@ -7,6 +7,11 @@ import { ProjectService } from './project.service';
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) { }
 
+  @Post('create')
+  async createProject(@Body() project: Project) {
+    return await this.projectService.create(project);
+  }
+
   @Get('all')
   getAll() {
     return this.projectService.getAll();

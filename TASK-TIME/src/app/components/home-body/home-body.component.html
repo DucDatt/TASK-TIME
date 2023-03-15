@@ -8,9 +8,7 @@
     <mat-form-field class="selector" appearance="fill">
       <mat-label class="sort_by">SORT BY</mat-label>
       <mat-select>
-        <mat-option value="option1" (click)="sortByAlphabet()"
-          >Alphabet</mat-option
-        >
+        <mat-option value="option1" (click)="sortByAlphabet()">Alphabet</mat-option>
         <mat-option value="option2">Date</mat-option>
         <!-- <mat-option value="option3" ()>Starred</mat-option> -->
       </mat-select>
@@ -34,26 +32,23 @@
             <div class="deadline">Deadline: {{ project.deadline }}</div>
             <div class="icon">
               <div class="star-icon">
-                <span
-                  class="material-symbols-rounded"
-                  [ngClass]="{ yellow: project.isStarred }"
-                  (click)="updateStarred(project)"
-                >
+                <span class="material-symbols-rounded" [ngClass]="{ yellow: project.isStarred }"
+                  (click)="updateStarred(project)">
                   star
                 </span>
               </div>
-              <mat-icon class="expand-icon" [matMenuTriggerFor]="menu"
-                >expand_more</mat-icon
-              >
+              <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
               <mat-menu #menu="matMenu">
                 <button (click)="navTask()" mat-menu-item>Join Project</button>
-                <button (click)="openUpdateDialog(project)" mat-menu-item>
+                <button (click)="openUpdateDialog(project)" mat-menu-item
+                  [disabled]="project.owner._id != this.user._id">
                   Update
                 </button>
-                <button (click)="deleteProject(project)" mat-menu-item>
+                <button (click)="deleteProject(project)" mat-menu-item [disabled]="project.owner._id != this.user._id">
                   Move To Bin
                 </button>
-                <button (click)="addMemberDialog(project)" mat-menu-item>
+                <button (click)="addMemberDialog(project)" mat-menu-item
+                  [disabled]="project.owner._id != this.user._id">
                   Add Member
                 </button>
               </mat-menu>

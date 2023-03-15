@@ -13,29 +13,28 @@ import { UserState } from 'src/redux/states/user.state';
   styleUrls: ['./side-bar.component.scss'],
 })
 export class SideBarComponent implements OnInit, OnDestroy {
+
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
-  projectSubscription!: Subscription;
-  projectState = this.store.select('project');
-  requestProject: ProjectModel[] = [];
+  isRequestSubscription!: Subscription;
+  isRequest$ = this.store.select('project', 'isRequested');
+  requestProject$ = this.store.select('project', 'requestProject');
   @Input('index') index: number = 0;
 
   constructor(
     private store: Store<{ project: ProjectState; user: UserState }>
-  ) {}
+  ) { }
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.userSubscription.unsubscribe();
+    this.isRequestSubscription.unsubscribe();
   }
   ngOnInit(): void {
-    this.projectSubscription = this.projectState.subscribe((state) => {
-      if (state.isRequested) {
-        console.log('invited');
-        this.requestProject = state.requestProject;
-      }
-      if (state.isAccepted) {
-        console.log('accepted-sidebar');
-        this.store.dispatch(ProjectActions.findRequest({ _id: this.user._id }));
+
+    this.isRequestSubscription = this.isRequest$.subscribe((state) => {
+      if (state) {
+        console.log('requested');
+
       }
     });
     this.userSubscription = this.userState$.subscribe((state) => {
