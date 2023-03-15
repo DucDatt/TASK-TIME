@@ -46,7 +46,9 @@
                 >expand_more</mat-icon
               >
               <mat-menu #menu="matMenu">
-                <button (click)="navTask()" mat-menu-item>Join Project</button>
+                <button (click)="navTask(project)" mat-menu-item>
+                  Join Project
+                </button>
                 <button
                   (click)="openUpdateDialog(project)"
                   mat-menu-item
