@@ -40,6 +40,7 @@ export class AuthService {
   }
 
   async LoginWithGoogle() {
+    console.log('loginn......');
     let provider = new GoogleAuthProvider();
     signInWithPopup(this.auth, provider)
       .then((result) => {})
@@ -49,6 +50,7 @@ export class AuthService {
   }
 
   logOut() {
+    console.log('lougout......');
     this.auth.signOut().then(() => {
       window.location.href = '/login';
     });

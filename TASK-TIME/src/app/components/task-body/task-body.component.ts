@@ -57,7 +57,7 @@ export class TaskBodyComponent {
   constructor(
     private dialog: MatDialog,
     private store: Store<{ task: TaskState; user: UserState }>
-  ) { }
+  ) {}
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
@@ -144,19 +144,11 @@ export class TaskBodyComponent {
     this.dialog.open(ColPopupComponent);
   }
 
-  todo: any[] = [
+  todo: any[] = [];
 
-  ]
+  progress: any[] = [];
 
-
-
-  progress: any[] = [
-
-  ];
-
-  done: any[] = [
-
-  ];
+  done: any[] = [];
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
@@ -194,5 +186,5 @@ export class TaskBodyComponent {
     }
   }
 
-  newCol() { }
+  newCol() {}
 }

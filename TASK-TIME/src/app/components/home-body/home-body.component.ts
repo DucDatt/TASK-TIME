@@ -26,6 +26,7 @@ import { MemberPopupComponent } from '../member-popup/member-popup.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeBodyComponent implements OnInit, OnDestroy {
+  data: ProjectModel[] = [];
   constructor(
     private dialog: MatDialog,
     private router: Router,
@@ -87,7 +88,8 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
     this.store.dispatch(ProjectActions.delete({ project: tempProject }));
   }
 
-  navTask() {
+  navTask(project: ProjectModel) {
+    //navigate to task page
     this.router.navigate(['/task']);
   }
 
