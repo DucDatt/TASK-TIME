@@ -10,13 +10,19 @@ export class Task {
   @Prop({ required: true })
   id: string;
 
-  @Prop()
+  @Prop({
+    required: true,
+  })
   title: string;
 
   @Prop()
   description: string;
 
-  @Prop()
+  @Prop({
+    required: true,
+    default: 'todo',
+    enum: ['todo', 'doing', 'done'],
+  })
   status: string;
 
   @Prop()
@@ -25,7 +31,9 @@ export class Task {
   @Prop()
   deadline: string
 
-  @Prop()
+  @Prop({
+    default: false,
+  })
   isDisable: boolean;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'users' })
@@ -34,8 +42,8 @@ export class Task {
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }] })
   assignees: UserDocument[];
 
-  @Prop({ type: { type: mongoose.Schema.Types.ObjectId, ref: 'projects' } })
-  project: ProjectDocument;
+  @Prop()
+  projectId: string;
 
   @Prop([String])
   styles: string[];

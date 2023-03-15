@@ -39,6 +39,15 @@ export class ProjectsService {
     return project;
   }
 
+  getProjectDetails(id: string) {
+    let project = this.http.get(`${this.url}/details/${id}`).pipe(
+      map((project) => {
+        return <ProjectModel>project;
+      })
+    );
+    return project;
+  }
+
   postProject(project: ProjectModel) {
     let response = this.http
       .post(`${this.url}/create`, project, {

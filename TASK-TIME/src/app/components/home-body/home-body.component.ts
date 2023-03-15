@@ -32,7 +32,12 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private router: Router,
     private store: Store<{ project: ProjectState; user: UserState }>
-  ) { }
+  ) {
+    this.store.select('project').subscribe((data) => {
+      console.log(data);
+    }
+    );
+  }
   isCreated$ = this.store.select('user', 'isCreated');
   isCreatedSubscription!: Subscription;
   userSubscription!: Subscription;
@@ -41,6 +46,7 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   inProcessSubscription!: Subscription;
   inProcess$ = this.store.select('project', 'inProcess');
   projects = this.store.select('project', 'projects');
+  id!: string;
 
   ngOnInit(): void {
     this.inProcessSubscription = this.inProcess$.subscribe((data) => {

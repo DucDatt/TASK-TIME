@@ -79,4 +79,18 @@ export const ProjectActions = {
     '[Project] Accept Request Fail',
     props<{ error: string }>()
   ),
+
+  //get project details
+  getProjectDetails: createAction(
+    '[Project] Get Project Details',
+    props<{ id: string }>()
+  ),
+  getProjectDetailsSuccess: createAction(
+    '[Project] Get Project Details Success',
+    props<{ project: ProjectModel }>()
+  ),
+  getProjectDetailsFail: createAction(
+    '[Project] Get Project Details Fail',
+    props<{ error: string }>()
+  ),
 };
