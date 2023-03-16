@@ -39,16 +39,11 @@
             "production": {
               "budgets": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                   "type": "initial",
+                   "maximumWarning": "2mb",
+                   "maximumError": "5mb"
                 }
-              ],
+             ],
               "outputHashing": "all"
             },
             "development": {
@@ -104,6 +99,16 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "TASK-TIME:build:production",
+            "firebaseProject": "fir-firebase-56e85",
+            "firebaseHostingSite": "fir-firebase-56e85"
           }
         }
       }

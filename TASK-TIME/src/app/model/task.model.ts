@@ -10,6 +10,7 @@ export interface TaskModel {
   isDisable: boolean;
   createdAt: number;
   updatedAt: number;
+  status: string;
   _id: string;
   assignees: User[];
   project: ProjectModel;

@@ -76,7 +76,7 @@
   margin-left: 10%;
   width: 400px;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 #member {
@@ -94,6 +94,6 @@
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
 }

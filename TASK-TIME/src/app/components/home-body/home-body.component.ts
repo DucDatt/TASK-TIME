@@ -36,8 +36,7 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   ) {
     this.store.select('project').subscribe((data) => {
       console.log(data);
-    }
-    );
+    });
   }
   isCreated$ = this.store.select('user', 'isCreated');
   isCreatedSubscription!: Subscription;
@@ -154,10 +153,10 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
     });
   }
 
-  sortByAlphabet() {
+  sortByName() {
     this.projects = this.projects.pipe(
       map((projects) => {
-        return projects.sort((a, b) => {
+        return projects.slice().sort((a, b) => {
           return a.projectName.localeCompare(b.projectName);
         });
       })

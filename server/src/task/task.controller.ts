@@ -4,7 +4,7 @@ import { TaskService } from './task.service';
 
 @Controller('task')
 export class TaskController {
-  constructor(private readonly taskService: TaskService) { }
+  constructor(private readonly taskService: TaskService) {}
 
   @Get('all')
   getAll() {
@@ -28,8 +28,8 @@ export class TaskController {
     return await this.taskService.updateTask(id, task);
   }
 
-  @Get('all/user/:id')
-  async getAllByUserId(@Param('id') id: string) {
+  @Get('all/user')
+  async getAllByUserId(@Query('id') id: string) {
     return await this.taskService.getAllByUserId(id);
   }
 }

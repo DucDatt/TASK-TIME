@@ -4,14 +4,14 @@
     <div class="input">
       <mat-form-field class="project_name">
         <mat-label>Task name</mat-label>
-        <input [(ngModel)]="tempTask.title" matInput placeholder="" value="">
+        <input [(ngModel)]="tempTask.title" matInput placeholder="" value="" />
       </mat-form-field>
     </div>
 
     <div class="input">
       <mat-form-field class="Description">
         <mat-label>Description</mat-label>
-        <input [(ngModel)]="tempTask.description" matInput placeholder="" value="">
+        <input [(ngModel)]="tempTask.description" matInput placeholder="" value="" />
       </mat-form-field>
     </div>
 
@@ -40,7 +40,7 @@
 
     <div class="btn_container">
       <div>
-        <button [mat-dialog-close]="tempTask" class="button">CREATE</button>
+        <button class="button" (click)="createTask()">CREATE</button>
       </div>
     </div>
   </div>

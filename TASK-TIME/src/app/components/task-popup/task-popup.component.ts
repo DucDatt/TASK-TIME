@@ -7,18 +7,21 @@ import {
 } from '../calendar/calendar.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/model/user.model';
-
+import { Store } from '@ngrx/store';
+import { TaskState } from '@angular/fire/firestore';
+import { TaskActions } from 'src/redux/actions/task.action';
 
 @Component({
   selector: 'app-task-popup',
   templateUrl: './task-popup.component.html',
-  styleUrls: ['./task-popup.component.scss']
+  styleUrls: ['./task-popup.component.scss'],
 })
 export class TaskPopupComponent {
   constructor(
+    private store: Store<{ task: TaskState }>,
     public dialogRef: MatDialogRef<TaskPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User
-  ) { }
+  ) {}
   startDate = StartComponent;
   deadlineDate = DeadlineComponent;
 
@@ -28,6 +31,7 @@ export class TaskPopupComponent {
     description: '',
     startAt: '',
     deadline: '',
+    status: 'todo',
     isDisable: false,
     createdAt: 0,
     updatedAt: 0,
@@ -48,13 +52,18 @@ export class TaskPopupComponent {
       _id: '',
       owner: this.data,
       members: [],
-    }
-
+    },
   };
-
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  ngOninit() {
+    this.store.select('task').subscribe((data) => {
+      console.log(data);
+    });
+  }
+  createTask() {
+    this.store.dispatch(TaskActions.create({ task: this.tempTask }));
+  }
 }

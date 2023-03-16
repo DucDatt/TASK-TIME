@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-firebase-56e85": {
+      "hosting": {
+        "TASK-TIME": [
+          "fir-firebase-56e85"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-firebase-56e85"
+  }
+}
