@@ -59,7 +59,7 @@ export class TaskBodyComponent {
     private dialog: MatDialog,
     private _socket: Socket,
     private store: Store<{ task: TaskState; user: UserState }>
-  ) {}
+  ) { }
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
@@ -87,6 +87,8 @@ export class TaskBodyComponent {
         }
       }
     });
+
+
   }
 
   ngOnDestroy(): void {
@@ -162,10 +164,13 @@ export class TaskBodyComponent {
         break;
       case 'cdk-drop-list-1':
         this.task = { ...this.task, status: 'doing' };
+
         break;
       case 'cdk-drop-list-2':
         this.task = { ...this.task, status: 'done' };
+
         break;
+
     }
 
     console.log(this.task);
@@ -212,5 +217,5 @@ export class TaskBodyComponent {
     this.task = event;
   }
 
-  newCol() {}
+  newCol() { }
 }
