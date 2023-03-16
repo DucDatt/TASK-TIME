@@ -146,76 +146,9 @@ export class TaskBodyComponent {
 
   todo: any[] = [];
 
-<<<<<<< HEAD
-  todo = [
-      {
-      name: 'Coding',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded']
-    },
-    {
-      name: 'Create login page',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded']
-    },
-    {
-      name: 'Create home page',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded']
-    },
-    {
-      name: 'Create task page',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded'],
-    }
-  ];
-
-  progress = [
-    {
-      name: 'Server',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded']
-    },
-    {
-      name: 'Navbar',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded']
-    }
-  ];
-
-  done = [
-      {
-      name: 'Color',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded']
-    },
-    {
-      name: 'Font',
-      member: 'Nam',
-      date: '28/02/2023',
-      deadline: '10/03/2023',
-      styles: ['material-symbols-rounded']
-    }
-  ];
-=======
   progress: any[] = [];
 
   done: any[] = [];
->>>>>>> ce3003338f8456bd75da4772c0d1e1256c02c253
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {

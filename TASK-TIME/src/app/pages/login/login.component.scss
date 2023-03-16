@@ -23,7 +23,6 @@ body {
 }
 
 .header-container {
-  height: 70%;
   height: fit-content;
   background-image: url('../../../assets/bg-img.jpg');
   // background-image: linear-gradient(to bottom right, red, yellow);
@@ -164,25 +163,25 @@ body {
 }
 
 .line2 {
-  margin-right: 8%;
+  margin-right: 15%;
 
   margin-top: 2%;
   color: #26BDFF !important;
   font-size: 2vh;
   border: 1px solid #09f289;
-  border-radius: 3vh;
+  border-radius: 2vh;
   height: fit-content;
   padding: 0;
   display: flex;
   flex-direction: row;
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   justify-content: center;
 }
 
 .task {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   margin: auto 0;
 }
 
