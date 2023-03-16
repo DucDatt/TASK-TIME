@@ -21,8 +21,9 @@ export class TaskGateway {
   @SubscribeMessage('update-data')
   async handleUpdateData(client: any, payload: any) {
     let task = await this._taskService.updateTask(payload.id, payload);
-    console.log(task);
+    console.log(payload.roomId);
     if (task) {
+      console.log(task);
       // this._projectService.getById(payload.id);
       this.server.to(payload.roomId).emit('send-data', task);
     }

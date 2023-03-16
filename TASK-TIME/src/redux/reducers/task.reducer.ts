@@ -51,7 +51,7 @@ export const TaskReducer = createReducer(
   on(TaskActions.createSuccess, (state, { task }) => {
     // let tasks = [...state.tasks!];
     // tasks.push(task);
-    console.log(task)
+    console.log(task);
 
     return {
       ...state,
@@ -134,7 +134,6 @@ export const TaskReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      task: null,
       isLoading: true,
       error: '',
     };
@@ -151,7 +150,33 @@ export const TaskReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      task: null,
+      isLoading: false,
+      error: error,
+    };
+  }),
+
+  //get all task by project id
+  on(TaskActions.getAllByProjectId, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+      tasks: [],
+      isLoading: true,
+      error: '',
+    };
+  }),
+  on(TaskActions.getAllByProjectIdSuccess, (state, { tasks, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      tasks: tasks,
+      isLoading: false,
+    };
+  }),
+  on(TaskActions.getAllByProjectIdFail, (state, { error, type }) => {
+    console.log(type);
+    return {
+      ...state,
       isLoading: false,
       error: error,
     };

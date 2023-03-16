@@ -16,10 +16,7 @@ export const TaskActions = {
   ),
 
   get: createAction('[Task] Get', props<{ id: string }>()),
-  getSuccess: createAction(
-    '[Task] Get Success',
-    props<{ task: TaskModel }>()
-  ),
+  getSuccess: createAction('[Task] Get Success', props<{ task: TaskModel }>()),
   getFail: createAction('[Task] Get Fail', props<{ error: string }>()),
 
   create: createAction('[Task] Create', props<{ task: TaskModel }>()),
@@ -42,4 +39,17 @@ export const TaskActions = {
     props<{ task: TaskModel }>()
   ),
   updateFail: createAction('[Task] Update Fail', props<{ error: string }>()),
+
+  getAllByProjectId: createAction(
+    '[Task] Get All By Project Id',
+    props<{ _id: string }>()
+  ),
+  getAllByProjectIdSuccess: createAction(
+    '[Task] Get All By Project Id Success',
+    props<{ tasks: TaskModel[] }>()
+  ),
+  getAllByProjectIdFail: createAction(
+    '[Task] Get All By Project Id Fail',
+    props<{ error: string }>()
+  ),
 };

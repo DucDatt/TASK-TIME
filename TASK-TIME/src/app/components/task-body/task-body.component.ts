@@ -20,11 +20,12 @@ import {
 import { Store } from '@ngrx/store';
 import { TaskState } from 'src/redux/states/task.state';
 import { UserState } from 'src/redux/states/user.state';
-import { Subscription } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { User } from 'src/app/model/user.model';
 import { TaskActions } from 'src/redux/actions/task.action';
 import { TaskModel } from 'src/app/model/task.model';
 import { Socket } from 'ngx-socket-io';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-task-body',
@@ -58,8 +59,14 @@ export class TaskBodyComponent {
   constructor(
     private dialog: MatDialog,
     private _socket: Socket,
-    private store: Store<{ task: TaskState; user: UserState }>
-  ) {}
+    private store: Store<{ task: TaskState; user: UserState }>,
+    private route: ActivatedRoute
+  ) {
+    const id: Observable<string> = this.route.params.pipe(map((p) => p['id']));
+    id.subscribe((data) => {
+      this.store.dispatch(TaskActions.get({ id: data }));
+    });
+  }
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
@@ -74,16 +81,18 @@ export class TaskBodyComponent {
 
   ngOnInit(): void {
     this.task$.subscribe((data) => {
-      console.log(data);
+      if (data.task != null) {
+        console.log(data);
+      }
     });
     this.userSubscription = this.userState$.subscribe((state) => {
       if (state.loading == false) {
         if (state.user._id) {
           this.user = state.user;
-          console.log(this.user);
-          this.store.dispatch(
-            TaskActions.getAllForUser({ _id: state.user._id })
-          );
+          console.log('user', this.user);
+          // this.store.dispatch(
+          //   TaskActions.getAllForUser({ _id: state.user._id })
+          // );
         }
       }
     });
@@ -162,9 +171,11 @@ export class TaskBodyComponent {
         break;
       case 'cdk-drop-list-1':
         this.task = { ...this.task, status: 'doing' };
+
         break;
       case 'cdk-drop-list-2':
         this.task = { ...this.task, status: 'done' };
+
         break;
     }
 
@@ -182,6 +193,7 @@ export class TaskBodyComponent {
         event.previousIndex,
         event.currentIndex
       );
+      console.log(this.task);
       this._socket.emit('update-data', this.task);
     }
   }

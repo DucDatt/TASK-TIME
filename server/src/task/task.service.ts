@@ -65,7 +65,11 @@ export class TaskService {
 
   async getById(taskId: string) {
     try {
-      let findTask = await this.taskModel.findOne({ id: taskId }).exec();
+      console.log(taskId);
+      let findTask = await this.taskModel
+        .findOne({ _id: Object(taskId) })
+        .exec();
+      console.log(findTask);
       return findTask;
     } catch (error) {
       return null;
@@ -88,6 +92,20 @@ export class TaskService {
       return tempTask.save();
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  getAllTaskByProjectId(id: string) {
+    try {
+      let myTasks = this.taskModel
+        .find({ projectId: { $eq: Object(id) } })
+        .populate('project', 'projectId projectName members')
+        .exec();
+      console.log(myTasks);
+
+      return myTasks;
+    } catch (error) {
+      return null;
     }
   }
 }

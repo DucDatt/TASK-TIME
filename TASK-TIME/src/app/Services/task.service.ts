@@ -27,6 +27,7 @@ export class TaskService {
   }
 
   getTaskById(id: string) {
+    console.log(id);
     let task = this.http.get(`${this.url}?id=${id}`).pipe(
       map((task) => {
         return <TaskModel>task;
@@ -49,5 +50,12 @@ export class TaskService {
         authorization: '',
       }),
     }) as Observable<TaskModel>;
+  }
+
+  getAllByProjectId(id: string) {
+    console.log(id);
+    return this.http.get(`${this.url}/all/project?id=${id}`) as Observable<
+      TaskModel[]
+    >;
   }
 }

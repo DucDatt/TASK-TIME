@@ -11,13 +11,30 @@
   flex-direction: column;
 }
 
+.input {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.example-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.add_member {
+  display: flex;
+  align-self: center;
+}
+
 .project_name,
 .add_member {
   width: 80%;
   margin-top: 20px;
 }
 
-.btn_container > div {
+.btn_container>div {
   display: flex;
   justify-content: flex-end;
 }
@@ -60,12 +77,6 @@
   width: 400px;
   display: flex;
   justify-content: space-between;
-}
-
-.input {
-  width: 500px;
-  display: flex;
-  justify-content: center;
 }
 
 #member {

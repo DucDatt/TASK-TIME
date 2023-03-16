@@ -31,13 +31,40 @@ export class TaskEffects {
     )
   );
 
+  $GetAllTaskByProjectId = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TaskActions.getAllByProjectId),
+      switchMap((action) =>
+        this.taskService.getAllByProjectId(action._id).pipe(
+          map((tasks: any) => {
+            if (tasks == null) {
+              return TaskActions.getAllByProjectIdSuccess({ tasks: [] });
+            } else {
+              return TaskActions.getAllByProjectIdSuccess({
+                tasks: tasks,
+              });
+            }
+          }),
+          catchError((error) =>
+            of(TaskActions.getAllByProjectIdFail({ error: error }))
+          )
+        )
+      )
+    )
+  );
+
   $getById = createEffect(() =>
     this.actions$.pipe(
       ofType(TaskActions.get),
       switchMap((action) =>
         this.taskService.getTaskById(action.id).pipe(
           map((task: any) => {
-            return TaskActions.getSuccess({ task: task });
+            console.log(task);
+            if (task == null) {
+              return TaskActions.getFail({ error: 'Task not found' });
+            } else {
+              return TaskActions.getSuccess({ task: task });
+            }
           }),
           catchError((error) => of(TaskActions.getFail({ error: error })))
         )

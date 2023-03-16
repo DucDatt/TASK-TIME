@@ -19,7 +19,7 @@ export class HomeComponent {
     '/home/projects',
     '/home/starred',
     '/home/recyclebin',
-    'home/projects/tasks',
+    '/home/request',
   ];
 
   constructor(private router: Router) {}

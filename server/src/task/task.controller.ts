@@ -19,7 +19,14 @@ export class TaskController {
 
   @Get()
   getById(@Query('id') id: string) {
+    console.log(id);
     return this.taskService.getById(id);
+  }
+
+  //Get all task by project id
+  @Get('allTask')
+  async getAllTaskByProjectId(@Query('id') id: string) {
+    return await this.taskService.getAllTaskByProjectId(id);
   }
 
   @Put('update')

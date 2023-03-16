@@ -64,6 +64,6 @@ export class TaskPopupComponent {
     });
   }
   createTask() {
-    this.store.dispatch(TaskActions.create({ task: this.tempTask }));
+    this.dialogRef.close(this.tempTask);
   }
 }
