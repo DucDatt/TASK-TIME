@@ -15,7 +15,12 @@ import { UserActions } from 'src/redux/actions/user.action';
 export class HomeComponent {
   index: number = 0;
 
-  urlIndicesMap = ['/home/projects', '/home/starred', '/home/recyclebin'];
+  urlIndicesMap = [
+    '/home/projects',
+    '/home/starred',
+    '/home/recyclebin',
+    'home/projects/tasks',
+  ];
 
   constructor(private router: Router) {}
 

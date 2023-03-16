@@ -71,9 +71,9 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.inProcessSubscription.unsubscribe();
-    this.userSubscription.unsubscribe();
-    this.isCreatedSubscription.unsubscribe();
+    // this.inProcessSubscription.unsubscribe();
+    // this.userSubscription.unsubscribe();
+    // this.isCreatedSubscription.unsubscribe();
   }
 
   initialize() {
@@ -99,8 +99,8 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   }
 
   navTask(project: ProjectModel) {
-    //navigate to task page
-    this.router.navigate(['/task']);
+    //navigate to task page with project id
+    this.router.navigate(['home/projects/tasks/' + project._id]);
   }
 
   openCreateDialog(): void {
