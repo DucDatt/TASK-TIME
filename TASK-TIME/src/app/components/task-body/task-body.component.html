@@ -23,15 +23,8 @@
   </div>
 
   <div class="body">
-    <div
-      class="col"
-      cdkDropList
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[progressList, doneList]"
-      (cdkDropListDropped)="drop($event)"
-      routerLink="/task"
-    >
+    <div class="col" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[progressList, doneList]" (cdkDropListDropped)="drop($event)" routerLink="/task">
       <div class="col-header">
         <div class="dot1"></div>
         <div class="col-header-content">TO DO</div>
@@ -52,17 +45,12 @@
             </div>
             <div class="icon">
               <div class="star-icon">
-                <span
-                  [ngClass]="task.styles"
-                  (click)="changeColor('yellow', i, todo)"
-                >
+                <span [ngClass]="task.styles" (click)="changeColor('yellow', i, todo)">
                   star
                 </span>
               </div>
               <div class="icon-box">
-                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu"
-                  >expand_more</mat-icon
-                >
+                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">
                     Add member
@@ -83,23 +71,13 @@
       </div>
     </div>
 
-    <div
-      class="col"
-      cdkDropList
-      #progressList="cdkDropList"
-      [cdkDropListData]="progress"
-      [cdkDropListConnectedTo]="[todoList, doneList]"
-      (cdkDropListDropped)="drop($event)"
-    >
+    <div class="col" cdkDropList #progressList="cdkDropList" [cdkDropListData]="progress"
+      [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)">
       <div class="col-header">
         <div class="dot2"></div>
         <div class="col-header-content">IN PROGRESS</div>
       </div>
-      <div
-        class="task-col"
-        *ngFor="let task of progress; let i = index"
-        cdkDrag
-      >
+      <div class="task-col" *ngFor="let task of progress; let i = index" cdkDrag>
         <div class="task-col-content">
           <div class="task-name">
             <div class="task-title">{{ task.name }}</div>
@@ -115,17 +93,12 @@
             </div>
             <div class="icon">
               <div class="star-icon">
-                <span
-                  [ngClass]="task.styles"
-                  (click)="changeColor('yellow', i, progress)"
-                >
+                <span [ngClass]="task.styles" (click)="changeColor('yellow', i, progress)">
                   star
                 </span>
               </div>
               <div class="icon-box">
-                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu"
-                  >expand_more</mat-icon
-                >
+                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">
                     Add member
@@ -142,14 +115,8 @@
       </div>
     </div>
 
-    <div
-      class="col"
-      cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList, progressList]"
-      (cdkDropListDropped)="drop($event)"
-    >
+    <div class="col" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList, progressList]" (cdkDropListDropped)="drop($event)">
       <div class="col-header">
         <div class="dot3"></div>
         <div class="col-header-content">DONE</div>
@@ -170,17 +137,12 @@
             </div>
             <div class="icon">
               <div class="star-icon">
-                <span
-                  [ngClass]="task.styles"
-                  (click)="changeColor('yellow', i, done)"
-                >
+                <span [ngClass]="task.styles" (click)="changeColor('yellow', i, done)">
                   star
                 </span>
               </div>
               <div class="icon-box">
-                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu"
-                  >expand_more</mat-icon
-                >
+                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
                 <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="openDialog2()">
                     Add member
@@ -196,14 +158,4 @@
         </div>
       </div>
     </div>
-
-    <div class="col">
-      <div class="new-col-header">
-        <div class="create-new-col-header">Create new column</div>
-        <button (click)="openDialog3()" class="create-new-col-header2">
-          +
-        </button>
-      </div>
-    </div>
   </div>
-</div>

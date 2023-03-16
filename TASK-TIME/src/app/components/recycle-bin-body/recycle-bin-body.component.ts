@@ -19,7 +19,7 @@ export class RecycleBinBodyComponent {
   constructor(
     private projectsService: ProjectsService,
     private store: Store<{ project: ProjectState }>
-  ) {}
+  ) { }
   projects = this.store.select('project', 'projects');
 
   ngOnInit() {
@@ -52,5 +52,6 @@ export class RecycleBinBodyComponent {
     };
 
     this.store.dispatch(ProjectActions.delete({ project: tempProject }));
+    window.location.reload();
   }
 }

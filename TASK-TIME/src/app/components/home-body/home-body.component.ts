@@ -74,7 +74,7 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.inProcessSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
-    this.isCreatedSubscription.unsubscribe();
+    // this.isCreatedSubscription.unsubscribe();
   }
 
   initialize() {

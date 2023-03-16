@@ -20,7 +20,7 @@ export class StarredBodyComponent {
     private projectsService: ProjectsService,
     private router: Router,
     private store: Store<{ project: ProjectState }>
-  ) {}
+  ) { }
   projects = this.store.select('project', 'projects');
 
   ngOnInit() {
@@ -47,6 +47,7 @@ export class StarredBodyComponent {
       isStarred: !project.isStarred,
     };
     this.store.dispatch(ProjectActions.update({ project: tempProject }));
+    window.location.reload();
   }
 
   deleteProject(project: any) {
@@ -56,5 +57,6 @@ export class StarredBodyComponent {
     };
 
     this.store.dispatch(ProjectActions.delete({ project: tempProject }));
+    window.location.reload();
   }
 }

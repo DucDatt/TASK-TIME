@@ -15,16 +15,16 @@ import { UserActions } from 'src/redux/actions/user.action';
 export class HomeComponent {
   index: number = 0;
 
-  urlIndicesMap = ['/home/projects', '/home/starred', '/home/recyclebin'];
+  urlIndicesMap = ['/home/projects', '/home/starred', '/home/recyclebin', '/home/request'];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.router.events.subscribe((val: any) => {
       let tempIndex = 0;
       try {
         tempIndex = this.urlIndicesMap.indexOf(val.routerEvent.url);
-      } catch (error) {}
+      } catch (error) { }
       if (tempIndex >= 0) {
         this.index = tempIndex;
       }

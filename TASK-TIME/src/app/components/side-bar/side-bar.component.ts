@@ -41,7 +41,7 @@ export class SideBarComponent implements OnInit, OnDestroy {
       if (state.loading == false) {
         if (state.user._id) {
           this.user = state.user;
-          console.log('findREquest', this.user.displayName);
+          console.log('findRequest', this.user.displayName);
           this.store.dispatch(
             ProjectActions.findRequest({ _id: state.user._id })
           );
