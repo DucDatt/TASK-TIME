@@ -92,10 +92,12 @@
     }
 
     .task-col {
+      background-color: #F2F2F2;
+      // border: solid 1px #ffb93f;
       margin-top: 7%;
       border-radius: 10px;
       width: 100%;
-      height: fit-content;
+      // height: 200px;
       justify-content: center;
       align-items: center;
 
@@ -212,6 +214,7 @@
     }
 
     .task-col-create {
+      height: 180px;
       padding: 10px 10px;
       border: dashed 2px #d7d7d7;
       background-color: #fafafa;
@@ -229,26 +232,8 @@
       display: flex;
       justify-content: center;
       min-width: 100%;
-      min-height: 140px;
+      height: 200px;
       align-items: center;
-    }
-
-    .create-new-col-header {
-      color: black;
-      display: flex;
-      margin-left: 5%;
-    }
-
-    .create-new-col-header2 {
-      font-size: large;
-      color: black;
-      display: flex;
-      margin-right: 3%;
-      width: 25px;
-      display: flex;
-      justify-content: center;
-      background-color: white;
-      border-radius: 5px;
     }
 
     .create-new-col-header2:hover {
@@ -284,9 +269,9 @@
 }
 
 .cdk-drag-preview {
-  border: 1px solid #d7d7d7;
+  border: 1px solid #ffb93f;
   border-radius: 10px;
-  background-color: #fafafa;
+  background-color: #F2F2F2;
   width: 100%;
   height: 140px;
   display: flex;
@@ -333,6 +318,7 @@
   //   border-color: rgba($color: #ffb93f, $alpha: 1);
 
   .task-col-content {
+    padding: 10px;
     width: 95%;
     height: 90%;
     display: flex;
@@ -340,6 +326,7 @@
     flex-direction: column;
 
     .task-name {
+      font-weight: 600;
       width: 95%;
       display: flex;
       flex-wrap: wrap;

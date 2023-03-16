@@ -29,44 +29,43 @@
         <div class="dot1"></div>
         <div class="col-header-content">TO DO</div>
       </div>
-      <div class="task-col" cdkDrag>
-        <ng-container *ngFor="let task of (this.task$ | async)?.tasks; let i = index">
-          <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'todo'">
-            <div class="task-name">
-              <div class="task-title">{{ task.title }}</div>
-            </div>
-            <div class="adjust">
-              <div class="task-date">
-                <div class="allMember" style="display: flex">
-                  <div class="allMember1">N</div>
-                  <div class="allMember2">N</div>
-                </div>
-                <div class="create-date">Create date: {{ task.startAt }}</div>
-                <div class="deadline">Deadline: {{ task.deadline }}</div>
+      <div class="task-col" *ngFor="let task of (this.task$ | async)?.tasks; let i = index" cdkDrag>
+        <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'todo'">
+          <div class="task-name">
+            <div class="task-title">{{ task.title }}</div>
+          </div>
+          <div class="adjust">
+            <div class="task-date">
+              <div class="allMember" style="display: flex">
+                <div class="allMember1">N</div>
+                <div class="allMember2">N</div>
               </div>
-              <div class="icon">
-                <div class="star-icon">
-                  <span [ngClass]="task.styles" (click)="changeColor('yellow', i, todo)">
-                    star
-                  </span>
-                </div>
-                <div class="icon-box">
-                  <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="openDialog2()">
-                      Add member
-                    </button>
-                    <button mat-menu-item (click)="openUpdateDialog(task)">
-                      Edit
-                    </button>
-                    <button mat-menu-item>Delete</button>
-                  </mat-menu>
-                </div>
+              <div class="create-date">Create date: {{ task.startAt }}</div>
+              <div class="deadline">Deadline: {{ task.deadline }}</div>
+            </div>
+            <div class="icon">
+              <div class="star-icon">
+                <span class="material-symbols-rounded" [ngClass]="task.styles" (click)="changeColor('yellow', i, todo)">
+                  star
+                </span>
+              </div>
+              <div class="icon-box">
+                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialog2()">
+                    Add member
+                  </button>
+                  <button mat-menu-item (click)="openUpdateDialog(task)">
+                    Edit
+                  </button>
+                  <button mat-menu-item>Delete</button>
+                </mat-menu>
               </div>
             </div>
           </div>
-        </ng-container>
+        </div>
       </div>
+
 
       <div class="task-col-create">
         <div (click)="openCreateDialog()" class="create-new">+</div>
@@ -79,45 +78,44 @@
         <div class="dot2"></div>
         <div class="col-header-content">IN PROGRESS</div>
       </div>
-      <div cdkDrag>
-        <ng-container class="task-col" *ngFor="let task of (this.task$ | async)?.tasks; let i = index">
-          <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'doing'">
-            <div class="task-name">
-              <div class="task-title">{{ task.title }}</div>
-            </div>
-            <div class="adjust">
-              <div class="task-date">
-                <div class="allMember" style="display: flex">
-                  <div class="allMember1">N</div>
-                  <div class="allMember2">N</div>
-                </div>
-                <div class="create-date">Create date: {{ task.startAt }}</div>
-                <div class="deadline">Deadline: {{ task.deadline }}</div>
+      <div class="task-col" *ngFor="let task of (this.task$ | async)?.tasks; let i = index" cdkDrag>
+        <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'doing'">
+          <div class="task-name">
+            <div class="task-title">{{ task.title }}</div>
+          </div>
+          <div class="adjust">
+            <div class="task-date">
+              <div class="allMember" style="display: flex">
+                <div class="allMember1">N</div>
+                <div class="allMember2">N</div>
               </div>
-              <div class="icon">
-                <div class="star-icon">
-                  <span [ngClass]="task.styles" (click)="changeColor('yellow', i, todo)">
-                    star
-                  </span>
-                </div>
-                <div class="icon-box">
-                  <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="openDialog2()">
-                      Add member
-                    </button>
-                    <button mat-menu-item (click)="openUpdateDialog(task)">
-                      Edit
-                    </button>
-                    <button mat-menu-item>Delete</button>
-                  </mat-menu>
-                </div>
+              <div class="create-date">Create date: {{ task.startAt }}</div>
+              <div class="deadline">Deadline: {{ task.deadline }}</div>
+            </div>
+            <div class="icon">
+              <div class="star-icon">
+                <span class="material-symbols-rounded" [ngClass]="task.styles" (click)="changeColor('yellow', i, todo)">
+                  star
+                </span>
+              </div>
+              <div class="icon-box">
+                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialog2()">
+                    Add member
+                  </button>
+                  <button mat-menu-item (click)="openUpdateDialog(task)">
+                    Edit
+                  </button>
+                  <button mat-menu-item>Delete</button>
+                </mat-menu>
               </div>
             </div>
           </div>
-        </ng-container>
+        </div>
       </div>
     </div>
+
 
     <div class="col" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
       [cdkDropListConnectedTo]="['cdk-drop-list-0', 'cdk-drop-list-1']" (cdkDropListDropped)="drop($event)">
@@ -125,43 +123,41 @@
         <div class="dot3"></div>
         <div class="col-header-content">DONE</div>
       </div>
-      <div class="task-col" cdkDrag>
-        <ng-container *ngFor="let task of (this.task$ | async)?.tasks; let i = index">
-          <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'done'">
-            <div class="task-name">
-              <div class="task-title">{{ task.title }}</div>
-            </div>
-            <div class="adjust">
-              <div class="task-date">
-                <div class="allMember" style="display: flex">
-                  <div class="allMember1">N</div>
-                  <div class="allMember2">N</div>
-                </div>
-                <div class="create-date">Create date: {{ task.startAt }}</div>
-                <div class="deadline">Deadline: {{ task.deadline }}</div>
+      <div class="task-col" *ngFor="let task of (this.task$ | async)?.tasks; let i = index" cdkDrag>
+        <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'done'">
+          <div class="task-name">
+            <div class="task-title">{{ task.title }}</div>
+          </div>
+          <div class="adjust">
+            <div class="task-date">
+              <div class="allMember" style="display: flex">
+                <div class="allMember1">N</div>
+                <div class="allMember2">N</div>
               </div>
-              <div class="icon">
-                <div class="star-icon">
-                  <span [ngClass]="task.styles" (click)="changeColor('yellow', i, todo)">
-                    star
-                  </span>
-                </div>
-                <div class="icon-box">
-                  <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="openDialog2()">
-                      Add member
-                    </button>
-                    <button mat-menu-item (click)="openUpdateDialog(task)">
-                      Edit
-                    </button>
-                    <button mat-menu-item>Delete</button>
-                  </mat-menu>
-                </div>
+              <div class="create-date">Create date: {{ task.startAt }}</div>
+              <div class="deadline">Deadline: {{ task.deadline }}</div>
+            </div>
+            <div class="icon">
+              <div class="star-icon">
+                <span class="material-symbols-rounded" [ngClass]="task.styles" (click)="changeColor('yellow', i, todo)">
+                  star
+                </span>
+              </div>
+              <div class="icon-box">
+                <mat-icon id="icon-expand" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="openDialog2()">
+                    Add member
+                  </button>
+                  <button mat-menu-item (click)="openUpdateDialog(task)">
+                    Edit
+                  </button>
+                  <button mat-menu-item>Delete</button>
+                </mat-menu>
               </div>
             </div>
           </div>
-        </ng-container>
+        </div>
       </div>
     </div>
   </div>
