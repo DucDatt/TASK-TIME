@@ -11,54 +11,30 @@
     <div class="input">
       <mat-form-field class="Description">
         <mat-label>Description</mat-label>
-        <input
-          [(ngModel)]="tempTask.description"
-          matInput
-          placeholder=""
-          value=""
-        />
+        <input [(ngModel)]="tempTask.description" matInput placeholder="" value="" />
       </mat-form-field>
     </div>
 
     <div class="date">
-      <div class="date_container">
-        <mat-form-field class="start_at">
-          <mat-label>Start at</mat-label>
-          <input
-            [(ngModel)]="tempTask.startAt"
-            matInput
-            [matDatepicker]="pickerStart"
-          />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="pickerStart"
-          ></mat-datepicker-toggle>
-          <mat-datepicker
-            #pickerStart
-            [calendarHeaderComponent]="startDate"
-          ></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div class="date_container">
-        <mat-form-field class="deadline">
-          <mat-label>Deadline</mat-label>
-          <input
-            [(ngModel)]="tempTask.deadline"
-            matInput
-            [matDatepicker]="pickerDeadline"
-          />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="pickerDeadline"
-          ></mat-datepicker-toggle>
-          <mat-datepicker
-            #pickerDeadline
-            [calendarHeaderComponent]="deadlineDate"
-          ></mat-datepicker>
-        </mat-form-field>
+      <div>
+        <div class="date_container">
+          <mat-form-field class="start_at">
+            <mat-label>Start at</mat-label>
+            <input [(ngModel)]="tempTask.startAt" matInput [matDatepicker]="pickerStart" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart [calendarHeaderComponent]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="date_container">
+          <mat-form-field class="deadline">
+            <mat-label>Deadline</mat-label>
+            <input [(ngModel)]="tempTask.deadline" matInput [matDatepicker]="pickerDeadline" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerDeadline"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDeadline [calendarHeaderComponent]="deadlineDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
       </div>
     </div>
 
