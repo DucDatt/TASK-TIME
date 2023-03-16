@@ -4,14 +4,19 @@
     <div class="input">
       <mat-form-field class="project_name">
         <mat-label>Task name</mat-label>
-        <input [(ngModel)]="tempTask.title" matInput placeholder="" value="">
+        <input [(ngModel)]="tempTask.title" matInput placeholder="" value="" />
       </mat-form-field>
     </div>
 
     <div class="input">
       <mat-form-field class="Description">
         <mat-label>Description</mat-label>
-        <input [(ngModel)]="tempTask.description" matInput placeholder="" value="">
+        <input
+          [(ngModel)]="tempTask.description"
+          matInput
+          placeholder=""
+          value=""
+        />
       </mat-form-field>
     </div>
 
@@ -19,27 +24,47 @@
       <div class="date_container">
         <mat-form-field class="start_at">
           <mat-label>Start at</mat-label>
-          <input [(ngModel)]="tempTask.startAt" matInput [matDatepicker]="pickerStart" />
+          <input
+            [(ngModel)]="tempTask.startAt"
+            matInput
+            [matDatepicker]="pickerStart"
+          />
           <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
-          <mat-datepicker #pickerStart [calendarHeaderComponent]="startDate"></mat-datepicker>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerStart"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #pickerStart
+            [calendarHeaderComponent]="startDate"
+          ></mat-datepicker>
         </mat-form-field>
       </div>
 
       <div class="date_container">
         <mat-form-field class="deadline">
           <mat-label>Deadline</mat-label>
-          <input [(ngModel)]="tempTask.deadline" matInput [matDatepicker]="pickerDeadline" />
+          <input
+            [(ngModel)]="tempTask.deadline"
+            matInput
+            [matDatepicker]="pickerDeadline"
+          />
           <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="pickerDeadline"></mat-datepicker-toggle>
-          <mat-datepicker #pickerDeadline [calendarHeaderComponent]="deadlineDate"></mat-datepicker>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerDeadline"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            #pickerDeadline
+            [calendarHeaderComponent]="deadlineDate"
+          ></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
 
     <div class="btn_container">
       <div>
-        <button [mat-dialog-close]="tempTask" class="button">CREATE</button>
+        <button class="button" (click)="createTask()">CREATE</button>
       </div>
     </div>
   </div>

@@ -7,10 +7,7 @@ import { TaskService } from 'src/app/Services/task.service';
 
 @Injectable()
 export class TaskEffects {
-  constructor(
-    private actions$: Actions,
-    private taskService: TaskService
-  ) { }
+  constructor(private actions$: Actions, private taskService: TaskService) {}
 
   $getAllForUser = createEffect(() =>
     this.actions$.pipe(
@@ -54,11 +51,7 @@ export class TaskEffects {
       switchMap((action) =>
         this.taskService.postTask(action.task).pipe(
           map((task: any) => {
-            if (!task.id) {
-              return TaskActions.createFail({ error: task });
-            } else {
-              return TaskActions.createSuccess({ task: task });
-            }
+            return TaskActions.createSuccess({ task: task });
           }),
           catchError((error) => of(TaskActions.createFail({ error: error })))
         )
