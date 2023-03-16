@@ -5,15 +5,20 @@ import { ProjectService } from './project.service';
 
 @Controller('project')
 export class ProjectController {
-  constructor(private readonly projectService: ProjectService) {}
+  constructor(private readonly projectService: ProjectService) { }
+
+  @Post('create')
+  async createProject(@Body() project: Project) {
+    return await this.projectService.create(project);
+  }
 
   @Get('all')
   getAll() {
     return this.projectService.getAll();
   }
 
-  @Get()
-  getById(@Query('id') id: string) {
+  @Get('detail/:id')
+  getById(@Param(`id`) id: string) {
     return this.projectService.getById(id);
   }
 
@@ -41,6 +46,7 @@ export class ProjectController {
 
   @Get('request/:id')
   async requestJoin(@Param('id') _id: string) {
+    console.log(`requesting to join project for ${_id}`);
     return await this.projectService.requestJoin(_id);
   }
 

@@ -7,7 +7,8 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProjectsService {
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
 
   url = 'http://localhost:3000/project';
 
@@ -38,7 +39,16 @@ export class ProjectsService {
     return project;
   }
 
-  postProject(project: any) {
+  getProjectDetails(id: string) {
+    let project = this.http.get(`${this.url}/details/${id}`).pipe(
+      map((project) => {
+        return <ProjectModel>project;
+      })
+    );
+    return project;
+  }
+
+  postProject(project: ProjectModel) {
     let response = this.http
       .post(`${this.url}/create`, project, {
         headers: new HttpHeaders({

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom, map } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { TaskModel } from '../model/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,37 +12,53 @@ export class TaskService {
 
   url = 'http://localhost:3000/task'
 
-  async getAll() {
-    let tasks = this.http.get(`${this.url}/all`).pipe(map((data: any) => {
-      return <any[]>data;
-    }));
+  getAll(): Observable<TaskModel[]> {
+    let tasks = this.http.get(`${this.url}/all`).pipe(
+      map((tasks) => {
+        return <TaskModel[]>tasks;
+      })
+    );
     return tasks;
   }
 
-  async getTaskById(id: string) {
-    let task = lastValueFrom(this.http.get(`${this.url}?id=${id}`));
+  getAllByUserId(_id: string): Observable<TaskModel[]> {
+    let tasks = this.http.get(`${this.url}/all/user/${_id}`).pipe(
+      map((tasks) => {
+        return <TaskModel[]>tasks;
+      })
+    );
+    return tasks;
+  }
+
+  getTaskById(id: string) {
+    let task = this.http.get(`${this.url}?id=${id}`).pipe(
+      map((task) => {
+        return <TaskModel>task;
+      })
+    );
     return task;
   }
 
-  async postTask(task: any) {
-    let response = lastValueFrom(this.http.post(`${this.url}/create`, task,
-      {
+  postTask(task: any) {
+    let response = this.http
+      .post(`${this.url}/create`, task, {
         headers: new HttpHeaders({
-          'authorization': ''
+          authorization: '',
+        }),
+      })
+      .pipe(
+        map((task) => {
+          return <TaskModel>task;
         })
-      }
-    ));
+      );
     return response;
   }
 
-  async updateTask(task: any) {
-    let response = lastValueFrom(this.http.put(`${this.url}/update`, task,
-      {
-        headers: new HttpHeaders({
-          'authorization': ''
-        })
-      }
-    ));
-    return response;
+  updateTask(task: any) {
+    return this.http.put(`${this.url}/update`, task, {
+      headers: new HttpHeaders({
+        authorization: '',
+      }),
+    }) as Observable<TaskModel>;
   }
 }

@@ -33,22 +33,25 @@ export class AuthService {
           updatedAt: 0,
         };
         // console.log(this.user);
-        this.store.dispatch(UserActions.get({ uid: user.uid }));
+        this.store.dispatch(UserActions.get({ uid: this.user.uid }));
+
         this.user$.next(this.user);
       }
     });
   }
 
   async LoginWithGoogle() {
+    console.log('loginn......');
     let provider = new GoogleAuthProvider();
     signInWithPopup(this.auth, provider)
-      .then((result) => {})
+      .then((result) => { })
       .catch((error) => {
         console.log(error);
       });
   }
 
   logOut() {
+    console.log('lougout......');
     this.auth.signOut().then(() => {
       window.location.href = '/login';
     });

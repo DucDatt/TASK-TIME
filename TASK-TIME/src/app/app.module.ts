@@ -1,3 +1,5 @@
+import { TaskEffects } from './../redux/effects/task.effect';
+import { TaskReducer } from './../redux/reducers/task.reducer';
 import { ProjectEffects } from './../redux/effects/project.effect';
 import { ProjectReducer } from './../redux/reducers/project.reducer';
 import { NgModule } from '@angular/core';
@@ -50,4 +52,4 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

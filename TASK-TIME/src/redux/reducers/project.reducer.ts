@@ -4,7 +4,7 @@ import { ProjectState } from '../states/project.state';
 import { ProjectActions } from '../actions/project.action';
 
 let initialState: ProjectState = {
-  project: null,
+  project: {} as ProjectModel,
   projects: [],
   inProcess: false,
   isLoading: false,
@@ -47,7 +47,6 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      project: null,
       inProcess: true,
       error: '',
     };
@@ -137,7 +136,6 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      project: null,
       isLoading: true,
       error: '',
     };
@@ -154,7 +152,6 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      project: null,
       isLoading: false,
       error: error,
     };
@@ -163,7 +160,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isInviting: true,
+      isInvited: false,
       error: '',
     };
   }),
@@ -171,14 +168,14 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isInviting: false,
+      isInvited: true,
     };
   }),
   on(ProjectActions.inviteProjectFail, (state, { error, type }) => {
     console.log(type);
     return {
       ...state,
-      isInviting: false,
+      isInvited: false,
       error: error,
     };
   }),
@@ -186,7 +183,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isAccepting: false,
+      isAccepted: false,
       error: '',
     };
   }),
@@ -194,14 +191,14 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isAccepting: true,
+      isAccepted: true,
     };
   }),
   on(ProjectActions.acceptRequestFail, (state, { error, type }) => {
     console.log(type);
     return {
       ...state,
-      isAccepting: false,
+      isAccepted: false,
       error: error,
     };
   }),
@@ -209,7 +206,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isRequesting: true,
+      isRequested: false,
       error: '',
     };
   }),
@@ -217,7 +214,7 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isRequesting: false,
+      isRequested: true,
       requestProject: projects,
     };
   }),
@@ -225,7 +222,35 @@ export const ProjectReducer = createReducer(
     console.log(type);
     return {
       ...state,
-      isRequesting: false,
+      isRequested: false,
+      error: error,
+    };
+  }),
+
+  // get project detail
+  on(ProjectActions.getProjectDetails, (state, { type }) => {
+    console.log(type);
+    return {
+      ...state,
+      projectDetail: null,
+      isLoading: true,
+      error: '',
+    };
+  }),
+  on(ProjectActions.getProjectDetailsSuccess, (state, { project, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      projectDetail: project,
+      isLoading: false,
+    };
+  }),
+  on(ProjectActions.getProjectDetailsFail, (state, { error, type }) => {
+    console.log(type);
+    return {
+      ...state,
+      projectDetail: null,
+      isLoading: false,
       error: error,
     };
   })

@@ -18,6 +18,7 @@ export class ProjectEffects {
       switchMap((action) =>
         this.projectsService.getAllByUserId(action._id).pipe(
           map((projects: any) => {
+            console.log('projects', projects);
             if (projects == null) {
               return ProjectActions.getAllForUserSuccess({ projects: [] });
             } else {
@@ -152,6 +153,31 @@ export class ProjectEffects {
       }),
       catchError((error: string) =>
         from([ProjectActions.findRequestFail({ error })])
+      )
+    )
+  );
+
+  //get detail project
+  getProjectDetails = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProjectActions.getProjectDetails),
+      switchMap((action) =>
+        this.projectsService.getProjectDetails(action.id).pipe(
+          map((project: any) => {
+            if (project == null) {
+              return ProjectActions.getProjectDetailsSuccess({
+                project,
+              });
+            } else {
+              return ProjectActions.getProjectDetailsSuccess({
+                project: project,
+              });
+            }
+          }),
+          catchError((error) =>
+            of(ProjectActions.getProjectDetailsFail({ error: error }))
+          )
+        )
       )
     )
   );

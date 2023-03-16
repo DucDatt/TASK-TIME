@@ -18,6 +18,8 @@ import { ProjectActions } from 'src/redux/actions/project.action';
 import { User } from 'src/app/model/user.model';
 import { UserState } from 'src/redux/states/user.state';
 import { MemberPopupComponent } from '../member-popup/member-popup.component';
+import { UserActions } from 'src/redux/actions/user.action';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-home-body',
@@ -26,17 +28,26 @@ import { MemberPopupComponent } from '../member-popup/member-popup.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeBodyComponent implements OnInit, OnDestroy {
+  data: ProjectModel[] = [];
   constructor(
     private dialog: MatDialog,
     private router: Router,
     private store: Store<{ project: ProjectState; user: UserState }>
-  ) {}
+  ) {
+    this.store.select('project').subscribe((data) => {
+      console.log(data);
+    }
+    );
+  }
+  isCreated$ = this.store.select('user', 'isCreated');
+  isCreatedSubscription!: Subscription;
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
   inProcessSubscription!: Subscription;
   inProcess$ = this.store.select('project', 'inProcess');
   projects = this.store.select('project', 'projects');
+  id!: string;
 
   ngOnInit(): void {
     this.inProcessSubscription = this.inProcess$.subscribe((data) => {
@@ -63,6 +74,7 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.inProcessSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
+    this.isCreatedSubscription.unsubscribe();
   }
 
   initialize() {
@@ -87,7 +99,8 @@ export class HomeBodyComponent implements OnInit, OnDestroy {
     this.store.dispatch(ProjectActions.delete({ project: tempProject }));
   }
 
-  navTask() {
+  navTask(project: ProjectModel) {
+    //navigate to task page
     this.router.navigate(['/task']);
   }
 

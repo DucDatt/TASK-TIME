@@ -1,13 +1,13 @@
 import { EditPopupComponent } from './../edit-popup/edit-popup.component';
 import { ColPopupComponent } from './../col-popup/col-popup.component';
 import { MemberPopupComponent } from './../member-popup/member-popup.component';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TaskPopupComponent } from '../task-popup/task-popup.component';
 import {
   animate,
@@ -17,6 +17,13 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Store } from '@ngrx/store';
+import { TaskState } from 'src/redux/states/task.state';
+import { UserState } from 'src/redux/states/user.state';
+import { Subscription } from 'rxjs';
+import { User } from 'src/app/model/user.model';
+import { TaskActions } from 'src/redux/actions/task.action';
+import { TaskModel } from 'src/app/model/task.model';
 
 @Component({
   selector: 'app-task-body',
@@ -47,10 +54,86 @@ import {
   ],
 })
 export class TaskBodyComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private store: Store<{ task: TaskState; user: UserState }>
+  ) {}
+  userSubscription!: Subscription;
+  userState$ = this.store.select('user');
+  user: User = <User>{};
+  inProcessSubscription!: Subscription;
+  task$ = this.store.select('task');
+  //projects = this.store.select('task', 'tasks');
 
-  openDialog(): void {
-    this.dialog.open(TaskPopupComponent);
+  initialize() {
+    this.store.dispatch(TaskActions.getAllForUser({ _id: this.user._id }));
+  }
+
+  ngOnInit(): void {
+    this.task$.subscribe((data) => {
+      //console.log(data)
+    });
+    this.userSubscription = this.userState$.subscribe((state) => {
+      if (state.loading == false) {
+        if (state.user._id) {
+          this.user = state.user;
+          console.log(this.user);
+          this.store.dispatch(
+            TaskActions.getAllForUser({ _id: state.user._id })
+          );
+        }
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.inProcessSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
+  }
+
+  deleteTask(task: any) {
+    let tempTask: TaskModel = {
+      ...task,
+      disable: !task.disable,
+    };
+    console.log('delete', tempTask);
+    this.store.dispatch(TaskActions.delete({ task: tempTask }));
+  }
+
+  openCreateDialog(): void {
+    let dialogRef = this.dialog.open(TaskPopupComponent, {
+      data: this.user,
+    });
+    dialogRef.afterClosed().subscribe((result: TaskModel) => {
+      if (!result) return;
+      let tempStartAt = new Date(result.startAt.toString());
+      let tempDeadline = new Date(result.deadline.toString());
+      let tempTask: TaskModel = {
+        ...result,
+        startAt: tempStartAt.toDateString(),
+        deadline: tempDeadline.toDateString(),
+      };
+
+      this.store.dispatch(TaskActions.create({ task: tempTask }));
+    });
+  }
+
+  openUpdateDialog(task: any): void {
+    let dialogRef = this.dialog.open(EditPopupComponent, {
+      data: task,
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (!result) return;
+      let tempTask: TaskModel = {
+        ...task,
+        title: result.title,
+        description: result.description,
+        startAt: result.startAt.toDateString(),
+        deadline: result.deadline.toDateString(),
+      };
+
+      this.store.dispatch(TaskActions.update({ task: tempTask }));
+    });
   }
 
   openDialog2(): void {
@@ -61,10 +144,9 @@ export class TaskBodyComponent {
     this.dialog.open(ColPopupComponent);
   }
 
-  openDialog4(): void {
-    this.dialog.open(EditPopupComponent);
-  }
+  todo: any[] = [];
 
+<<<<<<< HEAD
   todo = [
       {
       name: 'Coding',
@@ -129,6 +211,11 @@ export class TaskBodyComponent {
       styles: ['material-symbols-rounded']
     }
   ];
+=======
+  progress: any[] = [];
+
+  done: any[] = [];
+>>>>>>> ce3003338f8456bd75da4772c0d1e1256c02c253
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
