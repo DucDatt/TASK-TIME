@@ -24,6 +24,7 @@ import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user.model';
 import { TaskActions } from 'src/redux/actions/task.action';
 import { TaskModel } from 'src/app/model/task.model';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-task-body',
@@ -56,13 +57,15 @@ import { TaskModel } from 'src/app/model/task.model';
 export class TaskBodyComponent {
   constructor(
     private dialog: MatDialog,
+    private _socket: Socket,
     private store: Store<{ task: TaskState; user: UserState }>
-  ) {}
+  ) { }
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
   inProcessSubscription!: Subscription;
   task$ = this.store.select('task');
+  task: TaskModel = <TaskModel>{};
   //projects = this.store.select('task', 'tasks');
 
   initialize() {
@@ -71,7 +74,7 @@ export class TaskBodyComponent {
 
   ngOnInit(): void {
     this.task$.subscribe((data) => {
-      //console.log(data)
+      console.log(data);
     });
     this.userSubscription = this.userState$.subscribe((state) => {
       if (state.loading == false) {
@@ -84,6 +87,8 @@ export class TaskBodyComponent {
         }
       }
     });
+
+
   }
 
   ngOnDestroy(): void {
@@ -146,11 +151,29 @@ export class TaskBodyComponent {
 
   todo: any[] = [];
 
-  progress: any[] = [];
-
+  doing: any[] = [];
   done: any[] = [];
 
   drop(event: CdkDragDrop<any[]>) {
+    //get status of the task
+    //if same column
+    console.log;
+    switch (event.container.id) {
+      case 'cdk-drop-list-0':
+        this.task = { ...this.task, status: 'todo' };
+        break;
+      case 'cdk-drop-list-1':
+        this.task = { ...this.task, status: 'doing' };
+
+        break;
+      case 'cdk-drop-list-2':
+        this.task = { ...this.task, status: 'done' };
+
+        break;
+
+    }
+
+    console.log(this.task);
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -164,6 +187,7 @@ export class TaskBodyComponent {
         event.previousIndex,
         event.currentIndex
       );
+      this._socket.emit('update-data', this.task);
     }
   }
 
@@ -186,5 +210,12 @@ export class TaskBodyComponent {
     }
   }
 
-  newCol() {}
+  listenUpdate() {
+    return this._socket.fromEvent('send-data');
+  }
+  setTask(event: any) {
+    this.task = event;
+  }
+
+  newCol() { }
 }

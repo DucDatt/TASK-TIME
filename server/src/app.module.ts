@@ -7,6 +7,7 @@ import { ProjectGateway } from './gateways/project/project.gateway';
 import { GatewaysModule } from './gateways/gateways.module';
 import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
+import { TaskService } from './task/task.service';
 
 @Module({
   imports: [

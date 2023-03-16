@@ -5,6 +5,7 @@ import { TaskController } from './task.controller';
 import { Task, TaskSchema } from 'src/schema/task.schema';
 import { User, UserSchema } from 'src/schema/user.schema';
 import { UserModule } from 'src/user/user.module';
+import { TaskGateway } from 'src/gateways/task/task.gateway';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { UserModule } from 'src/user/user.module';
     forwardRef(() => UserModule),
   ],
   controllers: [TaskController],
-  providers: [TaskService]
+  providers: [TaskService, TaskGateway],
 })
-export class TaskModule { }
+export class TaskModule {}

@@ -9,13 +9,15 @@
     </div>
 
     <div id="host">Host's project:</div>
-    <mat-card class="example-card">
-      <mat-card-header class="example-card-header">
-        <img mat-card-avatar class="example-header-image" [src]="data.photoURL" />
-        <mat-card-title>{{ data.displayName }}</mat-card-title>
-        <mat-card-subtitle>{{ data.email }}</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
+    <div class="card_container">
+      <mat-card class="example-card">
+        <mat-card-header class="example-card-header">
+          <img mat-card-avatar class="example-header-image" [src]="data.photoURL" />
+          <mat-card-title>{{ data.displayName }}</mat-card-title>
+          <mat-card-subtitle>{{ data.email }}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
 
     <div class="input">
       <mat-form-field class="description" appearance="fill">
@@ -25,24 +27,25 @@
     </div>
 
     <div class="date">
-      <div class="date_container">
-        <mat-form-field class="start_at" appearance="fill">
-          <mat-label>Start at</mat-label>
-          <input [(ngModel)]="tempProject.startAt" matInput [matDatepicker]="pickerStart" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
-          <mat-datepicker #pickerStart [calendarHeaderComponent]="startDate"></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div class="date_container">
-        <mat-form-field class="deadline" appearance="fill">
-          <mat-label>Deadline</mat-label>
-          <input [(ngModel)]="tempProject.deadline" matInput [matDatepicker]="pickerDeadline" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="pickerDeadline"></mat-datepicker-toggle>
-          <mat-datepicker #pickerDeadline [calendarHeaderComponent]="deadlineDate"></mat-datepicker>
-        </mat-form-field>
+      <div>
+        <div class="date_container">
+          <mat-form-field class="start_at" appearance="fill">
+            <mat-label>Start at</mat-label>
+            <input [(ngModel)]="tempProject.startAt" matInput [matDatepicker]="pickerStart" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart [calendarHeaderComponent]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="date_container">
+          <mat-form-field class="deadline" appearance="fill">
+            <mat-label>Deadline</mat-label>
+            <input [(ngModel)]="tempProject.deadline" matInput [matDatepicker]="pickerDeadline" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerDeadline"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDeadline [calendarHeaderComponent]="deadlineDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
       </div>
     </div>
 

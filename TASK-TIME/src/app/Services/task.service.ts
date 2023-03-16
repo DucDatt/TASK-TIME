@@ -4,13 +4,12 @@ import { map, Observable } from 'rxjs';
 import { TaskModel } from '../model/task.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaskService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  url = 'http://localhost:3000/task'
+  url = 'http://localhost:3000/task';
 
   getAll(): Observable<TaskModel[]> {
     let tasks = this.http.get(`${this.url}/all`).pipe(
@@ -22,12 +21,9 @@ export class TaskService {
   }
 
   getAllByUserId(_id: string): Observable<TaskModel[]> {
-    let tasks = this.http.get(`${this.url}/all/user/${_id}`).pipe(
-      map((tasks) => {
-        return <TaskModel[]>tasks;
-      })
-    );
-    return tasks;
+    return this.http.get(`${this.url}/all/user?id=${_id}`) as Observable<
+      TaskModel[]
+    >;
   }
 
   getTaskById(id: string) {
@@ -40,18 +36,11 @@ export class TaskService {
   }
 
   postTask(task: any) {
-    let response = this.http
-      .post(`${this.url}/create`, task, {
-        headers: new HttpHeaders({
-          authorization: '',
-        }),
-      })
-      .pipe(
-        map((task) => {
-          return <TaskModel>task;
-        })
-      );
-    return response;
+    return this.http.post(`${this.url}/create`, task, {
+      headers: new HttpHeaders({
+        authorization: '',
+      }),
+    }) as Observable<TaskModel>;
   }
 
   updateTask(task: any) {

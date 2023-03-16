@@ -8,37 +8,43 @@
     <mat-form-field class="selector" appearance="fill">
       <mat-label class="sort_by">SORT BY</mat-label>
       <mat-select>
-        <mat-option value="option1">Alphabet</mat-option>
-        <mat-option value="option2">Date</mat-option>
+        <mat-option value="option1" (click)="sortByName()">Alphabet</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 </div>
 
 <div class="project">
-  <ng-container *ngFor="let project of (projects | async)">
+  <ng-container *ngFor="let project of projects | async">
     <div class="project_box" *ngIf="project.isStarred && !project.disable">
       <div class="project_title">
-        <div class="project_name">{{project.projectName}}</div>
-        <div class="project_description">{{project.projectDescription}}</div>
+        <div class="project_name">{{ project.projectName }}</div>
+        <div class="project_description">{{ project.projectDescription }}</div>
       </div>
       <div class="footer_box">
         <div class="date">
-          <div class="create_date">Create Date: {{project.startAt}}</div>
+          <div class="create_date">Create Date: {{ project.startAt }}</div>
           <div class="setting">
-            <div class="deadline">Deadline: {{project.deadline}}</div>
+            <div class="deadline">Deadline: {{ project.deadline }}</div>
             <div class="icon">
               <div class="star-icon">
-                <span class="material-symbols-rounded" [ngClass]="{'yellow':project.isStarred}"
-                  (click)="updateStarred(project)">
+                <span
+                  class="material-symbols-rounded"
+                  [ngClass]="{ yellow: project.isStarred }"
+                  (click)="updateStarred(project)"
+                >
                   star
                 </span>
               </div>
-              <mat-icon class="expand-icon" [matMenuTriggerFor]="menu">expand_more</mat-icon>
+              <mat-icon class="expand-icon" [matMenuTriggerFor]="menu"
+                >expand_more</mat-icon
+              >
               <mat-menu #menu="matMenu">
                 <button (click)="navTask()" mat-menu-item>Join Project</button>
                 <button mat-menu-item>Update</button>
-                <button (click)="deleteProject(project)" mat-menu-item>Delete</button>
+                <button (click)="deleteProject(project)" mat-menu-item>
+                  Delete
+                </button>
               </mat-menu>
             </div>
           </div>
