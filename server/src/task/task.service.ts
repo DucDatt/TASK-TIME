@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import mongoose, { Model, Mongoose, Types } from 'mongoose';
+import { ProjectDocument } from 'src/schema/project.schema';
 import { Task, TaskDocument } from 'src/schema/task.schema';
 import { User, UserDocument } from 'src/schema/user.schema';
 
@@ -13,6 +14,7 @@ export class TaskService {
 
   async create(task: Task) {
     try {
+    
       let newTask: Task = {
         id: Date.now().toString(),
         title: task.title,
@@ -23,9 +25,10 @@ export class TaskService {
         isDisable: false,
         owner: task.owner,
         assignees: task.assignees,
-        projectId: task.projectId,
+        projectId: new Types.ObjectId(task.projectId),
         styles: task.styles,
       };
+      console.log(newTask);
       const createdTask = await this.taskModel.create(newTask);
       return createdTask.save();
     } catch (error) {
@@ -35,7 +38,7 @@ export class TaskService {
 
   async getAllByUserId(id: string) {
     try {
-      console.log(id);
+ 
       let myTasks = await this.taskModel
         .find({ owner: { $eq: Object(id) } })
         .populate('owner', 'displayName email photoURL', this.userModel)
@@ -47,7 +50,7 @@ export class TaskService {
       let tasks = [];
       tasks.push(myTasks);
       tasks.push(invitedTask);
-      console.log(tasks);
+      // console.log(tasks);
       return myTasks;
     } catch (error) {
       return null;
@@ -65,21 +68,21 @@ export class TaskService {
 
   async getById(taskId: string) {
     try {
-      console.log(taskId);
+     
       let findTask = await this.taskModel
         .findOne({ _id: Object(taskId) })
         .exec();
-      console.log(findTask);
+      // console.log(findTask);
       return findTask;
     } catch (error) {
       return null;
     }
   }
 
-  async updateTask(taskId: string, task: Task) {
-    console.log('task', task);
+  async updateTask(task: Task) {
+    // console.log('task', task);
     try {
-      let tempTask = await this.taskModel.findOne({ id: taskId }).exec();
+      let tempTask = await this.taskModel.findOne({ id: task.id }).exec();
       console.log(tempTask);
       tempTask.title = task.title;
       tempTask.description = task.description;
@@ -89,23 +92,30 @@ export class TaskService {
       tempTask.assignees = task.assignees;
       tempTask.projectId = task.projectId;
       tempTask.status = task.status;
+   
+      return tempTask.save();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async updateTaskStatus(id:string,status:string){
+    try {
+      let tempTask = await this.taskModel.findOne({ id:id }).exec();
+      tempTask.status =status;
+   
       return tempTask.save();
     } catch (error) {
       console.log(error);
     }
   }
 
-  getAllTaskByProjectId(id: string) {
+ async getAllTaskByProjectId(id: string) {
+  console.log(id);
     try {
-      let myTasks = this.taskModel
-        .find({ projectId: { $eq: Object(id) } })
-        .populate('project', 'projectId projectName members')
-        .exec();
-      console.log(myTasks);
-
+      let myTasks = await this.taskModel.find({projectId:new Types.ObjectId(id)}).populate('owner').populate('assignees').exec();
       return myTasks;
     } catch (error) {
-      return null;
+      console.log(error);
     }
   }
 }

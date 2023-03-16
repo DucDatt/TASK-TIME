@@ -20,7 +20,7 @@ export class TaskPopupComponent {
   constructor(
     private store: Store<{ task: TaskState }>,
     public dialogRef: MatDialogRef<TaskPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   startDate = StartComponent;
   deadlineDate = DeadlineComponent;
@@ -38,21 +38,8 @@ export class TaskPopupComponent {
     _id: '',
     assignees: [],
     styles: [],
-    owner: this.data,
-    project: {
-      projectId: uuidv4(),
-      projectName: '',
-      projectDescription: '',
-      startAt: '',
-      deadline: '',
-      disable: false,
-      isStarred: false,
-      createdAt: 0,
-      updatedAt: 0,
-      _id: '',
-      owner: this.data,
-      members: [],
-    },
+    owner: this.data.user,
+    projectId:this.data.projectId,
   };
 
   onNoClick(): void {

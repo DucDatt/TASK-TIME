@@ -24,7 +24,7 @@ export class ProjectController {
 
   @Put('update')
   async updateProject(@Body('projectId') id: string, @Body() project: Project) {
-    console.log(project);
+  
     return await this.projectService.updateProject(id, project);
   }
 
@@ -39,8 +39,7 @@ export class ProjectController {
     @Body() project: ProjectDocument,
     @Param('email') email: string,
   ) {
-    console.log(email);
-    // console.log(project);
+
     return await this.projectService.inviteMember(email, project);
   }
 

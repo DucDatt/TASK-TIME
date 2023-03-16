@@ -56,43 +56,49 @@ import { ActivatedRoute } from '@angular/router';
   ],
 })
 export class TaskBodyComponent {
+   id:string='';
   constructor(
     private dialog: MatDialog,
     private _socket: Socket,
     private store: Store<{ task: TaskState; user: UserState }>,
     private route: ActivatedRoute
   ) {
-    const id: Observable<string> = this.route.params.pipe(map((p) => p['id']));
-    id.subscribe((data) => {
-      this.store.dispatch(TaskActions.get({ id: data }));
-    });
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+    })
   }
+
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
+  users:any[]=[];
+  tasks!:TaskModel[];
   inProcessSubscription!: Subscription;
   task$ = this.store.select('task');
   task: TaskModel = <TaskModel>{};
   //projects = this.store.select('task', 'tasks');
 
   initialize() {
-    this.store.dispatch(TaskActions.getAllForUser({ _id: this.user._id }));
+
   }
 
   ngOnInit(): void {
-    this.task$.subscribe((data) => {
-      if (data.task != null) {
-        console.log(data);
-      }
-    });
+    this.task$.subscribe((data)=>{
+      console.log(data);
+    })
+
     this.userSubscription = this.userState$.subscribe((state) => {
       if (state.loading == false) {
         if (state.user._id) {
           this.user = state.user;
-          console.log('user', this.user);
-          // this.store.dispatch(
-          //   TaskActions.getAllForUser({ _id: state.user._id })
-          // );
+
+          this.store.dispatch(TaskActions.getAllForUser({ _id: this.user._id }));
+
+          this._socket.emit('join-room', {roomId:this.id,user:this.user});
+
+          this.listenUpdateData().subscribe((data:any)=>{
+           this.tasks=data;
+          });
         }
       }
     });
@@ -108,13 +114,16 @@ export class TaskBodyComponent {
       ...task,
       disable: !task.disable,
     };
-    console.log('delete', tempTask);
+
     this.store.dispatch(TaskActions.delete({ task: tempTask }));
   }
 
   openCreateDialog(): void {
     let dialogRef = this.dialog.open(TaskPopupComponent, {
-      data: this.user,
+      data: {
+        user:this.user,
+        projectId:this.id
+      },
     });
     dialogRef.afterClosed().subscribe((result: TaskModel) => {
       if (!result) return;
@@ -145,6 +154,7 @@ export class TaskBodyComponent {
       };
 
       this.store.dispatch(TaskActions.update({ task: tempTask }));
+
     });
   }
 
@@ -179,7 +189,7 @@ export class TaskBodyComponent {
         break;
     }
 
-    console.log(this.task);
+
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -193,8 +203,8 @@ export class TaskBodyComponent {
         event.previousIndex,
         event.currentIndex
       );
-      console.log(this.task);
-      this._socket.emit('update-data', this.task);
+
+      this._socket.emit('update-data',{roomId:this.id,data: this.task});
     }
   }
 
@@ -217,8 +227,11 @@ export class TaskBodyComponent {
     }
   }
 
-  listenUpdate() {
+  listenUpdateData() {
     return this._socket.fromEvent('send-data');
+  }
+  listenUpdateUser() {
+    return this._socket.fromEvent('update-user');
   }
   setTask(event: any) {
     this.task = event;

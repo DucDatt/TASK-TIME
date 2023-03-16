@@ -13,13 +13,13 @@ export class TaskController {
 
   @Post('create')
   createTask(@Body() task: Task) {
-    console.log(task);
+    // console.log(task);
     return this.taskService.create(task);
   }
 
   @Get()
   getById(@Query('id') id: string) {
-    console.log(id);
+    // console.log(id);
     return this.taskService.getById(id);
   }
 
@@ -31,8 +31,8 @@ export class TaskController {
 
   @Put('update')
   async updateTask(@Body('taskId') id: string, @Body() task: Task) {
-    console.log(task);
-    return await this.taskService.updateTask(id, task);
+    // console.log(task);
+    return await this.taskService.updateTask(task);
   }
 
   @Get('all/user')

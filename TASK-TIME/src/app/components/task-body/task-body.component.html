@@ -29,7 +29,7 @@
         <div class="dot1"></div>
         <div class="col-header-content">TO DO</div>
       </div>
-      <div class="task-col" *ngFor="let task of (this.task$ | async)?.tasks; let i = index" cdkDrag>
+      <div class="task-col" *ngFor="let task of this.tasks; let i = index" cdkDrag>
         <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'todo'">
           <div class="task-name">
             <div class="task-title">{{ task.title }}</div>
@@ -78,7 +78,7 @@
         <div class="dot2"></div>
         <div class="col-header-content">IN PROGRESS</div>
       </div>
-      <div class="task-col" *ngFor="let task of (this.task$ | async)?.tasks; let i = index" cdkDrag>
+      <div class="task-col" *ngFor="let task of this.tasks; let i = index" cdkDrag>
         <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'doing'">
           <div class="task-name">
             <div class="task-title">{{ task.title }}</div>
@@ -123,7 +123,7 @@
         <div class="dot3"></div>
         <div class="col-header-content">DONE</div>
       </div>
-      <div class="task-col" *ngFor="let task of (this.task$ | async)?.tasks; let i = index" cdkDrag>
+      <div class="task-col" *ngFor="let task of this.tasks; let i = index" cdkDrag>
         <div class="task-col-content" (mousedown)="setTask(task)" *ngIf="task.status === 'done'">
           <div class="task-name">
             <div class="task-title">{{ task.title }}</div>

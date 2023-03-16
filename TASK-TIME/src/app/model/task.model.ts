@@ -13,7 +13,7 @@ export interface TaskModel {
   status: string;
   _id: string;
   assignees: User[];
-  project: ProjectModel;
+  projectId: string;
   styles: string[];
   owner: User;
 }
