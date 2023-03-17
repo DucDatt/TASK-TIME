@@ -30,19 +30,17 @@ export class TaskGateway {
     console.log(tasks);
     this.server.to(payload.roomId).emit('send-data', tasks);
   }
-  // @SubscribeMessage('leave-room')
-  // async handleLeaveRoom(client: any, payload: any) {
-  //   client.leave(payload);
-  //   client.broadcast.to(payload).emit('update-user',payload.user);
-  //   let tasks= await this._taskService.getAllTaskByProjectId(payload.roomId);
-  //   this.server.to(payload.roomId).emit('send-data', tasks);
-  // }
+  @SubscribeMessage('create-new-task')
+  async handleCreateNewTask(client: Socket, payload: any) {
+    let tasks= await this._taskService.getAllTaskByProjectId(payload.roomId);
+    this.server.to(payload.roomId).emit('send-data',tasks);
+  }
 
   @SubscribeMessage('update-data')
   async handleUpdateData(client: any, payload: any) {
     let task = await this._taskService.updateTaskStatus(payload.data.id,payload.data.status);
     let tasks= await this._taskService.getAllTaskByProjectId(payload.roomId);
-    console.log('tasks',task);
+   
     this.server.to(payload.roomId).emit('send-data', tasks);
   }
 }

@@ -84,7 +84,7 @@ export class TaskBodyComponent {
 
   ngOnInit(): void {
     this.task$.subscribe((data)=>{
-      console.log(data);
+      this._socket.emit('create-new-task',{roomId:this.id});
     })
 
     this.userSubscription = this.userState$.subscribe((state) => {
@@ -134,8 +134,8 @@ export class TaskBodyComponent {
         startAt: tempStartAt.toDateString(),
         deadline: tempDeadline.toDateString(),
       };
-
       this.store.dispatch(TaskActions.create({ task: tempTask }));
+
     });
   }
 

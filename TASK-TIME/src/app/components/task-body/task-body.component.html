@@ -37,8 +37,7 @@
           <div class="adjust">
             <div class="task-date">
               <div class="allMember" style="display: flex">
-                <div class="allMember1">N</div>
-                <div class="allMember2">N</div>
+                <div class="allMember1" *ngFor="let user of task.assignees">{{user.displayName}}</div>
               </div>
               <div class="create-date">Create date: {{ task.startAt }}</div>
               <div class="deadline">Deadline: {{ task.deadline }}</div>
@@ -86,8 +85,7 @@
           <div class="adjust">
             <div class="task-date">
               <div class="allMember" style="display: flex">
-                <div class="allMember1">N</div>
-                <div class="allMember2">N</div>
+                <div class="allMember1" *ngFor="let user of task.assignees">{{user.displayName}}</div>
               </div>
               <div class="create-date">Create date: {{ task.startAt }}</div>
               <div class="deadline">Deadline: {{ task.deadline }}</div>
@@ -131,8 +129,7 @@
           <div class="adjust">
             <div class="task-date">
               <div class="allMember" style="display: flex">
-                <div class="allMember1">N</div>
-                <div class="allMember2">N</div>
+                <div class="allMember1" *ngFor="let user of task.assignees">{{user.displayName}}</div>
               </div>
               <div class="create-date">Create date: {{ task.startAt }}</div>
               <div class="deadline">Deadline: {{ task.deadline }}</div>

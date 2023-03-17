@@ -38,6 +38,7 @@ export class AuthService {
         this.user$.next(this.user);
       }
     });
+
   }
 
   async LoginWithGoogle() {
