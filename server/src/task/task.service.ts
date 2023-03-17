@@ -25,7 +25,7 @@ export class TaskService {
         isDisable: false,
         owner: task.owner,
         assignees: task.assignees,
-        projectId: new Types.ObjectId(task.projectId),
+        projectId: task.projectId,
         styles: task.styles,
       };
       console.log(newTask);
@@ -84,10 +84,9 @@ export class TaskService {
   }
 
   async updateTask(task: Task) {
-    // console.log('task', task);
     try {
+      console.log(task);
       let tempTask = await this.taskModel.findOne({ id: task.id }).exec();
-      console.log(tempTask);
       tempTask.title = task.title;
       tempTask.description = task.description;
       tempTask.startAt = task.startAt;
@@ -96,7 +95,7 @@ export class TaskService {
       tempTask.assignees = task.assignees;
       tempTask.projectId = task.projectId;
       tempTask.status = task.status;
-   
+      console.log("temp",tempTask);
       return tempTask.save();
     } catch (error) {
       console.log(error);
@@ -114,9 +113,9 @@ export class TaskService {
   }
 
  async getAllTaskByProjectId(id: string) {
-  console.log(id);
+
     try {
-      let myTasks = await this.taskModel.find({projectId:new Types.ObjectId(id)}).populate('owner').populate('assignees').exec();
+      let myTasks = await this.taskModel.find({projectId:id}).populate('owner').populate('assignees').exec();
       return myTasks;
     } catch (error) {
       console.log(error);

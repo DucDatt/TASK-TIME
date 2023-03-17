@@ -26,7 +26,7 @@ export const TaskActions = {
   ),
   createFail: createAction('[Task] Create Fail', props<{ error: string }>()),
 
-  delete: createAction('[Task] Delete', props<{ task: TaskModel }>()),
+  delete: createAction('[Task] Delete', props<{ id: string }>()),
   deleteSuccess: createAction(
     '[Task] Delete Success',
     props<{ task: TaskModel }>()

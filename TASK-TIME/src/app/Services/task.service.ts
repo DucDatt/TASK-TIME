@@ -58,4 +58,7 @@ export class TaskService {
       TaskModel[]
     >;
   }
+  deleteTask(id: string) {
+    return this.http.delete(`${this.url}?id=${id}`) as Observable<TaskModel>;
+  }
 }

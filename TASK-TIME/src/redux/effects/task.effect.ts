@@ -104,7 +104,7 @@ export class TaskEffects {
     this.actions$.pipe(
       ofType(TaskActions.delete),
       switchMap((action) =>
-        this.taskService.updateTask(action.task).pipe(
+        this.taskService.deleteTask(action.id).pipe(
           map((task: any) => {
             return TaskActions.deleteSuccess({ task: task });
           }),

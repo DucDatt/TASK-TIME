@@ -71,6 +71,7 @@ export class TaskBodyComponent {
       this.id = params['id'];
       this.store.dispatch(ProjectActions.get({ id: this.id }))
     })
+
   }
 
   userSubscription!: Subscription;
@@ -113,16 +114,6 @@ export class TaskBodyComponent {
     // this.inProcessSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
   }
-
-  deleteTask(task: any) {
-    let tempTask: TaskModel = {
-      ...task,
-      disable: !task.disable,
-    };
-
-    this.store.dispatch(TaskActions.delete({ task: tempTask }));
-  }
-
   openCreateDialog(): void {
     let dialogRef = this.dialog.open(TaskPopupComponent, {
       data: {
@@ -238,6 +229,12 @@ export class TaskBodyComponent {
   }
   setTask(event: any) {
     this.task = event;
+  }
+  deleteTask(id: string) {
+    this.store.dispatch(TaskActions.delete({ id: id }));
+  }
+  updateTask(task: TaskModel) {
+    this.store.dispatch(TaskActions.update({ task: task }));
   }
 
   newCol() { }
