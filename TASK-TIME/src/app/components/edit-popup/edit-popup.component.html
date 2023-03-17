@@ -7,32 +7,30 @@
         <input matInput placeholder="" value="">
       </mat-form-field>
     </div>
-    <div class="input">
-      <mat-form-field class="add_member">
-        <mat-label>Add member</mat-label>
-        <input matInput placeholder="" value="">
-      </mat-form-field>
-    </div>
-    <!-- <div class="input">
-      <mat-form-field class="description">
-        <mat-label>Description</mat-label>
-        <input matInput placeholder="" value="">
-      </mat-form-field>
-    </div> -->
+
     <div class="date">
-      <div class="date_container">
-        <mat-form-field class="start_at">
-          <mat-label>Start at</mat-label>
-          <input matInput placeholder="" value="">
-        </mat-form-field>
-      </div>
-      <div class="date_container">
-        <mat-form-field class="deadline">
-          <mat-label>Deadline</mat-label>
-          <input matInput placeholder="" value="">
-        </mat-form-field>
+      <div>
+        <div class="date_container">
+          <mat-form-field class="start_at">
+            <mat-label>Start at</mat-label>
+            <input matInput [matDatepicker]="pickerStart" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart [calendarHeaderComponent]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="date_container">
+          <mat-form-field class="deadline">
+            <mat-label>Deadline</mat-label>
+            <input matInput [matDatepicker]="pickerDeadline" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="pickerDeadline"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDeadline [calendarHeaderComponent]="deadlineDate"></mat-datepicker>
+          </mat-form-field>
+        </div>
       </div>
     </div>
+
     <div class="btn_container">
       <div>
         <button class="button">CREATE</button>

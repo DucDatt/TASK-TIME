@@ -12,8 +12,19 @@
 }
 
 .date {
-  display: flex;
-  flex-direction: row;
+  display: block;
+  width: 100%;
+
+  &>div {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+}
+
+.date_container {
+  width: 50%;
 }
 
 .input {
@@ -30,14 +41,15 @@
 }
 
 .start_at {
-  width: 50%;
+  width: 95%;
   margin: 10px 0px;
-  margin-left: 45px;
+  margin-right: 10px;
 }
 
 .deadline {
   margin: 10px 0px;
-  width: 60%;
+  margin-left: 10px;
+  width: 95%;
 }
 
 .btn_container>div {

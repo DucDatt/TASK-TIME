@@ -56,7 +56,7 @@ import { ActivatedRoute } from '@angular/router';
   ],
 })
 export class TaskBodyComponent {
-   id:string='';
+  id: string = '';
   constructor(
     private dialog: MatDialog,
     private _socket: Socket,
@@ -71,8 +71,8 @@ export class TaskBodyComponent {
   userSubscription!: Subscription;
   userState$ = this.store.select('user');
   user: User = <User>{};
-  users:any[]=[];
-  tasks!:TaskModel[];
+  users: any[] = [];
+  tasks!: TaskModel[];
   inProcessSubscription!: Subscription;
   task$ = this.store.select('task');
   task: TaskModel = <TaskModel>{};
@@ -83,7 +83,7 @@ export class TaskBodyComponent {
   }
 
   ngOnInit(): void {
-    this.task$.subscribe((data)=>{
+    this.task$.subscribe((data) => {
       console.log(data);
     })
 
@@ -94,10 +94,10 @@ export class TaskBodyComponent {
 
           this.store.dispatch(TaskActions.getAllForUser({ _id: this.user._id }));
 
-          this._socket.emit('join-room', {roomId:this.id,user:this.user});
+          this._socket.emit('join-room', { roomId: this.id, user: this.user });
 
-          this.listenUpdateData().subscribe((data:any)=>{
-           this.tasks=data;
+          this.listenUpdateData().subscribe((data: any) => {
+            this.tasks = data;
           });
         }
       }
@@ -105,7 +105,7 @@ export class TaskBodyComponent {
   }
 
   ngOnDestroy(): void {
-    this.inProcessSubscription.unsubscribe();
+    // this.inProcessSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
   }
 
@@ -121,8 +121,8 @@ export class TaskBodyComponent {
   openCreateDialog(): void {
     let dialogRef = this.dialog.open(TaskPopupComponent, {
       data: {
-        user:this.user,
-        projectId:this.id
+        user: this.user,
+        projectId: this.id
       },
     });
     dialogRef.afterClosed().subscribe((result: TaskModel) => {
@@ -136,6 +136,7 @@ export class TaskBodyComponent {
       };
 
       this.store.dispatch(TaskActions.create({ task: tempTask }));
+      window.location.reload();
     });
   }
 
@@ -189,7 +190,6 @@ export class TaskBodyComponent {
         break;
     }
 
-
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -204,7 +204,7 @@ export class TaskBodyComponent {
         event.currentIndex
       );
 
-      this._socket.emit('update-data',{roomId:this.id,data: this.task});
+      this._socket.emit('update-data', { roomId: this.id, data: this.task });
     }
   }
 
@@ -237,5 +237,5 @@ export class TaskBodyComponent {
     this.task = event;
   }
 
-  newCol() {}
+  newCol() { }
 }
