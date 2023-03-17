@@ -26,6 +26,8 @@ import { TaskActions } from 'src/redux/actions/task.action';
 import { TaskModel } from 'src/app/model/task.model';
 import { Socket } from 'ngx-socket-io';
 import { ActivatedRoute } from '@angular/router';
+import { ProjectState } from 'src/redux/states/project.state';
+import { ProjectActions } from 'src/redux/actions/project.action';
 
 @Component({
   selector: 'app-task-body',
@@ -57,14 +59,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TaskBodyComponent {
    id:string='';
+   project$=this.store.select('project');
   constructor(
     private dialog: MatDialog,
     private _socket: Socket,
-    private store: Store<{ task: TaskState; user: UserState }>,
+    private store: Store<{ task: TaskState; user: UserState,project:ProjectState}>,
+
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
+      this.store.dispatch(ProjectActions.get({ id: this.id }))
     })
   }
 

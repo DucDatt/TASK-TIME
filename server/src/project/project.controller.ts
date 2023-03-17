@@ -17,8 +17,9 @@ export class ProjectController {
     return this.projectService.getAll();
   }
 
-  @Get('detail/:id')
-  getById(@Param(`id`) id: string) {
+  @Get('')
+  getById(@Query('id') id: string) {
+    console.log("alo" ,id)
     return this.projectService.getById(id);
   }
 

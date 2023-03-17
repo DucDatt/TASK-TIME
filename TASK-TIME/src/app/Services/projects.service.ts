@@ -30,12 +30,8 @@ export class ProjectsService {
   }
 
   getProjectById(id: string) {
-    let project = this.http.get(`${this.url}?id=${id}`).pipe(
-      map((project) => {
-        return <ProjectModel>project;
-      })
-    );
-    return project;
+
+    return this.http.get(`${this.url}?id=${id}`) as Observable<ProjectModel>
   }
 
   getProjectDetails(id: string) {

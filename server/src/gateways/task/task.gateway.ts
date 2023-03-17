@@ -27,7 +27,6 @@ export class TaskGateway {
     //broadcast to room
     client.broadcast.to(payload.roomId).emit('update-user',payload.user);
     let tasks= await this._taskService.getAllTaskByProjectId(payload.roomId);
-    console.log(tasks);
     this.server.to(payload.roomId).emit('send-data', tasks);
   }
   @SubscribeMessage('create-new-task')

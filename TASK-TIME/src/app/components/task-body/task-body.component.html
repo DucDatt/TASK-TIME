@@ -1,24 +1,24 @@
 <div class="container">
   <div class="title">
     <div class="title-left">
-      <div class="project-name">Create App</div>
-      <div class="project-description">App Todolist</div>
+      <div class="project-name">{{(this.project$|async)?.project?.projectName}}</div>
+      <div class="project-description">{{(this.project$|async)?.project?.projectDescription}}</div>
     </div>
     <div class="title-right">
       <div class="date">
         <div>CREATE DATE</div>
-        <div>30/2/2023</div>
+        <div>{{(this.project$|async)?.project?.startAt}}</div>
       </div>
       <div class="date">
         <div>DUE DATE</div>
-        <div>3/3/2023</div>
+        <div>{{(this.project$|async)?.project?.deadline}}</div>
       </div>
-      <div class="date">
+      <!-- <div class="date">
         <div>TRACKED TIME</div>
         <div id="date">
           <div>2 days</div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { Task } from 'src/schema/task.schema';
 import { TaskService } from './task.service';
 
@@ -38,5 +38,9 @@ export class TaskController {
   @Get('all/user')
   async getAllByUserId(@Query('id') id: string) {
     return await this.taskService.getAllByUserId(id);
+  }
+  @Delete()
+  async deleteTask(@Query('id') id: string) {
+    return await this.taskService.deleteTask(id);
   }
 }

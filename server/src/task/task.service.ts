@@ -65,6 +65,10 @@ export class TaskService {
       return null;
     }
   }
+  async deleteTask(id){
+    let task= await this.taskModel.findOne({id:id}).exec();
+    return task.remove();
+  }
 
   async getById(taskId: string) {
     try {
