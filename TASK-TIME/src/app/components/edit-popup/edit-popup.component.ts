@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {
+  StartComponent,
+  DeadlineComponent,
+} from '../calendar/calendar.component';
 
 @Component({
   selector: 'app-edit-popup',
@@ -6,5 +10,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-popup.component.scss']
 })
 export class EditPopupComponent {
-
+  startDate = StartComponent;
+  deadlineDate = DeadlineComponent;
 }
