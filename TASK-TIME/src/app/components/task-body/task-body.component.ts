@@ -58,20 +58,23 @@ import { ProjectActions } from 'src/redux/actions/project.action';
   ],
 })
 export class TaskBodyComponent {
-   id:string='';
-   project$=this.store.select('project');
+  id: string = '';
+  project$ = this.store.select('project');
   constructor(
     private dialog: MatDialog,
     private _socket: Socket,
-    private store: Store<{ task: TaskState; user: UserState,project:ProjectState}>,
+    private store: Store<{
+      task: TaskState;
+      user: UserState;
+      project: ProjectState;
+    }>,
 
     private route: ActivatedRoute
   ) {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
-      this.store.dispatch(ProjectActions.get({ id: this.id }))
-    })
-
+      this.store.dispatch(ProjectActions.get({ id: this.id }));
+    });
   }
 
   userSubscription!: Subscription;
@@ -79,26 +82,31 @@ export class TaskBodyComponent {
   user: User = <User>{};
   users: any[] = [];
   tasks!: TaskModel[];
+  todo: any[] = [];
+  doing: any[] = [];
+  done: any[] = [];
+  taskList: any[] = [];
   inProcessSubscription!: Subscription;
   task$ = this.store.select('task');
   task: TaskModel = <TaskModel>{};
   //projects = this.store.select('task', 'tasks');
 
-  initialize() {
-
-  }
+  initialize() {}
 
   ngOnInit(): void {
-    this.task$.subscribe((data)=>{
-      this._socket.emit('create-new-task',{roomId:this.id});
-    })
+    this.task$.subscribe((data) => {
+      this._socket.emit('create-new-task', { roomId: this.id });
+    });
 
     this.userSubscription = this.userState$.subscribe((state) => {
       if (state.loading == false) {
         if (state.user._id) {
           this.user = state.user;
 
-          this.store.dispatch(TaskActions.getAllForUser({ _id: this.user._id }));
+          this.store.dispatch(
+            TaskActions.getAllForUser({ _id: this.user._id })
+          );
+          // this.getAllTask(this.id );
 
           this._socket.emit('join-room', { roomId: this.id, user: this.user });
 
@@ -114,11 +122,24 @@ export class TaskBodyComponent {
     // this.inProcessSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
   }
+
+  // getAllTask(project_id: string) {
+  //   this.store.dispatch(TaskActions.getAllByProjectId({ _id: project_id }));
+  //   this.task$.subscribe((data) => {
+  //     if (data != null) {
+  //       this.taskList = this.tasks;
+  //       this.todo = this.taskList.filter((task) => task.status === 'todo');
+  //       this.doing = this.taskList.filter((task) => task.status === 'doing');
+  //       this.done = this.taskList.filter((task) => task.status === 'done');
+  //     }
+  //   });
+  // }
+
   openCreateDialog(): void {
     let dialogRef = this.dialog.open(TaskPopupComponent, {
       data: {
         user: this.user,
-        projectId: this.id
+        projectId: this.id,
       },
     });
     dialogRef.afterClosed().subscribe((result: TaskModel) => {
@@ -149,7 +170,6 @@ export class TaskBodyComponent {
       };
 
       this.store.dispatch(TaskActions.update({ task: tempTask }));
-
     });
   }
 
@@ -161,15 +181,10 @@ export class TaskBodyComponent {
     this.dialog.open(ColPopupComponent);
   }
 
-  todo: any[] = [];
-
-  doing: any[] = [];
-  done: any[] = [];
-
   drop(event: CdkDragDrop<any[]>) {
     //get status of the task
     //if same column
-    console.log;
+    // console.log;
     switch (event.container.id) {
       case 'cdk-drop-list-0':
         this.task = { ...this.task, status: 'todo' };
@@ -180,7 +195,6 @@ export class TaskBodyComponent {
         break;
       case 'cdk-drop-list-2':
         this.task = { ...this.task, status: 'done' };
-
         break;
     }
 
@@ -237,5 +251,5 @@ export class TaskBodyComponent {
     this.store.dispatch(TaskActions.update({ task: task }));
   }
 
-  newCol() { }
+  newCol() {}
 }
