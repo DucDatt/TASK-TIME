@@ -1,9 +1,12 @@
+
+
 {
   "hosting": [
     {
       "target": "TASK-TIME",
-      "public": "dist/task-time",
+      "public": "build",
       "ignore": [
+        "firebase.json",
         "**/.*"
       ],
       "headers": [
@@ -35,7 +38,7 @@
     },
     {
       "target": "TASK-TIME",
-      "public": "dist/task-time",
+      "public": "build",
       "ignore": [
         "**/.*"
       ],
