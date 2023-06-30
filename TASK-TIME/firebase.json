@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "TASK-TIME",
-      "public": "build",
+      "public": "dist/task-time",
       "ignore": [
         "**/.*"
       ],
